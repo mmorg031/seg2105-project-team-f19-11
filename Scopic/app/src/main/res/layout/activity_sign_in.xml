@@ -8,18 +8,23 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="#add5e0"
+        >
+
 
         <TextView
             android:id="@+id/sign_in"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="200dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="150dp"
+            android:fontFamily="@font/muli_light"
             android:text="Sign In"
+            android:textColor="#424445"
             android:textSize="38sp"
-            android:textStyle = "bold"
-            android:textColor="#a8edbe"/>
+            android:textStyle="bold"
+            />
 
         <EditText
             android:id="@+id/enter_email"
@@ -31,7 +36,8 @@
             android:layout_marginTop="10dp"
             android:ems="30"
             android:inputType="textPersonName"
-            android:hint="Email" />
+            android:hint="Email"
+            android:fontFamily="@font/muli_light"/>
 
         <EditText
             android:id="@+id/enter_password"
@@ -44,6 +50,7 @@
             android:layout_marginTop = "10dp"
             android:hint = "Password"
             android:inputType="textPassword"
+            android:fontFamily="@font/muli_light"
             />
 
         <Button
@@ -55,6 +62,10 @@
             android:text = "Login"
             android:layout_below="@+id/enter_password"
             android:layout_marginTop="50dp"
+            android:background="#a8edbe"
+            android:textColor="#424445"
+            android:textSize="20sp"
+            android:fontFamily="@font/muli_light"
             />
 
         <TextView
@@ -64,18 +75,26 @@
             android:layout_below="@+id/login"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:text = "or" />
+            android:text = "or"
+            android:textColor="#424445"
+            android:fontFamily="@font/muli_light"
+            />
 
         <Button
             android:id = "@+id/create_account"
             android:onClick="createAccountClicked"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
             android:layout_marginLeft="250dp"
             android:layout_centerHorizontal="true"
             android:text = "Create Account"
+            android:textColor="#ffffff"
+            android:background="#424445"
             android:layout_below="@+id/or"
             android:layout_marginTop="5dp"
+            android:fontFamily="@font/muli_light"
             />
 
     </RelativeLayout>
