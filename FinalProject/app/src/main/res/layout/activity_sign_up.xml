@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity_sign_up">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#a8edbe"
+        >
+
+        <TextView
+            android:id="@+id/sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="75dp"
+            android:layout_centerHorizontal="true"
+            android:text="Sign Up"
+            android:textColor="#424445"
+            android:textSize="38sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/muli_light"
+            />
+
+        <!--<TextView
+            android:id="@+id/fullscreen_content"
+            android:layout_width="match_parent"
+            android:layout_height="719dp"
+            android:gravity="center"
+            android:keepScreenOn="true"
+            android:textColor="#33b5e5"
+            android:textSize="50sp"
+            android:textStyle="bold" />-->
+
+        <EditText
+            android:id="@+id/enter_name"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sign_in"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="25dp"
+            android:ems="30"
+            android:inputType="textPersonName"
+            android:hint="Name"
+            android:fontFamily="@font/muli_light"/>
+
+        <EditText
+            android:id="@+id/enter_email"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/enter_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:ems="30"
+            android:inputType="textPersonName"
+            android:hint="Email"
+            android:fontFamily="@font/muli_light"/>
+
+        <EditText
+            android:id="@+id/enter_password"
+            android:layout_width="match_parent"
+            android:layout_marginLeft="150dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/enter_email"
+            android:layout_centerHorizontal = "true"
+            android:ems="30"
+            android:layout_marginTop = "10dp"
+            android:hint = "Password"
+            android:inputType="textPassword"
+            android:fontFamily="@font/muli_light"
+            />
+
+        <Button
+            android:id = "@+id/create_account"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="225dp"
+            android:layout_centerHorizontal="true"
+            android:text = "Create Account"
+            android:background="#add5e0"
+            android:textSize="15sp"
+            android:layout_below="@+id/enter_password"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/muli_light"
+            android:textColor="#424445"
+            />
+
+        <TextView
+            android:id="@+id/have_account"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/create_account"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="35dp"
+            android:text = "Already have an account?"
+            android:textColor="#424445"
+            android:fontFamily="@font/muli_light"/>
+
+        <Button
+            android:id = "@+id/login"
+            android:layout_width="match_parent"
+            android:onClick="haveAccountLoginClicked"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="280dp"
+            android:layout_centerHorizontal="true"
+            android:text = "Login"
+            android:layout_below="@+id/have_account"
+            android:layout_marginTop="5dp"
+            android:background="#424445"
+            android:textColor="#ffffff"
+            android:fontFamily="@font/muli_light"
+            />
+        // On line 94, I used onClick and set the specific button I wanted to have change screens when clicked
+        // to "haveAccountLoginClicked", which is a function in MainActivity.java
+
+    </RelativeLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

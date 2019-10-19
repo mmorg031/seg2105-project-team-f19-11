@@ -1,7 +1,6 @@
 package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -21,7 +20,7 @@ public class SignUpChoice extends AppCompatActivity {
         buttonClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWelcomePage();
+                openactivity_sign_up();
             }
         });
 
@@ -29,7 +28,7 @@ public class SignUpChoice extends AppCompatActivity {
         buttonEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWelcomePage();
+                openactivity_sign_up();
             }
         });
 
@@ -37,13 +36,18 @@ public class SignUpChoice extends AppCompatActivity {
         buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openWelcomePage();
+                openactivity_sign_in();
             }
         });
     }
 
-    public void openWelcomePage(){
-        Intent intent = new Intent(this, WelcomePage.class);
+    public void openactivity_sign_up(){
+        Intent intent = new Intent(this, activity_sign_up.class);
+        startActivity(intent);
+    }
+
+    public void openactivity_sign_in(){
+        Intent intent = new Intent(this, activity_sign_in.class);
         startActivity(intent);
     }
 }
