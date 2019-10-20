@@ -21,7 +21,7 @@ public class activity_sign_in extends AppCompatActivity {
     private EditText ETemail, ETpassword;
     private Button buttonCreateAccount;
     private Button buttonLogin;
-    FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
@@ -32,20 +32,7 @@ public class activity_sign_in extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         ETemail = (EditText) findViewById(R.id.enter_email);
         ETpassword = (EditText) findViewById(R.id.enter_password);
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-                if (mFirebaseUser != null) {
-                    Toast.makeText(activity_sign_in.this, "You are logged in", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(activity_sign_in.this, WelcomePage.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(activity_sign_in.this, "Please Log in", Toast.LENGTH_SHORT).show();
 
-                }
-            }
-        };
         buttonCreateAccount = (Button) findViewById(R.id.create_account);
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +48,22 @@ public class activity_sign_in extends AppCompatActivity {
                 openWelcomePage();
             }
         });
+
+
+       /* mAuthStateListener = new FirebaseAuth.AuthStateListener() {
+            @Override
+            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
+                if (mFirebaseUser != null) {
+                    Toast.makeText(activity_sign_in.this, "You are logged in", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(activity_sign_in.this, WelcomePage.class);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(activity_sign_in.this, "Please Log in", Toast.LENGTH_SHORT).show();
+
+                }
+            }
+        };*/
     }
 
     public void openWelcomePage() {
@@ -82,6 +85,7 @@ public class activity_sign_in extends AppCompatActivity {
                         Toast.makeText(activity_sign_in.this, "Incorrect Login", Toast.LENGTH_SHORT).show();
                     }
                     else{
+                        Toast.makeText(activity_sign_in.this, "You are logged in", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(activity_sign_in.this, WelcomePage.class);
                         startActivity(intent);
                     }
@@ -98,10 +102,10 @@ public class activity_sign_in extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onStart(){
+   // @Override
+    /*protected void onStart(){
         super.onStart();
         mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-    }
+    }*/
 }
 

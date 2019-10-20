@@ -20,7 +20,7 @@ public class SignUpChoice extends AppCompatActivity {
         buttonClient.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openactivity_sign_up();
+                openactivity_sign_upPatient();
             }
         });
 
@@ -28,7 +28,7 @@ public class SignUpChoice extends AppCompatActivity {
         buttonEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openactivity_sign_up();
+                openactivity_sign_upEmployee();
             }
         });
 
@@ -41,13 +41,20 @@ public class SignUpChoice extends AppCompatActivity {
         });
     }
 
-    public void openactivity_sign_up(){
+    public void openactivity_sign_upPatient(){
         Intent intent = new Intent(this, activity_sign_up.class);
+        startActivity(intent);
+    }
+
+    public void openactivity_sign_upEmployee(){
+        Intent intent = new Intent(this, activity_sign_up.class);
+        intent.putExtra("role", "Patient");
         startActivity(intent);
     }
 
     public void openactivity_sign_in(){
         Intent intent = new Intent(this, activity_sign_in.class);
+        intent.putExtra("role", "Employee");
         startActivity(intent);
     }
 }
