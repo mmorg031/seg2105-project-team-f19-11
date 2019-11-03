@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".activity_sign_up"></activity>
+        <activity android:name=".AdminAddServices"></activity>
+        <activity android:name=".activity_sign_up" />
         <activity android:name=".activity_sign_in">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -18,7 +19,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".WelcomePage" />
-        <activity android:name=".SignUpChoice"></activity>
+        <activity android:name=".SignUpChoice" />
 
         <meta-data
             android:name="preloaded_fonts"

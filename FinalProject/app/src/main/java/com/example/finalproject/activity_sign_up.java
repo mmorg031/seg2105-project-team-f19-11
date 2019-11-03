@@ -10,10 +10,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.model.Person;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class activity_sign_up extends AppCompatActivity {
     private EditText ETname;
@@ -21,6 +28,7 @@ public class activity_sign_up extends AppCompatActivity {
     private EditText ETpassword;
     private Button buttonCreateAccount;
     private Button buttonLogin;
+    private String chosenRole;
     FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -32,7 +40,10 @@ public class activity_sign_up extends AppCompatActivity {
         ETname = (EditText) findViewById(R.id.enter_name);
         ETemail = (EditText) findViewById(R.id.enter_email);
         ETpassword = (EditText) findViewById(R.id.enter_password);
-
+        Bundle extras = getIntent().getExtras();
+        if(extras!=null){
+             chosenRole = extras.getString("role");
+        }
 
         buttonCreateAccount = (Button) findViewById(R.id.create_account);
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
@@ -52,9 +63,9 @@ public class activity_sign_up extends AppCompatActivity {
     }
 
     public void openWelcomePage(){
-        String email = ETemail.getText().toString();
-        String password = ETpassword.getText().toString();
-        String name = ETname.getText().toString();
+        final String email = ETemail.getText().toString();
+        final String password = ETpassword.getText().toString();
+        final String name = ETname.getText().toString();
 
         if(email.isEmpty()){
             ETemail.setError("Please Provide an Email");
@@ -76,6 +87,17 @@ public class activity_sign_up extends AppCompatActivity {
                         Toast.makeText(activity_sign_up.this, "Sign up Unsuccessful, Please Try Again", Toast.LENGTH_SHORT).show();
                     }
                     else{
+                        String userID = mFirebaseAuth.getCurrentUser().getUid();
+                        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
+
+                        //in the future should be Map<String, Person> ...
+                       // Map<String, Object> newPost = new Person(name, password, email).toMap();
+                        //newPost.put("name", name);
+                       // newPost.put("role", role);
+
+                       // db.setValue(newPost);
+
+                        db.setValue(new Person(name,password,email,chosenRole));
                         Intent intent = new Intent(activity_sign_up.this, WelcomePage.class);
                         startActivity(intent);
                     }

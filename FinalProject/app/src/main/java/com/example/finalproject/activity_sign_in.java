@@ -21,7 +21,7 @@ public class activity_sign_in extends AppCompatActivity {
     private EditText ETemail, ETpassword;
     private Button buttonCreateAccount;
     private Button buttonLogin;
-    FirebaseAuth mFirebaseAuth;
+    private FirebaseAuth mFirebaseAuth;
     private FirebaseAuth.AuthStateListener mAuthStateListener;
 
     @Override
@@ -32,20 +32,7 @@ public class activity_sign_in extends AppCompatActivity {
         mFirebaseAuth = FirebaseAuth.getInstance();
         ETemail = (EditText) findViewById(R.id.enter_email);
         ETpassword = (EditText) findViewById(R.id.enter_password);
-        mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-                if (mFirebaseUser != null) {
-                    Toast.makeText(activity_sign_in.this, "You are logged in", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(activity_sign_in.this, WelcomePage.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(activity_sign_in.this, "Please Log in", Toast.LENGTH_SHORT).show();
 
-                }
-            }
-        };
         buttonCreateAccount = (Button) findViewById(R.id.create_account);
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,6 +48,7 @@ public class activity_sign_in extends AppCompatActivity {
                 openWelcomePage();
             }
         });
+
     }
 
     public void openWelcomePage() {
@@ -68,13 +56,21 @@ public class activity_sign_in extends AppCompatActivity {
         String email = ETemail.getText().toString();
         String password = ETpassword.getText().toString();
 
-        if (email.isEmpty()) {
+        if (email.isEmpty() && password.isEmpty()){
+            Toast.makeText(activity_sign_in.this, "Both fields are blank", Toast.LENGTH_SHORT).show();
+        }
+        else if (email.isEmpty()) {
             ETemail.setError("Please Provide an Email");
             ETemail.requestFocus();
         } else if (password.isEmpty()) {
             ETpassword.setError("Please Provide a Password");
             ETpassword.requestFocus();
-        } else {
+        }
+        else if( email.equals("admin") && password.equals("5T5ptQ")){
+            Intent intent = new Intent(activity_sign_in.this, AdminAddServices.class);
+            startActivity(intent);
+        }
+        else {
             mFirebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(activity_sign_in.this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -82,14 +78,13 @@ public class activity_sign_in extends AppCompatActivity {
                         Toast.makeText(activity_sign_in.this, "Incorrect Login", Toast.LENGTH_SHORT).show();
                     }
                     else{
+                        Toast.makeText(activity_sign_in.this, "You are logged in", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(activity_sign_in.this, WelcomePage.class);
                         startActivity(intent);
                     }
                 }
             });
         }
-            //Intent intent = new Intent(this, WelcomePage.class);
-            //startActivity(intent);
     }
 
 
@@ -98,10 +93,5 @@ public class activity_sign_in extends AppCompatActivity {
         startActivity(intent);
     }
 
-    @Override
-    protected void onStart(){
-        super.onStart();
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-    }
 }
 
