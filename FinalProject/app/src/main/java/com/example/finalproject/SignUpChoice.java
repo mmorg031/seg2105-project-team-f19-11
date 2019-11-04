@@ -53,18 +53,7 @@ public class SignUpChoice extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openactivity_sign_upEmployee(){
-        Intent intent = new Intent(this, activity_sign_up.class);
-        intent.putExtra("role", "Patient");
-        startActivity(intent);
-    }
-
     public void openactivity_sign_in(){
         Intent intent = new Intent(this, activity_sign_in.class);
-<<<<<<< HEAD
-=======
-        intent.putExtra("role", "Employee");
-        startActivity(intent);
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
     }
 }

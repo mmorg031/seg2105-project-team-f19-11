@@ -49,24 +49,6 @@ public class activity_sign_in extends AppCompatActivity {
             }
         });
 
-<<<<<<< HEAD
-=======
-
-       /* mAuthStateListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser mFirebaseUser = mFirebaseAuth.getCurrentUser();
-                if (mFirebaseUser != null) {
-                    Toast.makeText(activity_sign_in.this, "You are logged in", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(activity_sign_in.this, WelcomePage.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(activity_sign_in.this, "Please Log in", Toast.LENGTH_SHORT).show();
-
-                }
-            }
-        };*/
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
     }
 
     public void openWelcomePage() {
@@ -111,13 +93,5 @@ public class activity_sign_in extends AppCompatActivity {
         startActivity(intent);
     }
 
-<<<<<<< HEAD
-=======
-   // @Override
-    /*protected void onStart(){
-        super.onStart();
-        mFirebaseAuth.addAuthStateListener(mAuthStateListener);
-    }*/
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
 }
 

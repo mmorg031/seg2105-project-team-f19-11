@@ -28,11 +28,7 @@ public class activity_sign_up extends AppCompatActivity {
     private EditText ETpassword;
     private Button buttonCreateAccount;
     private Button buttonLogin;
-<<<<<<< HEAD
     private String chosenRole;
-=======
-    private String role;
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
     FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -45,13 +41,9 @@ public class activity_sign_up extends AppCompatActivity {
         ETemail = (EditText) findViewById(R.id.enter_email);
         ETpassword = (EditText) findViewById(R.id.enter_password);
         Bundle extras = getIntent().getExtras();
-<<<<<<< HEAD
         if(extras!=null){
              chosenRole = extras.getString("role");
         }
-=======
-        if(extras!=null){ role = extras.getString("role");}
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
 
         buttonCreateAccount = (Button) findViewById(R.id.create_account);
         buttonCreateAccount.setOnClickListener(new View.OnClickListener() {
@@ -71,13 +63,8 @@ public class activity_sign_up extends AppCompatActivity {
     }
 
     public void openWelcomePage(){
-<<<<<<< HEAD
         final String email = ETemail.getText().toString();
         final String password = ETpassword.getText().toString();
-=======
-        String email = ETemail.getText().toString();
-        String password = ETpassword.getText().toString();
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
         final String name = ETname.getText().toString();
 
         if(email.isEmpty()){
@@ -104,7 +91,6 @@ public class activity_sign_up extends AppCompatActivity {
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
 
                         //in the future should be Map<String, Person> ...
-<<<<<<< HEAD
                        // Map<String, Object> newPost = new Person(name, password, email).toMap();
                         //newPost.put("name", name);
                        // newPost.put("role", role);
@@ -112,14 +98,6 @@ public class activity_sign_up extends AppCompatActivity {
                        // db.setValue(newPost);
 
                         db.setValue(new Person(name,password,email,chosenRole));
-=======
-                        Map<String,String> newPost = new HashMap<>();
-                        newPost.put("name", name);
-                        newPost.put("role", role);
-
-                        db.setValue(newPost);
-
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
                         Intent intent = new Intent(activity_sign_up.this, WelcomePage.class);
                         startActivity(intent);
                     }

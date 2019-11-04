@@ -1,6 +1,5 @@
 package com.example.model;
 
-<<<<<<< HEAD
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,15 +22,10 @@ import java.util.Map;
     Employee,
      Administrator
 }
-=======
-import java.nio.charset.StandardCharsets;
-import java.security.MessageDigest;
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
 
 //or user class same thing
 public class Person {
     private String name;
-<<<<<<< HEAD
     private String password;
     private String email;
     private Role role; //enumerate later on
@@ -79,18 +73,6 @@ public class Person {
 
         return name;
     }
-=======
-    private byte[] password;
-    private String email;
-    private String role; //enumerate later on
-
-    public Person(String name, String pass, String email){
-        // Static getInstance method is called with hashing SHA
-        //MessageDigest digest = MessageDigest.getInstance("SHA-256");
-        //password = digest.digest(pass.getBytes(StandardCharsets.UTF_8));
-        this.name=name;
-        this.email=email;
->>>>>>> 85b6a0355dbd00bbaa033da58aeef8a8a676f581
 
     public void setName(String name) {
         this.name = name;
