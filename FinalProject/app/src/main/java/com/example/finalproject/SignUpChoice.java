@@ -27,8 +27,7 @@ public class SignUpChoice extends AppCompatActivity {
         buttonEmployee = (Button) findViewById(R.id.empBtn);
         buttonEmployee.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                openactivity_sign_upEmployee();
+            public void onClick(View v) { openactivity_sign_upEmployee();
             }
         });
 
@@ -55,5 +54,6 @@ public class SignUpChoice extends AppCompatActivity {
 
     public void openactivity_sign_in(){
         Intent intent = new Intent(this, activity_sign_in.class);
+        startActivity(intent) ;
     }
 }
