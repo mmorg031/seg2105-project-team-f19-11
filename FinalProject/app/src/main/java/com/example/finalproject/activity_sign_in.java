@@ -67,7 +67,8 @@ public class activity_sign_in extends AppCompatActivity {
             ETpassword.requestFocus();
         }
         else if( email.equals("admin") && password.equals("5T5ptQ")){
-            Intent intent = new Intent(activity_sign_in.this, AdminAddServices.class);
+            Intent intent = new Intent(activity_sign_in.this, WelcomePage.class);
+            intent.putExtra("Admin", true);
             startActivity(intent);
         }
         else {

@@ -12,6 +12,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
  enum Role{
@@ -95,32 +96,6 @@ public class Person {
         result.put("role", role);
 
         return result;
-    }
-
-    public static void displayAllUsers(){
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-        ref.addListenerForSingleValueEvent(
-                new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        collectNames ((Map<String, Object>) dataSnapshot.getValue());
-                    }
-
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        //handle databaseError
-
-                    }});
-    }
-
-    public static void collectNames(Map<String, Object > users){
-        ArrayList<Person> people = new ArrayList<>();
-
-        for (Map.Entry<String, Object> entry : users.entrySet()){
-            Map singleUser = (Map) entry.getValue();
-            people.add((Person) singleUser );
-        }
-
     }
 
 }

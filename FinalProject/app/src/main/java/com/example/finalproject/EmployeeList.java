@@ -8,7 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
 
-public class EmployeeList extends AppCompatActivity {
+public class
+EmployeeList extends AppCompatActivity {
 
     private ImageButton buttonBack ;
     private Button patientButton ;
