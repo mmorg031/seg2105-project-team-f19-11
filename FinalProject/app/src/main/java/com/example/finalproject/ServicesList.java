@@ -84,7 +84,7 @@ public class ServicesList extends AppCompatActivity {
     }
 
     public void openactivity_AdminAddServices(){
-        Intent intent = new Intent(this, PatientList.class);
+        Intent intent = new Intent(this, AdminAddServices.class);
         startActivity(intent);
     }
 }
