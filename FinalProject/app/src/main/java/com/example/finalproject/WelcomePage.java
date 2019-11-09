@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.model.Person;
+import com.example.model.Role;
+import com.example.model.WalkInClinic;
 import com.firebase.ui.auth.data.model.User;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -76,6 +78,13 @@ public class WelcomePage extends AppCompatActivity {
             welcome.setText("Welcome");
             logInAs.setText("You are logged in as: Administrator");
             //buttonContinue.setVisibility(View.VISIBLE);
+            //DELETE ME LATER
+
+            WalkInClinic clinic = new WalkInClinic("MadClinic");
+            clinic.addService("Filling", Role.Nurse);
+
+            Intent intent = new Intent(this, edit_service.class);
+            startActivity(intent);
         }
 
 

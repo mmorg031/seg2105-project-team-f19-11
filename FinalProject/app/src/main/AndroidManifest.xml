@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".ServicesList"></activity>
+        <activity android:name=".edit_service"></activity>
         <activity android:name=".AdminChoose" />
         <activity android:name=".PatientList" />
         <activity android:name=".EmployeeList" />

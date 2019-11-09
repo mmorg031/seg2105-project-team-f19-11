@@ -15,15 +15,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
- enum Role{
-    Doctor,
-    Nurse,
-    Staff,
-    Patient,
-    Employee,
-     Administrator
-}
-
 //or user class same thing
 public class Person {
     private String name;
@@ -74,7 +65,6 @@ public class Person {
 
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
@@ -83,7 +73,6 @@ public class Person {
     public String getRole(){
         return role.toString();
     }
-
     public void setRole(Role role) {
         this.role = role;
     }

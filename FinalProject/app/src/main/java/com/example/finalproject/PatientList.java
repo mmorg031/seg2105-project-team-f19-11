@@ -51,12 +51,15 @@ public class PatientList extends AppCompatActivity {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for(DataSnapshot ds: dataSnapshot.getChildren()) {
-                            String name = ds.child("name").getValue(String.class);
-                            String email = ds.child("email").getValue(String.class);
-                            HashMap<String,String> datum = new HashMap<String, String>();
-                            datum.put("Name", name);
-                            datum.put("Email", email);
-                            patientData.add(datum);
+                            String role = ds.child("role").getValue(String.class);
+                            if(role.equals("Patient")) {
+                                String name = ds.child("name").getValue(String.class);
+                                String email = ds.child("email").getValue(String.class);
+                                HashMap<String, String> datum = new HashMap<String, String>();
+                                datum.put("Name", name);
+                                datum.put("Email", email);
+                                patientData.add(datum);
+                            }
                         }
 
 
@@ -79,4 +82,8 @@ public class PatientList extends AppCompatActivity {
         Intent intent = new Intent(this, EmployeeList.class);
         startActivity(intent);
     }
+
+
+    public void deletePatientAccount(){}
+
 }
