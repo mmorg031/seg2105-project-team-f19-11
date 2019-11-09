@@ -62,7 +62,7 @@
             android:text = "Login"
             android:layout_below="@+id/enter_password"
             android:layout_marginTop="50dp"
-            android:background="#a8edbe"
+            android:background="#c3e6ce"
             android:textColor="#424445"
             android:textSize="20sp"
             android:fontFamily="@font/muli_light"
