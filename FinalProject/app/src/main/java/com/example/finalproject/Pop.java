@@ -1,6 +1,7 @@
 package com.example.finalproject;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -9,7 +10,9 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.model.Patient;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
@@ -27,25 +30,24 @@ import java.io.FileInputStream;
 
 import static android.content.ContentValues.TAG;
 
-class Pop extends Activity {
+public class Pop extends AppCompatActivity {
     private Button yesButton;
     private Button noButton;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.popup);
-        DisplayMetrics d = new DisplayMetrics();
+        /*DisplayMetrics d = new DisplayMetrics();
         getWindowManager().getDefaultDisplay().getMetrics(d);
         int w = d.widthPixels ;
         int h = d.heightPixels ;
-        getWindow().setLayout((int)(w*.8), (int)(h*.6));
+        getWindow().setLayout((int)(w*.8), (int)(h*.6));*/
 
 
         yesButton = (Button) findViewById(R.id.yesButton);
         yesButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) { openactivity_deleteUser(getIntent().getExtras().getString("email"));
+            public void onClick(View v) { openactivity_deleteUser(getIntent().getExtras().getString("Email"));
             }
         });
 
@@ -91,6 +93,8 @@ class Pop extends Activity {
                 }
             }
         });*/
+        Intent intent = new Intent(this, PatientList.class);
+        startActivity(intent);
     }
 
 

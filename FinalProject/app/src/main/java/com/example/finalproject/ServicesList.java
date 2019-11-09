@@ -2,7 +2,9 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -30,17 +32,22 @@ public class ServicesList extends AppCompatActivity {
 
         serviceList = (ListView) findViewById(R.id.servicesList);
         serviceData = new ArrayList<HashMap<String, String>>();
+        buttonBack = (ImageButton) findViewById(R.id.backBtnPat);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openactivity_goback();
+            }
+        });
 
-        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("clinics").child(getIntent().getExtras().getString("clinic"));
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("services");
         ref.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for(DataSnapshot ds: dataSnapshot.getChildren()) {
-                            String name = ds.getValue(String.class);
-                            String role= null;
-                            for(DataSnapshot d: ds.getChildren())
-                                role = d.getValue(String.class);
+                            String name = ds.getKey();
+                            String role = ds.getValue(String.class);
                             HashMap<String, String> datum = new HashMap<String, String>();
                             datum.put("Name", name);
                             datum.put("Role", role);
@@ -62,11 +69,9 @@ public class ServicesList extends AppCompatActivity {
 
                     }});
 
+    }
 
-
-
-
-
-
+    public void openactivity_goback(){
+        finish();
     }
 }

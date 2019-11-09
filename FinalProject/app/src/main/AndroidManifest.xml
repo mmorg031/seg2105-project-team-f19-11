@@ -27,9 +27,8 @@
         <activity android:name=".WelcomePage" />
         <activity android:name=".SignUpChoice" />
         <activity
-            android:name=".Pop"
-            android:theme="@style/AppTheme.CustomTheme" />
-
+            android:name=".Pop"/>
+            //android:theme="@style/AppTheme.CustomTheme" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
