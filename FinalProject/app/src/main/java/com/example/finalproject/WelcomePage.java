@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -35,14 +36,14 @@ public class WelcomePage extends AppCompatActivity {
 
         welcome = (TextView) findViewById(R.id.welcomeText);
         logInAs = (TextView) findViewById(R.id.loggedInAsText);
-        //buttonContinue = (Button) findViewById(R.id.);
-        //buttonContinue.setVisibility(View.Gone);
-        // buttonContinue.setOnClickListener(new View.OnClickListener() {
-        //            @Override
-        //            public void onClick(View v) {
-        //                openAdminChoose();
-        //            }
-        //        });
+        buttonContinue = (Button) findViewById(R.id.continueBtn);
+        buttonContinue.setVisibility(View.GONE);
+        buttonContinue.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        openAdminChoose();
+                    }
+                });
 
         final String userID = mFirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("users/"+userID);
@@ -54,16 +55,16 @@ public class WelcomePage extends AppCompatActivity {
             db.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
-                    //for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
+                    for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
 
-                    /*String name = dataSnapshot.child("name").getValue(String.class);
-                    String role = dataSnapshot.child("role").getValue(String.class);*/
-                    Person user = dataSnapshot.getValue(Person.class);
-                    String name = user.getName();
-                    String role = user.getRole();
-                    welcome.setText("Welcome, " + name);
-                    logInAs.setText("You are logged in as: " + role);
-                    //}
+                        //String name = dataSnapshot.child("name").getValue(String.class);
+                        //String role = dataSnapshot.child("role").getValue(String.class);
+                        Person user = dataSnapshot.getValue(Person.class);
+                        String name = user.getName();
+                        String role = user.getRole();
+                        welcome.setText("Welcome, " + name);
+                        logInAs.setText("You are logged in as: " + role);
+                    }
                 }
 
                 @Override
@@ -77,17 +78,9 @@ public class WelcomePage extends AppCompatActivity {
         else{
             welcome.setText("Welcome");
             logInAs.setText("You are logged in as: Administrator");
-            //buttonContinue.setVisibility(View.VISIBLE);
-            //DELETE ME LATER
+            buttonContinue.setVisibility(View.VISIBLE);
 
-            //WalkInClinic clinic = new WalkInClinic("MadClinic", "123 Fake Street");
-            //WalkInClinic t = new WalkInClinic("AClinic", "10 Fairy Lane");
-           // WalkInClinic a = new WalkInClinic("AppleTreeClinic", "264 Barrhaven Street");
 
-            //clinic.addService("Filling", Role.Nurse);
-
-            Intent intent = new Intent(this, ClinicList.class);
-            startActivity(intent);
         }
 
 

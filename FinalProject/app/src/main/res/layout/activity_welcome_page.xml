@@ -38,5 +38,11 @@
             android:text="You are logged in as: Employee"
             android:textSize="17sp"
             android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/continueBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Continue" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
