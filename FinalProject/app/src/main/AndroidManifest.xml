@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".AdminChoose"></activity>
+        <activity android:name=".ServicesList"></activity>
+        <activity android:name=".AdminChoose" />
         <activity android:name=".PatientList" />
         <activity android:name=".EmployeeList" />
         <activity android:name=".AdminAddServices" />
