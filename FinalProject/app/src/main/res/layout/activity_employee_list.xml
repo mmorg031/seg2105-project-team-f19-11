@@ -53,14 +53,6 @@
         android:layout_marginLeft="200dp"
         android:text="Employee"/>
 
-    <Button
-        android:id="@+id/pop"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_marginTop="500dp"
-        android:layout_marginLeft="200dp"
-        android:text="TEST"/>
-
     <ListView
         android:id="@+id/employeeList"
         android:layout_below="@+id/patientButton"

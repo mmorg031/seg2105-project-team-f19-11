@@ -31,17 +31,19 @@ public class ServicesList extends AppCompatActivity {
         serviceList = (ListView) findViewById(R.id.servicesList);
         serviceData = new ArrayList<HashMap<String, String>>();
 
-        /*DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("clinics").child(clinicName);
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("clinics").child(getIntent().getExtras().getString("clinic"));
         ref.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for(DataSnapshot ds: dataSnapshot.getChildren()) {
-                            String name = ds.getValue(String.Class);
-                            String role = ds.getChild().getValue(String.Class);
+                            String name = ds.getValue(String.class);
+                            String role= null;
+                            for(DataSnapshot d: ds.getChildren())
+                                role = d.getValue(String.class);
                             HashMap<String, String> datum = new HashMap<String, String>();
                             datum.put("Name", name);
-                            datum.put("Role", email);
+                            datum.put("Role", role);
                             serviceData.add(datum);
 
                         }
@@ -61,7 +63,7 @@ public class ServicesList extends AppCompatActivity {
                     }});
 
 
-        */
+
 
 
 

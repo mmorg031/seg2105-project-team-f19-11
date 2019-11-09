@@ -80,10 +80,13 @@ public class WelcomePage extends AppCompatActivity {
             //buttonContinue.setVisibility(View.VISIBLE);
             //DELETE ME LATER
 
-            WalkInClinic clinic = new WalkInClinic("MadClinic");
-            clinic.addService("Filling", Role.Nurse);
+            //WalkInClinic clinic = new WalkInClinic("MadClinic", "123 Fake Street");
+            //WalkInClinic t = new WalkInClinic("AClinic", "10 Fairy Lane");
+           // WalkInClinic a = new WalkInClinic("AppleTreeClinic", "264 Barrhaven Street");
 
-            Intent intent = new Intent(this, edit_service.class);
+            //clinic.addService("Filling", Role.Nurse);
+
+            Intent intent = new Intent(this, ClinicList.class);
             startActivity(intent);
         }
 

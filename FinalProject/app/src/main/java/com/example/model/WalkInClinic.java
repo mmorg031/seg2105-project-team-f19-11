@@ -12,15 +12,19 @@ import java.util.Map;
 
 public class WalkInClinic {
     private String name;
+    private String location;
     private Map<String,Role> services;
 
     public WalkInClinic(){}
 
-    public WalkInClinic(String name){
-        DatabaseReference dbclinic = FirebaseDatabase.getInstance().getReference().child("clinics");
-        dbclinic.setValue(name);
+    public WalkInClinic(String name, String location){
+
         this.services = new HashMap<String, Role>();
         this.name = name;
+        this.location = location;
+
+        DatabaseReference dbclinic = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
+        dbclinic.setValue(this.toMap());
     }
 
     public String getName(){
@@ -29,13 +33,18 @@ public class WalkInClinic {
     public void setName(String name){
         this.name=name;
     }
+    public String getLocation(){return location; }
+    public void setLocation(String location){this.location=location;}
 
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
-        for (Map.Entry<String, Role> entry : services.entrySet()) {
+       /* for (Map.Entry<String, Role> entry : services.entrySet()) {
             result.put(entry.getKey(), entry.getValue());
-        }
-        return result;
+        }*/
+
+       result.put("location", location);
+       result.put("services", services);
+       return result;
     }
 
     public void addService(String nameOfService, Role role){
