@@ -23,6 +23,7 @@ public class ServicesList extends AppCompatActivity {
     private ImageButton buttonBack ;
     private ListView serviceList;
     private ArrayList<HashMap<String,String>> serviceData;
+    private ImageButton buttonAddService;
 
 
     @Override
@@ -37,6 +38,13 @@ public class ServicesList extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 openactivity_goback();
+            }
+        });
+
+        buttonAddService = (ImageButton) findViewById(R.id.addServiceBtn);
+        buttonAddService.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) { openactivity_AdminAddServices();
             }
         });
 
@@ -73,5 +81,10 @@ public class ServicesList extends AppCompatActivity {
 
     public void openactivity_goback(){
         finish();
+    }
+
+    public void openactivity_AdminAddServices(){
+        Intent intent = new Intent(this, PatientList.class);
+        startActivity(intent);
     }
 }
