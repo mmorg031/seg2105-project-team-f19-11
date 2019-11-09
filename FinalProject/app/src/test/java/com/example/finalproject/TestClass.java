@@ -1,8 +1,9 @@
 package com.example.finalproject;
 
 import com.example.model.Person;
+import com.example.model.Role;
 import com.example.model.WalkInClinic;
-
+import com.example.model.Employee;
 import org.junit.Test;
 
 public class TestClass {
@@ -13,19 +14,19 @@ public class TestClass {
     Person p1 = new Person("John", "password", "john@gmail.com", "Employee" );
     Person p2 = new Person ("Sawyer", "password1", "sawyer@gmail.com", "Patient" );
 
-        @Test
-        public void addServiceAsPatientTest() {
-            //Should not allow patients to add tests
-            ClinicExample.addService("CheckUp", "Patient");
-            ClinicExample.addService("Flu Shot", "Patient");
-        }
+//        @Test
+//        public void addServiceAsPatientTest() {
+//            //Should not allow patients to add tests
+//            ClinicExample.addService("CheckUp", "Patient");
+//            ClinicExample.addService("Flu Shot", "Patient");
+//        }
 
         @Test
         public void addServiceTest() {
             //Adds three services for this clinic
-            ClinicExample.addService("CheckUp", "Employee");
-            ClinicExample.addService("Write Prescription", "Employee");
-            ClinicExample.addService("Flu Shot","Employee");
+            ClinicExample.addService("CheckUp", Role.Doctor);
+            ClinicExample.addService("Write Prescription", Role.Doctor);
+            ClinicExample.addService("Flu Shot", Role.Nurse);
         }
 
         @Test
