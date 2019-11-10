@@ -9,7 +9,7 @@ import org.junit.Test;
 public class TestClass {
 
 
-    WalkInClinic ClinicExample = new WalkInClinic(ClinicExample);
+    WalkInClinic ClinicExample = new WalkInClinic();
 
     Person p1 = new Person("John", "password", "john@gmail.com", "Employee" );
     Person p2 = new Person ("Sawyer", "password1", "sawyer@gmail.com", "Patient" );
