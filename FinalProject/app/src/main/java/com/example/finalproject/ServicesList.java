@@ -93,7 +93,8 @@ public class ServicesList extends AppCompatActivity {
     }
 
     public void openactivity_goback(){
-        finish();
+        Intent intent = new Intent(this, AdminChoose.class) ;
+        startActivity(intent);
     }
 
     public  void  openactivity_editService(String service, String role){
