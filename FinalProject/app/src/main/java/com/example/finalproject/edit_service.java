@@ -15,6 +15,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.model.Role;
+import com.google.firebase.FirebaseError;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -104,16 +105,20 @@ public class edit_service extends AppCompatActivity {
             Toast.makeText(edit_service.this, "Please Choose a Role", Toast.LENGTH_SHORT).show();
         }
         else {
-            Role r = Role.valueOf(role);
-            //need clinic name and previous clinic name//role ,, remove and add service
-            deleteService(previousServiceName, previousRole);
-            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("services");
-            Map<String,Object> newService = new HashMap<String,Object>();
-            newService.put(name,role);
-            db.updateChildren(newService);
+            final Role r = Role.valueOf(role);
+            if(!previousRole.equals(role) && !previousServiceName.equals(name)){
+                editServiceName(name,r);
+                editServiceRole(name,r);
+            }
+            else if(!previousRole.equals(role) && previousServiceName.equals(name)){
+                editServiceRole(name, r);
+            }
+            else if(previousRole.equals(role) && !previousServiceName.equals(name)){
+                editServiceName( name,  r);
+            }
+
             Intent intent = new Intent(this, ServicesList.class);
             startActivity(intent);
-
 
         }
 
@@ -136,6 +141,33 @@ public class edit_service extends AppCompatActivity {
             }
         });
     }
+
+
+
+    public void editServiceName(String newName, Role role){
+        deleteService(previousServiceName, previousRole);
+        DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("services");
+        Map<String,Object> newService = new HashMap<String,Object>();
+        newService.put(newName,role);
+        db.updateChildren(newService);
+    }
+
+    public void editServiceRole(String name, final Role newRole){
+        Query query = db.child("services").orderByKey().equalTo(name);
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot tasksSnapshot) {
+                for (DataSnapshot snapshot: tasksSnapshot.getChildren()) {
+                    snapshot.getRef().setValue(newRole);
+                }
+            }
+            @Override
+            public void onCancelled(DatabaseError firebaseError) {
+                System.out.println("The read failed: " + firebaseError.getMessage());
+            }
+        });
+    }
+
 
     public void openactivity_serviceList(){
         deleteService(previousServiceName, previousRole);

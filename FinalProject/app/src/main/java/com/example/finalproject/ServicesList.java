@@ -51,7 +51,7 @@ public class ServicesList extends AppCompatActivity {
         });
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("services");
-        ref.addListenerForSingleValueEvent(
+        ref.addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -93,7 +93,8 @@ public class ServicesList extends AppCompatActivity {
     }
 
     public void openactivity_goback(){
-        finish();
+        Intent intent = new Intent(this, AdminChoose.class);
+        startActivity(intent);
     }
 
     public  void  openactivity_editService(String service, String role){
@@ -101,7 +102,7 @@ public class ServicesList extends AppCompatActivity {
         intent.putExtra("Service", service);
         intent.putExtra("Role", role);
         startActivity(intent);
-        finish();
+        //finish();
     }
 
     public void openactivity_AdminAddServices(){
