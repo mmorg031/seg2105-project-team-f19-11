@@ -14,12 +14,6 @@ public class TestClass {
     Person p1 = new Person("John", "password", "john@gmail.com", "Employee" );
     Person p2 = new Person ("Sawyer", "password1", "sawyer@gmail.com", "Patient" );
 
-//        @Test
-//        public void addServiceAsPatientTest() {
-//            //Should not allow patients to add tests
-//            ClinicExample.addService("CheckUp", "Patient");
-//            ClinicExample.addService("Flu Shot", "Patient");
-//        }
 
         @Test
         public void addServiceTest() {
@@ -27,6 +21,12 @@ public class TestClass {
             ClinicExample.addService("CheckUp", Role.Doctor);
             ClinicExample.addService("Write Prescription", Role.Doctor);
             ClinicExample.addService("Flu Shot", Role.Nurse);
+        }
+
+        @Test
+        public void editServiceTest() {
+            //Edits the role of person providing the service
+            ClinicExample.editService("Write Prescription", Role.Employee);
         }
 
         @Test
