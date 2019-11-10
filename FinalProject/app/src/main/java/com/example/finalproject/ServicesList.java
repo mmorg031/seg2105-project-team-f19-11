@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
@@ -18,6 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class ServicesList extends AppCompatActivity {
     private ImageButton buttonBack ;
@@ -77,9 +79,28 @@ public class ServicesList extends AppCompatActivity {
 
                     }});
 
+        serviceList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+                Map<String,String> listPosition = (Map<String, String>) parent.getItemAtPosition(position);
+                String service = listPosition.get("Name");
+                String role = listPosition.get("Role");
+                openactivity_editService(service,role);
+
+            }
+        });
+
     }
 
     public void openactivity_goback(){
+        finish();
+    }
+
+    public  void  openactivity_editService(String service, String role){
+        Intent intent = new Intent(this, edit_service.class);
+        intent.putExtra("Service", service);
+        intent.putExtra("Role", role);
+        startActivity(intent);
         finish();
     }
 
@@ -87,4 +108,6 @@ public class ServicesList extends AppCompatActivity {
         Intent intent = new Intent(this, AdminAddServices.class);
         startActivity(intent);
     }
+
+
 }

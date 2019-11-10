@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -18,7 +19,13 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import static android.content.ContentValues.TAG;
 
 public class edit_service extends AppCompatActivity {
     private EditText serviceName;
@@ -27,16 +34,22 @@ public class edit_service extends AppCompatActivity {
     private Button deleteService;
     private ImageButton back;
     private DatabaseReference db;
+    private String previousRole;
+    private String previousServiceName;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_service);
-        db =FirebaseDatabase.getInstance().getReference().child("clinics");
+        db =FirebaseDatabase.getInstance().getReference();
+
+        previousRole = getIntent().getExtras().getString("Role");
+        previousServiceName = getIntent().getExtras().getString("Service");
 
         chooseRole = (Spinner) findViewById(R.id.chooseRole);
         serviceName = (EditText) findViewById(R.id.writeName);
+        serviceName.setText(previousServiceName);
 
         save = (ImageButton) findViewById(R.id.saveBtn);
         save.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +63,7 @@ public class edit_service extends AppCompatActivity {
         deleteService.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                deleteService();
+                openactivity_serviceList();
             }
         });
 
@@ -66,6 +79,10 @@ public class edit_service extends AppCompatActivity {
                 android.R.layout.simple_list_item_1, Role.values());
         myAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         chooseRole.setAdapter(myAdapter);
+
+        int spinnerPosition = myAdapter.getPosition(Role.valueOf(previousRole));
+        chooseRole.setSelection(spinnerPosition);
+
     }
 
 
@@ -87,38 +104,43 @@ public class edit_service extends AppCompatActivity {
             Toast.makeText(edit_service.this, "Please Choose a Role", Toast.LENGTH_SHORT).show();
         }
         else {
-            //Role r = new Role(role);
+            Role r = Role.valueOf(role);
             //need clinic name and previous clinic name//role ,, remove and add service
-           /* deleteService()
-            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
-            Map<String,Object> post = new HashMap<String, Role>();
-            post.put(name,role);
-            db.updateChildren(post); or setvalue*/
+            deleteService(previousServiceName, previousRole);
+            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("services");
+            Map<String,Object> newService = new HashMap<String,Object>();
+            newService.put(name,role);
+            db.updateChildren(newService);
+            Intent intent = new Intent(this, ServicesList.class);
+            startActivity(intent);
+
 
         }
 
     }
 
-    public void deleteService(){
-        //need clinc name and service name
-        /*
-        db.orderByKey().equalTo(name).addListenerForSingleValueEvent(new ValueEventListener() {
+    public void deleteService(String service, String role){
+        Query query = db.child("services").orderByKey().equalTo(service);
+
+        query.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-
-                for (DataSnapshot postsnapshot : dataSnapshot.getChildren()) {
-
-                    String key = postsnapshot.getKey();
-                    dataSnapshot.getRef().removeValue();
-
+                for (DataSnapshot ds: dataSnapshot.getChildren()) {
+                    ds.getRef().removeValue();
                 }
             }
 
             @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e(TAG, "onCancelled", databaseError.toException());
             }
-        }*/
+        });
+    }
+
+    public void openactivity_serviceList(){
+        deleteService(previousServiceName, previousRole);
+        Intent intent = new Intent(this, ServicesList.class);
+        startActivity(intent);
     }
 
 
