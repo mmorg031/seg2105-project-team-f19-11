@@ -1,5 +1,8 @@
 # seg2105-project-team-f19-11
-seg2105-project-team-f19-11 created by GitHub Classroom
+Madison Morgan, 8287926
+Sawyer Murphy, 300010986
+Olivia Borel, 300075826
+Andrea Herscovich, 300057058
 
 # CircleCI Starts Here
 Build Status
