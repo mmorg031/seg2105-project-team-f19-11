@@ -21,16 +21,6 @@
         android:background="#ffffff"
         >
 
-
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:src="@drawable/arrow_back"
-            android:background="#ffffff"
-            android:paddingLeft="20dp"
-            />
-
         <TextView
             android:id="@+id/header"
             android:layout_width="wrap_content"
