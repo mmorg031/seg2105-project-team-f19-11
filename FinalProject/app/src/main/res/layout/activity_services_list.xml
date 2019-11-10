@@ -36,26 +36,29 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/muli_semibold_italic"
                 android:gravity="center"
-                android:paddingLeft="-200dp"
                 android:text="List of Services:"
-                android:textSize="20sp" />
+                android:textSize="20sp"/>
+
+            <ImageButton
+                android:id="@+id/addServiceBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                app:srcCompat="@android:drawable/ic_menu_add"
+                android:background="#ffffff"/>
 
         </LinearLayout>
 
         <ListView
             android:id="@+id/servicesList"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="450dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp">
 
         </ListView>
 
-        <ImageButton
-            android:id="@+id/addServiceBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:srcCompat="@android:drawable/ic_menu_add" />
+
 
     </LinearLayout>
 

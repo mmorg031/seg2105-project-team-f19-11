@@ -50,6 +50,6 @@
             style="?android:attr/borderlessButtonStyle"
             android:layout_marginTop="150dp"
             android:layout_centerHorizontal="true"
-            android: android:layout_marginLeft="20dp"/>
+            android:layout_marginLeft="20dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
