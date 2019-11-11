@@ -7,4 +7,4 @@
        - checkout
        - run:
           name: Run UnitTest
-          command: ./gradlew test
+          command: ./gradlew TestClass
