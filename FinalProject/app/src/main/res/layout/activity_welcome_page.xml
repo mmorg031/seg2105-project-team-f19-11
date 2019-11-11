@@ -11,6 +11,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center"
         android:orientation="vertical">
 
         <TextView
@@ -20,7 +21,7 @@
             android:fontFamily="@font/muli_light"
             android:fontWeight="400"
             android:gravity="center"
-            android:layout_marginTop="200dp"
+            android:layout_marginTop="50dp"
             android:lineSpacingExtra="8sp"
             android:text="Welcome, Olivia!"
             android:layout_marginStart="8dp"
@@ -38,5 +39,17 @@
             android:text="You are logged in as: Employee"
             android:textSize="17sp"
             android:textStyle="italic" />
+
+        <Button
+            android:id="@+id/continueBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue      >"
+            android:fontFamily="@font/muli_light"
+            android:background="@android:color/transparent"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_marginTop="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"/>
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,11 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import com.example.model.Person;
 import com.google.firebase.database.DataSnapshot;
@@ -42,11 +44,21 @@ public class PatientList extends AppCompatActivity {
             public void onClick(View v) { openactivity_EmployeeList();
             }
         });
+
         patientList = (ListView) findViewById(R.id.patientList);
         patientData = new ArrayList<HashMap<String, String>>();
 
+
+        buttonBack = (ImageButton) findViewById(R.id.backBtnPat);
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openactivity_goback();
+            }
+        });
+
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-        ref.addListenerForSingleValueEvent(
+        ref.addValueEventListener(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
@@ -75,6 +87,19 @@ public class PatientList extends AppCompatActivity {
                         //handle databaseError
 
                     }});
+
+        patientList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View v, int position,
+                                    long id) {
+                Map<String,String> listPosition = (Map<String, String>) parent.getItemAtPosition(position);
+                String em = listPosition.get("Email");
+                OpenPopUp(em);
+
+            }
+        });
+
+
     }
 
 
@@ -84,6 +109,15 @@ public class PatientList extends AppCompatActivity {
     }
 
 
-    public void deletePatientAccount(){}
+    public void OpenPopUp(String email){
+        Intent intent = new Intent(this, Pop.class);
+        intent.putExtra("Email", email);
+        startActivity(intent);
+    }
+
+    public void openactivity_goback(){
+        Intent intent = new Intent(this, AdminChoose.class);
+        startActivity(intent);
+    }
 
 }
