@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".EditPaymentsPage"
+    android:background="@drawable/gradient">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:paddingLeft="20dp"
+            android:src="@drawable/arrow_back" />
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/muli_semibold_italic"
+            android:gravity="center"
+            android:text="EDIT PAYMENT INFO.       "
+            android:textSize="20sp"/>
+
+        <ImageButton
+            android:id="@+id/saveBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginRight="20dp"
+            android:background="#ffffff"
+            app:srcCompat="@android:drawable/ic_menu_save" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/paymentForms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select payment methods:"
+        android:textSize="20dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="25dp" />
+
+    <CheckBox
+        android:id="@+id/cash"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cash"
+        android:layout_below="@+id/paymentForms"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"/>
+
+    <CheckBox
+        android:id="@+id/debit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Debit"
+        android:textSize="20dp"
+        android:layout_below="@+id/cash"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"/>
+
+    <CheckBox
+        android:id="@+id/credit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Credit"
+        android:layout_below="@+id/debit"
+        android:textSize="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="50dp"/>
+
+    <TextView
+        android:id="@+id/insuranceForms"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/credit"
+        android:text="Select insurance plan:"
+        android:textSize="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="50dp"/>
+
+    <CheckBox
+        android:id="@+id/ohip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OHIP"
+        android:layout_below="@+id/insuranceForms"
+        android:textSize="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"/>
+
+    <CheckBox
+        android:id="@+id/uhip"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="UHIP"
+        android:layout_below="@+id/ohip"
+        android:textSize="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"/>
+
+    <CheckBox
+        android:id="@+id/privateInsurance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Private Insurance"
+        android:layout_below="@+id/uhip"
+        android:textSize="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"/>
+
+    <CheckBox
+        android:id="@+id/noInsurance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/privateInsurance"
+        android:text="No Insurance"
+        android:textSize="20dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/savePaymentsBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAVE"
+        android:textSize="20dp"
+        android:paddingHorizontal="40dp"
+        android:layout_centerHorizontal="true"
+        android:paddingVertical="10dp"
+        android:layout_below="@+id/paymentForms"
+        android:layout_marginTop="475dp"
+        android:layout_marginLeft="40dp"
+        android:background="#f0f0f0"
+        android:fontFamily="@font/muli_semibold_italic" />
+
+</RelativeLayout>
