@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".WorkingHours">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#ffffff"
+            android:orientation="horizontal"
+            >
+
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/arrow_back"
+                android:background="#ffffff"
+                android:paddingLeft="20dp"
+                />
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/muli_semibold_italic"
+                android:gravity="center"
+                android:text="Working Hours"
+                android:paddingLeft="-30dp"
+                android:textSize="25dp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/mondayHours"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Monday: 8:00 - 16:30"
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="40dp"/>
+
+        <TextView
+            android:id="@+id/tuesdayHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tuesday: 8:00 - 16:30"
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/wednesdayHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Wednesday: 9:00 - 16:30"
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/thursdayHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Thursday: 9:00 - 17:00"
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/fridayHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Friday: 8:00 - 16:30"
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/saturdayHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saturday: 10:00 - 15:00"
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"/>
+
+        <TextView
+            android:id="@+id/sundayHours"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sunday: Closed"
+            android:textSize="25dp"
+            android:layout_marginLeft="30dp"/>
+
+        <Button
+            android:id="@+id/editHoursBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit Working Hours"
+            android:textSize="20dp"
+            android:paddingHorizontal="40dp"
+            android:paddingVertical="10dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginLeft="40dp"
+            android:background="#f0f0f0"
+            android:fontFamily="@font/muli_semibold_italic"
+            />
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

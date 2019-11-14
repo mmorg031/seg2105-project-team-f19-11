@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ClinicList"></activity>
+        <activity android:name=".EditWorkingHours"></activity>
+        <activity android:name=".WorkingHours" />
+        <activity android:name=".EditAboutClinic" />
+        <activity android:name=".AboutClinic" />
+        <activity android:name=".ClinicList" />
         <activity android:name=".ServicesList" />
         <activity android:name=".edit_service" />
         <activity android:name=".AdminChoose" />
@@ -26,9 +30,8 @@
         </activity>
         <activity android:name=".WelcomePage" />
         <activity android:name=".SignUpChoice" />
-        <activity
-            android:name=".Pop"/>
-            //android:theme="@style/AppTheme.CustomTheme" />
+        <activity android:name=".Pop" />
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
