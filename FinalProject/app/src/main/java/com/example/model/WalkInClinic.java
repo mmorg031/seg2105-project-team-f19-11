@@ -13,6 +13,9 @@ import java.util.Map;
 public class WalkInClinic {
     private String name;
     private String location;
+    private String phone;
+    private Array payments;
+    private Array insurances;
     private Map<String,Role> services;
 
     public WalkInClinic(){}
@@ -41,13 +44,15 @@ public class WalkInClinic {
        /* for (Map.Entry<String, Role> entry : services.entrySet()) {
             result.put(entry.getKey(), entry.getValue());
         }*/
-
+       result.put("phone", phone);
+       result.put("payments", payments);
+       result.put("insurances", insurances);
        result.put("location", location);
        result.put("services", services);
        return result;
     }
 
-    public void addService(String nameOfService, Role role){
+    /*public void addService(String nameOfService, Role role){
         if(!nameOfService.equals("") && nameOfService!=null) {
             services.put(nameOfService, role);
             DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
@@ -82,5 +87,5 @@ public class WalkInClinic {
             System.out.println("No");
             //Toast.makeText(AdminAddServices.this, "Invalid service to edit", Toast.LENGTH_SHORT).show();
         }
-    }
+    }*/
 }
