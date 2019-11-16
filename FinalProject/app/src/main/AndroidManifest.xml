@@ -9,17 +9,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-        <activity android:name=".EditWorkingHours"></activity>
-        <activity android:name=".WorkingHours" />
-        <activity android:name=".EditAboutClinic" />
-        <activity android:name=".AboutClinic" />
-
-        <activity android:name=".EditServicesPage"></activity>
-        <activity android:name=".ServicesOfferedPage" />
-        <activity android:name=".EditPaymentsPage" />
-        <activity android:name=".PaymentsPage" />
-        <activity android:name=".ClinicAbout" />
+        <activity android:name=".dev3.completeClinicProfile"></activity>
+        <activity android:name=".dev3.EditWorkingHours" />
+        <activity android:name=".dev3.WorkingHours" />
+        <activity android:name=".dev3.EditAboutClinic" />
+        <activity android:name=".dev3.AboutClinic" />
+        <activity android:name=".dev3.EditServicesPage" />
+        <activity android:name=".dev3.ServicesOfferedPage" />
+        <activity android:name=".dev3.EditPaymentsPage" />
+        <activity android:name=".dev3.PaymentsPage" />
+        <activity android:name=".dev3.ClinicAbout" />
         <activity android:name=".ClinicList" />
         <activity android:name=".ServicesList" />
         <activity android:name=".edit_service" />

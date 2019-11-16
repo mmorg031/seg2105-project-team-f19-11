@@ -14,20 +14,21 @@ public class WalkInClinic {
     private String name;
     private String location;
     private String phone;
-    private Array payments;
-    private Array insurances;
+    private PaymentMethods[] payments;
+    private Insurance[] insurances;
     private Map<String,Role> services;
 
     public WalkInClinic(){}
 
-    public WalkInClinic(String name, String location){
+    public WalkInClinic(String name, String location, String phone){
 
         this.services = new HashMap<String, Role>();
         this.name = name;
         this.location = location;
+        this.phone = phone;
 
-        DatabaseReference dbclinic = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
-        dbclinic.setValue(this.toMap());
+        //DatabaseReference dbclinic = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
+        //dbclinic.setValue(this.toMap());
     }
 
     public String getName(){
@@ -38,12 +39,15 @@ public class WalkInClinic {
     }
     public String getLocation(){return location; }
     public void setLocation(String location){this.location=location;}
+    public String getPhone() {return phone; }
+    public void setPhone(String phone) {this.phone=phone;}
 
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
        /* for (Map.Entry<String, Role> entry : services.entrySet()) {
             result.put(entry.getKey(), entry.getValue());
         }*/
+       result.put("name", name);
        result.put("phone", phone);
        result.put("payments", payments);
        result.put("insurances", insurances);

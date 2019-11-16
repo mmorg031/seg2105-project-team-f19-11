@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.dev3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,7 +8,9 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 
-public class PaymentsPage extends AppCompatActivity {
+import com.example.finalproject.R;
+
+public class ServicesOfferedPage extends AppCompatActivity {
 
     private Button edit ;
     private ImageButton back ;
@@ -16,13 +18,13 @@ public class PaymentsPage extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_payments_page);
+        setContentView(R.layout.activity_services_offered_page);
 
-        edit = (Button) findViewById(R.id.editPaymentsBtn) ;
+        edit = (Button) findViewById(R.id.editServicesBtn) ;
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openactivity_editPaymentsPage();
+                openactivity_editServicesPage();
             }
         });
 
@@ -35,8 +37,8 @@ public class PaymentsPage extends AppCompatActivity {
         });
     }
 
-    public void openactivity_editPaymentsPage(){
-        Intent intent = new Intent(this, EditPaymentsPage.class);
+    public void openactivity_editServicesPage(){
+        Intent intent = new Intent(this, EditServicesPage.class);
         startActivity(intent);
     }
     public void openactivity_aboutPage(){

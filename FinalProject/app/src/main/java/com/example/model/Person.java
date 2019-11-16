@@ -25,7 +25,7 @@ public class Person {
 
     public Person(){}
 
-    public Person(String name, String pass, String email, String chosenRole){
+    public Person(String name, String pass, String email, Role role){
         // Static getInstance method is called with hashing SHA
         try {
             MessageDigest digest = MessageDigest.getInstance("SHA-256");
@@ -37,9 +37,9 @@ public class Person {
         this.name=name;
         this.email=email;
 
-        if(chosenRole.equals("Employee"))
+        if(role.toString().equals("Employee"))
             this.role=Role.Employee;
-        else if (chosenRole.equals("Patient"))
+        else if (role.toString().equals("Patient"))
             this.role=Role.Patient;
     }
 
@@ -70,8 +70,8 @@ public class Person {
     }
 
 
-    public String getRole(){
-        return role.toString();
+    public Role getRole(){
+        return role;
     }
     public void setRole(Role role) {
         this.role = role;

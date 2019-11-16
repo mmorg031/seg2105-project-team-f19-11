@@ -10,7 +10,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.finalproject.dev3.completeClinicProfile;
+import com.example.model.Employee;
 import com.example.model.Person;
+import com.example.model.Role;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -28,7 +31,7 @@ public class activity_sign_up extends AppCompatActivity {
     private EditText ETpassword;
     private Button buttonCreateAccount;
     private Button buttonLogin;
-    private String chosenRole;
+    private Role chosenRole;
     FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -42,7 +45,7 @@ public class activity_sign_up extends AppCompatActivity {
         ETpassword = (EditText) findViewById(R.id.enter_password);
         Bundle extras = getIntent().getExtras();
         if(extras!=null){
-             chosenRole = extras.getString("role");
+             chosenRole = Role.valueOf(extras.getString("role"));
         }
 
         buttonCreateAccount = (Button) findViewById(R.id.create_account);
@@ -90,16 +93,16 @@ public class activity_sign_up extends AppCompatActivity {
                         String userID = mFirebaseAuth.getCurrentUser().getUid();
                         DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("users").child(userID);
 
-                        //in the future should be Map<String, Person> ...
-                       // Map<String, Object> newPost = new Person(name, password, email).toMap();
-                        //newPost.put("name", name);
-                       // newPost.put("role", role);
-
-                       // db.setValue(newPost);
-
-                        db.setValue(new Person(name,password,email,chosenRole));
-                        Intent intent = new Intent(activity_sign_up.this, WelcomePage.class);
-                        startActivity(intent);
+                        if(chosenRole.toString().equals("Employee")) {
+                            db.setValue(new Employee(name, password, email, chosenRole));
+                            Intent intent = new Intent(activity_sign_up.this, completeClinicProfile.class);
+                            startActivity(intent);
+                        }
+                        else{ //patient or admin
+                            db.setValue(new Person(name, password, email, chosenRole));
+                            Intent intent = new Intent(activity_sign_up.this, WelcomePage.class);
+                            startActivity(intent);
+                        }
                     }
                 }
             });

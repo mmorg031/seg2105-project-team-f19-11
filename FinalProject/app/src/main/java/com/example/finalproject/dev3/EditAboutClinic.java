@@ -1,10 +1,12 @@
-package com.example.finalproject;
+package com.example.finalproject.dev3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.ImageButton;
+
+import com.example.finalproject.R;
 
 public class EditAboutClinic extends AppCompatActivity {
     private ImageButton backButton; //goes back to about page

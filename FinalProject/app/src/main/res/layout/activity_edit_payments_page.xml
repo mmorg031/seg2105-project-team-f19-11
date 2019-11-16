@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditPaymentsPage"
+    tools:context=".dev3.EditPaymentsPage"
     android:background="@drawable/gradient">
 
     <LinearLayout

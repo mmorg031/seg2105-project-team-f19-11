@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.dev3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+
+import com.example.finalproject.R;
 
 public class WorkingHours extends AppCompatActivity {
     private ImageButton backButton; //goes back to menu page
