@@ -12,7 +12,6 @@ import com.example.finalproject.R;
 
 public class EditPaymentsPage extends AppCompatActivity {
 
-    private Button save1 ;
     private ImageButton save2 ;
     private ImageButton back ;
 
@@ -23,13 +22,6 @@ public class EditPaymentsPage extends AppCompatActivity {
 
         // DON'T KNOW HOW TO IMPLEMENT THE ACTUAL SAVE FUNCTIONALITY -S.M.
 
-        save1 = (Button) findViewById(R.id.savePaymentsBtn) ;
-        save1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openactivity_paymentsPage2();
-            }
-        });
 
         save2 = (ImageButton) findViewById(R.id.saveBtn) ;
         save2.setOnClickListener(new View.OnClickListener() {

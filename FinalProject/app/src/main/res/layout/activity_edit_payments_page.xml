@@ -132,19 +132,4 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="20dp" />
 
-    <Button
-        android:id="@+id/savePaymentsBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="SAVE"
-        android:textSize="20dp"
-        android:paddingHorizontal="40dp"
-        android:layout_centerHorizontal="true"
-        android:paddingVertical="10dp"
-        android:layout_below="@+id/paymentForms"
-        android:layout_marginTop="475dp"
-        android:layout_marginLeft="40dp"
-        android:background="#f0f0f0"
-        android:fontFamily="@font/muli_semibold_italic" />
-
 </RelativeLayout>
