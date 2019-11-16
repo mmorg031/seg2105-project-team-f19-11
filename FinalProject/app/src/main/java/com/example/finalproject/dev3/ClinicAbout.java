@@ -28,7 +28,7 @@ public class ClinicAbout extends AppCompatActivity {
         about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // OPEN THE ABOUT ACTIVITY!
+                openactivity_aboutPage();
             }
         });
 
@@ -52,7 +52,7 @@ public class ClinicAbout extends AppCompatActivity {
         hours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // OPEN THE HOURS ACTIVITY!
+                openactivity_hoursPage();
             }
         });
 
@@ -66,6 +66,11 @@ public class ClinicAbout extends AppCompatActivity {
 
     }
 
+    public void openactivity_aboutPage(){
+        Intent intent = new Intent(this, AboutClinic.class);
+        startActivity(intent);
+    }
+
     public void openactivity_paymentsPage(){
         Intent intent = new Intent(this, PaymentsPage.class);
         startActivity(intent);
@@ -74,6 +79,12 @@ public class ClinicAbout extends AppCompatActivity {
         Intent intent = new Intent(this, ServicesOfferedPage.class);
         startActivity(intent);
     }
+
+    public void openactivity_hoursPage(){
+        Intent intent = new Intent(this, WorkingHours.class);
+        startActivity(intent);
+    }
+
     public void openactivity_welcomePage(){
         Intent intent = new Intent(this, WelcomePage.class);
         startActivity(intent);
