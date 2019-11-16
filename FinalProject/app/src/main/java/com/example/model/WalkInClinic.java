@@ -14,8 +14,8 @@ public class WalkInClinic {
     private String name;
     private String location;
     private String phone;
-    private PaymentMethods[] payments;
-    private Insurance[] insurances;
+    private Map<String,Boolean> payments;
+    private Map<String,Boolean> insurances;
     private Map<String,Role> services;
 
     public WalkInClinic(){}
@@ -26,9 +26,15 @@ public class WalkInClinic {
         this.name = name;
         this.location = location;
         this.phone = phone;
+        this.payments = new HashMap<String, Boolean>();
+        for(PaymentMethods pm: PaymentMethods.values()){
+            payments.put(pm.toString(),Boolean.FALSE);
+        }
+        this.insurances = new HashMap<String, Boolean>();
+        for(Insurance in: Insurance.values()){
+            insurances.put(in.toString(), Boolean.FALSE);
+        }
 
-        //DatabaseReference dbclinic = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
-        //dbclinic.setValue(this.toMap());
     }
 
     public String getName(){
@@ -41,6 +47,12 @@ public class WalkInClinic {
     public void setLocation(String location){this.location=location;}
     public String getPhone() {return phone; }
     public void setPhone(String phone) {this.phone=phone;}
+    public Map<String,Boolean> getPayments(){return payments;}
+    public void setPayments(Map<String,Boolean> payments){this.payments=payments;}
+    public Map<String,Boolean> getInsurances(){return insurances;}
+    public void setInsurances(Map<String,Boolean> insurances){this.insurances=insurances;}
+    public Map<String,Role> getServices(){return services;}
+    public void setServices(Map<String,Role> services){this.services=services;}
 
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
@@ -49,47 +61,12 @@ public class WalkInClinic {
         }*/
        result.put("name", name);
        result.put("phone", phone);
+       result.put("location", location);
        result.put("payments", payments);
        result.put("insurances", insurances);
-       result.put("location", location);
        result.put("services", services);
        return result;
     }
 
-    /*public void addService(String nameOfService, Role role){
-        if(!nameOfService.equals("") && nameOfService!=null) {
-            services.put(nameOfService, role);
-            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
-            db.updateChildren(this.toMap());
-        }
-        else{
-            System.out.println("No");
-            //Toast.makeText(AdminAddServices.this, "Invalid service to add", Toast.LENGTH_SHORT).show();
-        }
-    }
 
-    public void deleteService(String nameOfService){
-
-        if(!nameOfService.equals("") && nameOfService!=null && services.containsKey(nameOfService)) {
-            services.remove(nameOfService);
-            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
-            db.updateChildren(this.toMap());
-        }
-        else {
-            System.out.println("No");
-            //Toast.makeText(AdminAddServices.this, "Invalid service to delete", Toast.LENGTH_SHORT).show();
-        }
-    }
-
-    public void editService(String nameOfService, Role role){
-        if(!nameOfService.equals("") && nameOfService!=null && services.containsKey(nameOfService)) {
-            services.put(nameOfService, role);
-            DatabaseReference db = FirebaseDatabase.getInstance().getReference().child("clinics").child(name);
-            db.updateChildren(this.toMap());
-        }
-        else {
-            System.out.println("No");
-            //Toast.makeText(AdminAddServices.this, "Invalid service to edit", Toast.LENGTH_SHORT).show();
-        }
-    }*/
 }
