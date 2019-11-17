@@ -45,6 +45,8 @@ public class WalkInClinic {
         for(Insurance in: Insurance.values()){
             insurances.put(in.toString(), Boolean.FALSE);
         }
+        this.services = new HashMap<String,Role>();
+        services.put("None", Role.Employee);
 
     }
 

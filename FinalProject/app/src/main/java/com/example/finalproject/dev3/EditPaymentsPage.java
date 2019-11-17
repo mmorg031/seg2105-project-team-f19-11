@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.finalproject.R;
 import com.example.model.Employee;
@@ -206,6 +207,10 @@ public class EditPaymentsPage extends AppCompatActivity {
 
             Intent intent = new Intent(this, PaymentsPage.class);
             startActivity(intent);
+        }
+        else{
+            Toast.makeText(EditPaymentsPage.this, "Please check a payment and insurance method!", Toast.LENGTH_SHORT).show();
+
         }
     }
 }
