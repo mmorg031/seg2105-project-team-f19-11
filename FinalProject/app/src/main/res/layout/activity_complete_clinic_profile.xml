@@ -37,6 +37,16 @@
                 android:text="About Your Clinic"
                 android:paddingLeft="-30dp"
                 android:textSize="25dp" />
+
+            <ImageButton
+                android:id="@+id/saveBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginRight="20dp"
+                android:background="#ffffff"
+                app:srcCompat="@android:drawable/ic_menu_save" />
+
+
         </LinearLayout>
 
 
@@ -158,19 +168,6 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save Info"
-            android:textSize="20dp"
-            android:paddingHorizontal="40dp"
-            android:paddingVertical="10dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginLeft="40dp"
-            android:background="#f0f0f0"
-            android:fontFamily="@font/muli_semibold_italic"
-            />
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
