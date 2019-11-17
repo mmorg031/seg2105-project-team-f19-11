@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:text="Payment methods:"
         android:textSize="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="75dp"
         android:layout_marginLeft="25dp" />
 
     <ListView
@@ -60,7 +60,7 @@
         android:text="Insurance:"
         android:textSize="20dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="50dp"/>
+        android:layout_marginTop="25dp"/>
 
     <ListView
         android:id="@+id/insuranceList"
@@ -68,7 +68,7 @@
         android:layout_height="200dp"
         android:layout_below="@+id/insuranceForms"
         android:layout_marginLeft="50dp"
-        android:layout_marginTop="20dp"/>
+        android:layout_marginTop="10dp"/>
 
     <Button
         android:id="@+id/editPaymentsBtn"
