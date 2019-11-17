@@ -33,6 +33,15 @@
             android:text="PAYMENTS             "
             android:textSize="20sp"/>
 
+        <Button
+            android:id="@+id/editPaymentsBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Edit"
+            android:textSize="20dp"
+            android:background="#ffffff"
+            android:fontFamily="@font/muli_semibold_italic" />
+
     </LinearLayout>
 
     <TextView
@@ -70,19 +79,6 @@
         android:layout_marginLeft="50dp"
         android:layout_marginTop="10dp"/>
 
-    <Button
-        android:id="@+id/editPaymentsBtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Edit"
-        android:textSize="20dp"
-        android:paddingHorizontal="40dp"
-        android:layout_centerHorizontal="true"
-        android:paddingVertical="10dp"
-        android:layout_below="@+id/insuranceList"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="40dp"
-        android:background="#f0f0f0"
-        android:fontFamily="@font/muli_semibold_italic" />
+
 
 </RelativeLayout>

@@ -18,7 +18,18 @@ public class WalkInClinic {
     private Map<String,Boolean> insurances;
     private Map<String,Role> services;
 
-    public WalkInClinic(){}
+    //public WalkInClinic(){}
+
+    public WalkInClinic(){
+        this.payments = new HashMap<String, Boolean>();
+        for(PaymentMethods pm: PaymentMethods.values()){
+            payments.put(pm.toString(),Boolean.FALSE);
+        }
+        this.insurances = new HashMap<String, Boolean>();
+        for(Insurance in: Insurance.values()){
+            insurances.put(in.toString(), Boolean.FALSE);
+        }
+    }
 
     public WalkInClinic(String name, String location, String phone){
 
@@ -67,6 +78,7 @@ public class WalkInClinic {
        result.put("services", services);
        return result;
     }
+
 
 
 }

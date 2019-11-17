@@ -168,7 +168,6 @@
             android:layout_marginLeft="50dp"
             android:layout_marginTop="10dp" />
 
-<<<<<<< HEAD
         <Button
             android:id="@+id/button"
             android:layout_width="wrap_content"
@@ -182,8 +181,6 @@
             android:background="#f0f0f0"
             android:fontFamily="@font/muli_semibold_italic"
             />
-=======
->>>>>>> f60475712944531ebeeecd781314fe3768a29574
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

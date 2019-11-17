@@ -24,6 +24,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -34,6 +35,7 @@ public class PaymentsPage extends AppCompatActivity {
     private ListView methodList;
     private ListView insuranceList;
     private FirebaseAuth mFirebaseAuth;
+    private WalkInClinic clinic;
 
 
     @Override
@@ -69,7 +71,7 @@ public class PaymentsPage extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
                     Employee user = dataSnapshot.getValue(Employee.class);
-                    WalkInClinic clinic = user.getClinic();
+                    clinic = user.getClinic();
                     List<String> payments = new ArrayList<String>();
                     List<String> insurances = new ArrayList<String>();
                     for(Map.Entry<String, Boolean> entry : clinic.getPayments().entrySet()){
@@ -105,6 +107,8 @@ public class PaymentsPage extends AppCompatActivity {
 
     public void openactivity_editPaymentsPage(){
         Intent intent = new Intent(this, EditPaymentsPage.class);
+        intent.putExtra("payments", (HashMap<String,Boolean>) clinic.getPayments());
+        intent.putExtra("insurances", (HashMap<String,Boolean>) clinic.getInsurances());
         startActivity(intent);
     }
     public void openactivity_aboutPage(){
