@@ -38,6 +38,17 @@
                 android:text="Working Hours"
                 android:paddingLeft="-30dp"
                 android:textSize="25dp" />
+
+            <Button
+                android:id="@+id/editHoursBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:text="Edit"
+                android:textSize="20dp"
+                android:background="#ffffff"
+                android:fontFamily="@font/muli_semibold_italic"
+                />
+
         </LinearLayout>
 
         <TextView
@@ -97,19 +108,7 @@
             android:textSize="25dp"
             android:layout_marginLeft="30dp"/>
 
-        <Button
-            android:id="@+id/editHoursBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Edit Working Hours"
-            android:textSize="20dp"
-            android:paddingHorizontal="40dp"
-            android:paddingVertical="10dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginLeft="40dp"
-            android:background="#f0f0f0"
-            android:fontFamily="@font/muli_semibold_italic"
-            />
+
 
 
     </LinearLayout>

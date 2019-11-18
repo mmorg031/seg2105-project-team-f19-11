@@ -72,6 +72,8 @@ public class EditServicesPage extends AppCompatActivity {
         checkParams.setMargins(10, 10, 10, 10);
         checkParams.gravity = Gravity.CENTER;
 
+        final Map<String,Role> servicesOffered = (Map<String,Role>)getIntent().getSerializableExtra("servicesOffered");
+
 
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("services");
@@ -90,6 +92,10 @@ public class EditServicesPage extends AppCompatActivity {
                             offset+=1;
                             checkBox.setText("Service: "+name+", Role: "+role.toString());
                             checkBox.setLayoutParams(checkParams);
+
+                            if(servicesOffered.containsKey(name)){
+                                checkBox.setChecked(true);
+                            }
 
                             parentLayout.addView(checkBox);
 

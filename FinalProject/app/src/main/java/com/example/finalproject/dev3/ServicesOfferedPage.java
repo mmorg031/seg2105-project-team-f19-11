@@ -34,6 +34,7 @@ public class ServicesOfferedPage extends AppCompatActivity {
     private ImageButton back ;
     private ListView serviceList;
     private ArrayList<HashMap<String,String>> serviceData;
+    private Map<String,Role> services;
     private FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -66,7 +67,7 @@ public class ServicesOfferedPage extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapShot : dataSnapshot.getChildren()) {
                     Employee user = dataSnapshot.getValue(Employee.class);
-                    Map<String, Role> services = user.getClinic().getServices();
+                    services = user.getClinic().getServices();
 
                     if (!services.containsKey("None")) {
                         for (Map.Entry<String, Role> entry : services.entrySet()) {
@@ -94,6 +95,7 @@ public class ServicesOfferedPage extends AppCompatActivity {
 
     public void openactivity_editServicesPage(){
         Intent intent = new Intent(this, EditServicesPage.class);
+        intent.putExtra("servicesOffered",(HashMap<String,Role>)services);
         startActivity(intent);
     }
     public void openactivity_aboutPage(){

@@ -2,7 +2,9 @@ package com.example.finalproject.dev3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
@@ -36,33 +38,38 @@ public class EditWorkingHours extends AppCompatActivity {
     private EditText startTimeSunday;
     private EditText endTimeSunday;
 
-    //Will possibly need these too (PREVIOUS of above):
-    private String previousOpenMonday;
-    private String previousOpenTuesday;
-    private String previousOpenWednesday;
-    private String previousOpenThursday;
-    private String previousOpenFriday;
-    private String previousOpenSaturday;
-    private String previousOpenSunday;
 
-    private String previousStartTimeMonday;
-    private String previousEndTimeMonday;
-    private String previousStartTimeTuesday;
-    private String previousEndTimeTuesday;
-    private String previousStartTimeWednesday;
-    private String previousEndTimeWednesday;
-    private String previousStartTimeThursday;
-    private String previousEndTimeThursday;
-    private String previousStartTimeFriday;
-    private String previousEndTimeFriday;
-    private String previousStartTimeSaturday;
-    private String previousEndTimeSaturday;
-    private String previousStartTimeSunday;
-    private String previousEndTimeSunday;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_working_hours);
+
+        backButton = findViewById(R.id.backBtn);
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openactivity_goback();
+            }
+        });
+
+        saveButton = findViewById(R.id.saveBtn);
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openactivity_saveWorkingHourChanges();
+            }
+        });
+
+    }
+
+    public void openactivity_goback(){
+        Intent intent = new Intent(this, WorkingHours.class);
+        startActivity(intent);
+    }
+
+    public void openactivity_saveWorkingHourChanges(){
+        //save changes and go back
+        openactivity_goback();
     }
 }
