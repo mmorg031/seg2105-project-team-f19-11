@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.example.finalproject.R;
 import com.example.model.Employee;
 import com.example.model.WalkInClinic;
+import com.example.model.WorkingHours;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-public class WorkingHours extends AppCompatActivity {
+public class ShowWorkingHours extends AppCompatActivity {
     private ImageButton backButton; //goes back to menu page
 
     private TextView mondayHours; //shows the hours it is OPEN (see EditWorkingHours.java)
@@ -76,15 +77,43 @@ public class WorkingHours extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
                     Employee user = dataSnapshot.getValue(Employee.class);
-                    Map<String,String> workingHours = user.getClinic().getWorkingHours();
+                    Map<String, WorkingHours> workingHours = user.getClinic().getWorkingHours();
 
-                    sundayHours.setText("Sunday: "+workingHours.get("Sunday"));
-                    mondayHours.setText("Monday: "+workingHours.get("Monday"));
-                    tuesdayHours.setText("Tuesday: "+workingHours.get("Tuesday"));
-                    wednesdayHours.setText("Wednesday: "+workingHours.get("Wednesday"));
-                    thursdayHours.setText("Thursday: "+workingHours.get("Thursday"));
-                    fridayHours.setText("Friday: "+workingHours.get("Friday"));
-                    saturdayHours.setText("Saturday: "+workingHours.get("Saturday"));
+                    if(workingHours.get("Sunday").getClosed())
+                        sundayHours.setText("Sunday: Closed");
+                    else
+                        sundayHours.setText("Sunday: "+workingHours.get("Sunday").getStartTime()+"-"+workingHours.get("Sunday").getEndTime());
+
+                    if(workingHours.get("Monday").getClosed())
+                        mondayHours.setText("Monday: Closed");
+                    else
+                        mondayHours.setText("Monday: "+workingHours.get("Monday").getStartTime()+"-"+workingHours.get("Monday").getEndTime());
+
+                    if(workingHours.get("Tuesday").getClosed())
+                        tuesdayHours.setText("Tuesday: Closed");
+                    else
+                        tuesdayHours.setText("Tuesday: "+workingHours.get("Tuesday").getStartTime()+"-"+workingHours.get("Tuesday").getEndTime());
+
+                    if(workingHours.get("Wednesday").getClosed())
+                        wednesdayHours.setText("Wednesday: Closed");
+                    else
+                        wednesdayHours.setText("Wednesday: "+workingHours.get("Wednesday").getStartTime()+"-"+workingHours.get("Wednesday").getEndTime());
+
+                    if(workingHours.get("Thursday").getClosed())
+                        thursdayHours.setText("Thursday: Closed");
+                    else
+                        thursdayHours.setText("Thursday: "+workingHours.get("Thursday").getStartTime()+"-"+workingHours.get("Thursday").getEndTime());
+
+                    if(workingHours.get("Friday").getClosed())
+                        fridayHours.setText("Friday: Closed");
+                    else
+                        fridayHours.setText("Friday: "+workingHours.get("Friday").getStartTime()+"-"+workingHours.get("Friday").getEndTime());
+
+                    if(workingHours.get("Saturday").getClosed())
+                        saturdayHours.setText("Saturday: Closed");
+                    else
+                        saturdayHours.setText("Saturday: "+workingHours.get("Saturday").getStartTime()+"-"+workingHours.get("Saturday").getEndTime());
+
 
                 }
             }

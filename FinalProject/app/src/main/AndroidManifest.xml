@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         <activity android:name=".dev3.completeClinicProfile"></activity>
         <activity android:name=".dev3.EditWorkingHours" />
-        <activity android:name=".dev3.WorkingHours" />
+        <activity android:name=".dev3.ShowWorkingHours" />
         <activity android:name=".dev3.EditAboutClinic" />
         <activity android:name=".dev3.AboutClinic" />
         <activity android:name=".dev3.EditServicesPage" />

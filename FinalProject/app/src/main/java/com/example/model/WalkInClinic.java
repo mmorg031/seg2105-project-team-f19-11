@@ -17,7 +17,7 @@ public class WalkInClinic {
     private Map<String,Boolean> payments;
     private Map<String,Boolean> insurances;
     private Map<String,Role> services;
-    private Map<String,String> workingHours;
+    private Map<String,WorkingHours> workingHours;
 
     //public WalkInClinic(){}
 
@@ -49,14 +49,14 @@ public class WalkInClinic {
         this.services = new HashMap<String,Role>();
         services.put("None", Role.Employee);
 
-        this.workingHours = new HashMap<String,String>();
-        workingHours.put("Sunday", "Closed");
-        workingHours.put("Monday", "Closed");
-        workingHours.put("Tuesday", "Closed");
-        workingHours.put("Wednesday", "Closed");
-        workingHours.put("Thursday", "Closed");
-        workingHours.put("Friday", "Closed");
-        workingHours.put("Saturday", "Closed");
+        this.workingHours = new HashMap<String,WorkingHours>();
+        workingHours.put("Sunday", new WorkingHours("8","16",true));
+        workingHours.put("Monday", new WorkingHours("8","16",true) );
+        workingHours.put("Tuesday", new WorkingHours("8","16",true));
+        workingHours.put("Wednesday", new WorkingHours("8","16",true));
+        workingHours.put("Thursday", new WorkingHours("8","16",true));
+        workingHours.put("Friday", new WorkingHours("8","16",true));
+        workingHours.put("Saturday", new WorkingHours("8","16",true));
 
     }
 
@@ -76,8 +76,8 @@ public class WalkInClinic {
     public void setInsurances(Map<String,Boolean> insurances){this.insurances=insurances;}
     public Map<String,Role> getServices(){return services;}
     public void setServices(Map<String,Role> services){this.services=services;}
-    public Map<String,String> getWorkingHours(){return workingHours;}
-    public void setWorkingHours(Map<String,String> workingHours){this.workingHours=workingHours;}
+    public Map<String,WorkingHours> getWorkingHours(){return workingHours;}
+    public void setWorkingHours(Map<String,WorkingHours> workingHours){this.workingHours=workingHours;}
 
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();

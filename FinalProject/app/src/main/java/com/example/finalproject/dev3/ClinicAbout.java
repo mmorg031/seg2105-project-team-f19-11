@@ -81,7 +81,7 @@ public class ClinicAbout extends AppCompatActivity {
     }
 
     public void openactivity_hoursPage(){
-        Intent intent = new Intent(this, WorkingHours.class);
+        Intent intent = new Intent(this, ShowWorkingHours.class);
         startActivity(intent);
     }
 
