@@ -6,168 +6,315 @@
     android:layout_height="match_parent"
     tools:context=".dev3.EditWorkingHours">
 
-    <LinearLayout
-        android:id="@+id/mainLayout"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#c3e6ce"
-        >
-
+        android:fillViewport="true">
         <LinearLayout
+            android:id="@+id/mainLayout"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:background="#ffffff"
-            android:orientation="horizontal"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#c3e6ce"
             >
-
-
-            <ImageButton
-                android:id="@+id/backBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:src="@drawable/arrow_back"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
                 android:background="#ffffff"
-                android:paddingLeft="20dp"
+                android:orientation="horizontal"
+                >
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/arrow_back"
+                    android:background="#ffffff"
+                    android:paddingLeft="20dp"
+                    />
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/muli_semibold_italic"
+                    android:gravity="center"
+                    android:text="Edit Hours"
+                    android:textSize="25dp" />
+
+                <ImageButton
+                    android:id="@+id/saveBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginRight="20dp"
+                    android:background="#ffffff"
+                    app:srcCompat="@android:drawable/ic_menu_save" />
+
+            </LinearLayout>
+
+            <Switch
+                android:id="@+id/switchMonday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:checked="true"
+                android:showText="true"
+                android:text="Monday"
+                android:textOff="Closed"
+                android:textOn="Open"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track"/>
+
+            <EditText
+                android:id="@+id/startTimeMon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter opening time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <EditText
+                android:id="@+id/endTimeMon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter closing time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <Switch
+                android:id="@+id/switchTuesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:fontFamily="@font/muli_light"
+                android:textSize="19dp"
+                android:checked="false"
+                android:showText="true"
+                android:text="Tuesday"
+                android:textOff="Closed"
+                android:textOn="Open"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track"/>
+
+            <EditText
+                android:id="@+id/startTimeTues"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter opening time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <EditText
+                android:id="@+id/endTimeTues"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter closing time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <Switch
+                android:id="@+id/switchWednesday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:checked="false"
+                android:showText="true"
+                android:text="Wednesday"
+                android:textOff="Closed"
+                android:textOn="Open"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track"/>
+
+            <EditText
+                android:id="@+id/startTimeWed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter opening time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <EditText
+                android:id="@+id/endTimeWed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter closing time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <Switch
+                android:id="@+id/switchThursday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:checked="false"
+                android:showText="true"
+                android:text="Thursday"
+                android:textOff="Closed"
+                android:textOn="Open"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track"/>
+
+            <EditText
+                android:id="@+id/startTimeThurs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter opening time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <EditText
+                android:id="@+id/endTimeThurs"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter closing time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <Switch
+                android:id="@+id/switchFriday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:checked="false"
+                android:showText="true"
+                android:text="Friday"
+                android:textOff="Closed"
+                android:textOn="Open"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track"/>
+
+            <EditText
+                android:id="@+id/startTimeFri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter opening time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <EditText
+                android:id="@+id/endTimeFri"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter closing time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <Switch
+                android:id="@+id/switchSaturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:checked="false"
+                android:showText="true"
+                android:text="Saturday"
+                android:textOff="Closed"
+                android:textOn="Open"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track"/>
+
+            <EditText
+                android:id="@+id/startTimeSaturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter opening time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <EditText
+                android:id="@+id/endTimeSaturday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter closing time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <Switch
+                android:id="@+id/switchSunday"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:textSize="19dp"
+                android:layout_marginLeft="25dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="25dp"
+                android:checked="false"
+                android:showText="true"
+                android:text="Sunday"
+                android:textOff="Closed"
+                android:textOn="Open"
+                android:thumb="@drawable/sw_thumb"
+                app:track="@drawable/sw_track"/>
+
+            <EditText
+                android:id="@+id/startTimeSun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter opening time"
+                android:inputType="time"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"/>
+
+            <EditText
+                android:id="@+id/endTimeSun"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Enter closing time"
+                android:inputType="time"
+                android:layout_marginBottom="30dp"
+                android:layout_marginLeft="45dp"
+                android:layout_marginRight="45dp"
                 />
 
-            <TextView
-                android:id="@+id/header"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_weight="1"
-                android:fontFamily="@font/muli_semibold_italic"
-                android:gravity="center"
-                android:text="Edit Hours"
-                android:textSize="25dp" />
-
-            <ImageButton
-                android:id="@+id/saveBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_marginRight="20dp"
-                android:background="#ffffff"
-                app:srcCompat="@android:drawable/ic_menu_save" />
 
         </LinearLayout>
-
-        <Switch
-            android:id="@+id/switchMonday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="25dp"
-            android:checked="false"
-            android:showText="true"
-            android:text="Monday"
-            android:textOff="Closed"
-            android:textOn="Open" />
-
-        <EditText
-            android:id="@+id/startTimeMon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="open time"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/endTimeMon"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="close time"
-            android:inputType="time" />
-
-        <Switch
-            android:id="@+id/switchTuesday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="25dp"
-            android:checked="false"
-            android:showText="true"
-            android:text="Tuesday"
-            android:textOff="Closed"
-            android:textOn="Open" />
-
-        <EditText
-            android:id="@+id/startTimeTues"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="open time"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/endTimeTues"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="close time"
-            android:inputType="time" />
-
-        <Switch
-            android:id="@+id/switchWednesday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="25dp"
-            android:checked="false"
-            android:showText="true"
-            android:text="Wednesday"
-            android:textOff="Closed"
-            android:textOn="Open" />
-
-        <EditText
-            android:id="@+id/startTimeWed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="open time"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/endTimeWed"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="close time"
-            android:inputType="time" />
-
-        <Switch
-            android:id="@+id/switchThursday"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="25dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginRight="25dp"
-            android:checked="false"
-            android:showText="true"
-            android:text="Thursday"
-            android:textOff="Closed"
-            android:textOn="Open" />
-
-        <EditText
-            android:id="@+id/startTimeThurs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="open time"
-            android:inputType="time" />
-
-        <EditText
-            android:id="@+id/endTimeThurs"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="close time"
-            android:inputType="time" />
-
-
-    </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

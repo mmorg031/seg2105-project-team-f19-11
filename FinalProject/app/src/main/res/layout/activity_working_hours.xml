@@ -36,7 +36,7 @@
                 android:fontFamily="@font/muli_semibold_italic"
                 android:gravity="center"
                 android:text="Working Hours"
-                android:paddingLeft="-30dp"
+                android:paddingLeft="-10dp"
                 android:textSize="25dp" />
 
             <Button
