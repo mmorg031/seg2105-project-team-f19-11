@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class ServicesOfferedPage extends AppCompatActivity {
 
-    private Button edit ;
+    private ImageButton edit ;
     private ImageButton back ;
     private ListView serviceList;
     private ArrayList<HashMap<String,String>> offeredServices;
@@ -42,7 +42,7 @@ public class ServicesOfferedPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_services_offered_page);
 
-        edit = (Button) findViewById(R.id.editServicesBtn);
+        edit = (ImageButton) findViewById(R.id.editServicesBtn);
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

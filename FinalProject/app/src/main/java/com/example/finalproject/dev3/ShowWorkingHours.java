@@ -37,7 +37,7 @@ public class ShowWorkingHours extends AppCompatActivity {
     private TextView saturdayHours;
     private TextView sundayHours;
     private FirebaseAuth mFirebaseAuth;
-    private Button editHours; //goes to new page to edit the hours
+    private ImageButton editHours; //goes to new page to edit the hours
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class ShowWorkingHours extends AppCompatActivity {
             }
         });
 
-        editHours = (Button) findViewById(R.id.editHoursBtn);
+        editHours = (ImageButton) findViewById(R.id.editHoursBtn);
         editHours.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
