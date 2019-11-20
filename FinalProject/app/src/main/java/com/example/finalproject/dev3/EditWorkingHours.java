@@ -9,8 +9,10 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import com.example.finalproject.R;
+import com.example.finalproject.activity_sign_in;
 import com.example.model.Employee;
 import com.example.model.WorkingHours;
 import com.google.firebase.auth.FirebaseAuth;
@@ -21,6 +23,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
+
+import static com.example.model.WorkingHours.isCorrectTimeInput;
 
 public class EditWorkingHours extends AppCompatActivity {
     private ImageButton backButton; //goes back to about page
@@ -128,8 +132,8 @@ public class EditWorkingHours extends AppCompatActivity {
         endTimeThursday  = findViewById(R.id.endTimeThurs);
         startTimeFriday = findViewById(R.id.startTimeFri);
         endTimeFriday = findViewById(R.id.endTimeFri);
-        startTimeSaturday = findViewById(R.id.startTimeSat);
-        endTimeSaturday = findViewById(R.id.endTimeSat);
+        startTimeSaturday = findViewById(R.id.startTimeSaturday);
+        endTimeSaturday = findViewById(R.id.endTimeSaturday);
         startTimeSunday = findViewById(R.id.startTimeSun);
         endTimeSunday = findViewById(R.id.endTimeSun);
 
@@ -152,37 +156,52 @@ public class EditWorkingHours extends AppCompatActivity {
                         toggleEditWorkingHours("Sunday",false);
                     else {
                         toggleEditWorkingHours("Sunday",true);
-                        sundayHours.setText("Sunday: " + workingHours.get("Sunday").getStartTime() + "-" + workingHours.get("Sunday").getEndTime());
+                        startTimeSunday.setText(workingHours.get("Sunday").getStartTime());
+                        endTimeSunday.setText(workingHours.get("Sunday").getEndTime());
                     }
                     if(workingHours.get("Monday").getClosed())
-                        mondayHours.setText("Monday: Closed");
-                    else
-                        mondayHours.setText("Monday: "+workingHours.get("Monday").getStartTime()+"-"+workingHours.get("Monday").getEndTime());
+                        toggleEditWorkingHours("Monday",false);
+                    else {
+                        toggleEditWorkingHours("Monday", true);
+                        startTimeMonday.setText(workingHours.get("Monday").getStartTime());
+                        endTimeMonday.setText(workingHours.get("Monday").getEndTime());
+                    }
 
                     if(workingHours.get("Tuesday").getClosed())
-                        tuesdayHours.setText("Tuesday: Closed");
-                    else
-                        tuesdayHours.setText("Tuesday: "+workingHours.get("Tuesday").getStartTime()+"-"+workingHours.get("Tuesday").getEndTime());
-
+                        toggleEditWorkingHours("Tuesday",false);
+                    else {
+                        toggleEditWorkingHours("Tuesday",true);
+                        startTimeTuesday.setText(workingHours.get("Tuesday").getStartTime());
+                        endTimeTuesday.setText(workingHours.get("Tuesday").getEndTime());
+                    }
                     if(workingHours.get("Wednesday").getClosed())
-                        wednesdayHours.setText("Wednesday: Closed");
-                    else
-                        wednesdayHours.setText("Wednesday: "+workingHours.get("Wednesday").getStartTime()+"-"+workingHours.get("Wednesday").getEndTime());
-
+                        toggleEditWorkingHours("Wednesday",false);
+                    else {
+                        toggleEditWorkingHours("Wednesday", true);
+                        startTimeWednesday.setText(workingHours.get("Wednesday").getStartTime());
+                        endTimeWednesday.setText(workingHours.get("Wednesday").getEndTime());
+                    }
                     if(workingHours.get("Thursday").getClosed())
-                        thursdayHours.setText("Thursday: Closed");
-                    else
-                        thursdayHours.setText("Thursday: "+workingHours.get("Thursday").getStartTime()+"-"+workingHours.get("Thursday").getEndTime());
-
+                        toggleEditWorkingHours("Thursday",false);
+                    else {
+                        toggleEditWorkingHours("Thursday", true);
+                        startTimeThursday.setText(workingHours.get("Thursday").getStartTime());
+                        endTimeThursday.setText(workingHours.get("Thursday").getEndTime());
+                    }
                     if(workingHours.get("Friday").getClosed())
-                        fridayHours.setText("Friday: Closed");
-                    else
-                        fridayHours.setText("Friday: "+workingHours.get("Friday").getStartTime()+"-"+workingHours.get("Friday").getEndTime());
-
+                        toggleEditWorkingHours("Friday",false);
+                    else {
+                        toggleEditWorkingHours("Friday",true);
+                        startTimeFriday.setText(workingHours.get("Friday").getStartTime());
+                        endTimeFriday.setText(workingHours.get("Friday").getEndTime());
+                    }
                     if(workingHours.get("Saturday").getClosed())
-                        saturdayHours.setText("Saturday: Closed");
-                    else
-                        saturdayHours.setText("Saturday: "+workingHours.get("Saturday").getStartTime()+"-"+workingHours.get("Saturday").getEndTime());
+                        toggleEditWorkingHours("Saturday",false);
+                    else{
+                        toggleEditWorkingHours("Saturday",true);
+                        startTimeSunday.setText(workingHours.get("Saturday").getStartTime());
+                        endTimeSunday.setText(workingHours.get("Saturday").getEndTime());
+                    }
 
 
                 }
@@ -236,6 +255,130 @@ public class EditWorkingHours extends AppCompatActivity {
 
     public void openactivity_saveWorkingHourChanges(){
         //save changes and go back
-        openactivity_goback();
+
+        String userID = mFirebaseAuth.getInstance().getCurrentUser().getUid();
+        final DatabaseReference db = FirebaseDatabase.getInstance().getReference("users/"+userID);
+
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
+                    Employee user = dataSnapshot.getValue(Employee.class);
+                    Map<String, WorkingHours> workingHours = user.getClinic().getWorkingHours();
+
+                    if(openSunday.isChecked()) {
+                        String sundayStart = startTimeSunday.getText().toString();
+                        String sundayEnd = endTimeSunday.getText().toString();
+                        if (!sundayStart.isEmpty()&& !sundayEnd.isEmpty() && isCorrectTimeInput(sundayStart,sundayEnd)) {
+                            workingHours.put("Sunday", new WorkingHours(sundayStart, sundayEnd, false));
+                        } else{
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Sunday in format 00:00", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                    else {
+                        workingHours.put("Sunday",new WorkingHours("08:00","16:00",true));
+                    }
+
+
+
+                    if(openMonday.isChecked()) {
+                        String mondayStart = startTimeMonday.getText().toString();
+                        String mondayEnd = endTimeMonday.getText().toString();
+                        if (!mondayStart.isEmpty()&& !mondayEnd.isEmpty() && isCorrectTimeInput(mondayStart,mondayEnd)) {
+                            workingHours.put("Monday", new WorkingHours(mondayStart, mondayEnd, false));
+                        } else{
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Monday in format 00:00", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                    else {
+                        workingHours.put("Monday",new WorkingHours("08:00","16:00",true));
+                    }
+
+                    if(openTuesday.isChecked()) {
+                        String tuesdayStart = startTimeTuesday.getText().toString();
+                        String tuesdayEnd = endTimeTuesday.getText().toString();
+                        if (!tuesdayStart.isEmpty()&& !tuesdayEnd.isEmpty() && isCorrectTimeInput(tuesdayStart,tuesdayEnd)) {
+                            workingHours.put("Tuesday", new WorkingHours(tuesdayStart, tuesdayEnd, false));
+                        } else{
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Tuesday in format 00:00", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                    else {
+                        workingHours.put("Tuesday",new WorkingHours("08:00","16:00",true));
+                    }
+
+                    if(openWednesday.isChecked()) {
+                        String wednesdayStart = startTimeWednesday.getText().toString();
+                        String wednesdayEnd = endTimeWednesday.getText().toString();
+                        if (!wednesdayStart.isEmpty()&& !wednesdayEnd.isEmpty() && isCorrectTimeInput(wednesdayStart,wednesdayEnd)) {
+                            workingHours.put("Wednesday", new WorkingHours(wednesdayStart, wednesdayEnd, false));
+                        } else{
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Wednesday in format 00:00", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                    else {
+                        workingHours.put("Wednesday",new WorkingHours("08:00","16:00",true));
+                    }
+
+                    if(openThursday.isChecked()) {
+                        String thursdayStart = startTimeThursday.getText().toString();
+                        String thursdayEnd = endTimeThursday.getText().toString();
+                        if (!thursdayStart.isEmpty()&& !thursdayEnd.isEmpty() && isCorrectTimeInput(thursdayStart,thursdayEnd)) {
+                            workingHours.put("Thursday", new WorkingHours(thursdayStart, thursdayEnd, false));
+                        } else{
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Thursday in format 00:00", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                    else {
+                        workingHours.put("Thursday",new WorkingHours("08:00","16:00",true));
+                    }
+
+                    if(openFriday.isChecked()) {
+                        String fridayStart = startTimeFriday.getText().toString();
+                        String fridayEnd = endTimeFriday.getText().toString();
+                        if (!fridayStart.isEmpty()&& !fridayEnd.isEmpty() && isCorrectTimeInput(fridayStart,fridayEnd)) {
+                            workingHours.put("Friday", new WorkingHours(fridayStart, fridayEnd, false));
+                        } else{
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Friday in format 00:00", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                    else {
+                        workingHours.put("Friday",new WorkingHours("08:00","16:00",true));
+                    }
+
+                    if(openSaturday.isChecked()) {
+                        String saturdayStart = startTimeSaturday.getText().toString();
+                        String saturdayEnd = endTimeSaturday.getText().toString();
+                        if (!saturdayStart.isEmpty()&& !saturdayEnd.isEmpty() && isCorrectTimeInput(saturdayStart,saturdayEnd)) {
+                            workingHours.put("Saturday", new WorkingHours(saturdayStart, saturdayEnd, false));
+                        } else{
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Saturday in format 00:00", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+                    }
+                    else {
+                        workingHours.put("Saturday",new WorkingHours("08:00","16:00",true));
+                    }
+
+                    user.getClinic().setWorkingHours(workingHours);
+                    db.setValue(user);
+                    openactivity_goback();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                System.out.println("The read failed: " + databaseError.getCode());
+            }
+
+
+        });
+
     }
 }

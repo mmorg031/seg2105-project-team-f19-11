@@ -1,5 +1,14 @@
 package com.example.model;
 
+import android.widget.Toast;
+
+import com.example.finalproject.dev3.EditWorkingHours;
+
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.Date;
+
 public class WorkingHours {
     private String startTime;
     private String endTime;
@@ -30,5 +39,47 @@ public class WorkingHours {
     }
     public void setClosed(boolean closed){
         this.closed=closed;
+    }
+
+    public static boolean isCorrectTimeInput(String start, String end){
+        boolean startCorrect=false;
+        boolean endCorrect=false;
+        boolean inRange=false;
+
+        /*if(! start.matches("(?:[0-1][0-9]|2[0-4]):[0-5]\\d")){
+            startCorrect=true;
+        }
+        if(! end.matches("(?:[0-1][0-9]|2[0-4]):[0-5]\\d")){
+            endCorrect=true;
+        }*/
+        LocalTime from=null;
+        LocalTime to=null;
+
+        try {
+            from = LocalTime.parse(start);
+            startCorrect=true;
+        }
+        catch(Exception e){
+            return false;
+        }
+        try {
+            to = LocalTime.parse(end);
+            endCorrect=true;
+        }
+        catch (Exception e){
+            return  false;
+        }
+
+
+        if(from.isBefore(to)) {
+            inRange = true;
+        }
+
+
+        System.err.println(startCorrect);
+        System.err.println(endCorrect);
+        System.err.println(inRange);
+        return startCorrect && endCorrect && inRange;
+
     }
 }
