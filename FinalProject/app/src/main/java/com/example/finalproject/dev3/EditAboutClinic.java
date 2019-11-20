@@ -95,7 +95,10 @@ public class EditAboutClinic extends AppCompatActivity {
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for (DataSnapshot snapShot : dataSnapshot.getChildren()) {
                         Employee user = dataSnapshot.getValue(Employee.class);
-                        WalkInClinic clinic = new WalkInClinic(name, address, phone);
+                        WalkInClinic clinic = user.getClinic();//new WalkInClinic(name, address, phone);
+                        clinic.setName(name);
+                        clinic.setLocation(address);
+                        clinic.setPhone(phone);
                         user.setClinic(clinic);
                         db.setValue(user);
 

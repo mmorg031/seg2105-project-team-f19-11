@@ -137,7 +137,6 @@ public class EditWorkingHours extends AppCompatActivity {
         startTimeSunday = findViewById(R.id.startTimeSun);
         endTimeSunday = findViewById(R.id.endTimeSun);
 
-
         initializeState();
     }
 
@@ -148,64 +147,84 @@ public class EditWorkingHours extends AppCompatActivity {
         db.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
-                    Employee user = dataSnapshot.getValue(Employee.class);
-                    Map<String, WorkingHours> workingHours = user.getClinic().getWorkingHours();
+                Employee user = dataSnapshot.getValue(Employee.class);
+                Map<String, WorkingHours> workingHours = user.getClinic().getWorkingHours();
 
-                    if(workingHours.get("Sunday").getClosed())
-                        toggleEditWorkingHours("Sunday",false);
-                    else {
-                        toggleEditWorkingHours("Sunday",true);
-                        startTimeSunday.setText(workingHours.get("Sunday").getStartTime());
-                        endTimeSunday.setText(workingHours.get("Sunday").getEndTime());
-                    }
-                    if(workingHours.get("Monday").getClosed())
-                        toggleEditWorkingHours("Monday",false);
-                    else {
-                        toggleEditWorkingHours("Monday", true);
-                        startTimeMonday.setText(workingHours.get("Monday").getStartTime());
-                        endTimeMonday.setText(workingHours.get("Monday").getEndTime());
-                    }
-
-                    if(workingHours.get("Tuesday").getClosed())
-                        toggleEditWorkingHours("Tuesday",false);
-                    else {
-                        toggleEditWorkingHours("Tuesday",true);
-                        startTimeTuesday.setText(workingHours.get("Tuesday").getStartTime());
-                        endTimeTuesday.setText(workingHours.get("Tuesday").getEndTime());
-                    }
-                    if(workingHours.get("Wednesday").getClosed())
-                        toggleEditWorkingHours("Wednesday",false);
-                    else {
-                        toggleEditWorkingHours("Wednesday", true);
-                        startTimeWednesday.setText(workingHours.get("Wednesday").getStartTime());
-                        endTimeWednesday.setText(workingHours.get("Wednesday").getEndTime());
-                    }
-                    if(workingHours.get("Thursday").getClosed())
-                        toggleEditWorkingHours("Thursday",false);
-                    else {
-                        toggleEditWorkingHours("Thursday", true);
-                        startTimeThursday.setText(workingHours.get("Thursday").getStartTime());
-                        endTimeThursday.setText(workingHours.get("Thursday").getEndTime());
-                    }
-                    if(workingHours.get("Friday").getClosed())
-                        toggleEditWorkingHours("Friday",false);
-                    else {
-                        toggleEditWorkingHours("Friday",true);
-                        startTimeFriday.setText(workingHours.get("Friday").getStartTime());
-                        endTimeFriday.setText(workingHours.get("Friday").getEndTime());
-                    }
-                    if(workingHours.get("Saturday").getClosed())
-                        toggleEditWorkingHours("Saturday",false);
-                    else{
-                        toggleEditWorkingHours("Saturday",true);
-                        startTimeSunday.setText(workingHours.get("Saturday").getStartTime());
-                        endTimeSunday.setText(workingHours.get("Saturday").getEndTime());
-                    }
-
-
+                if(workingHours.get("Sunday").getClosed()) {
+                    toggleEditWorkingHours("Sunday", false);
+                    openSunday.setChecked(false);
                 }
+                else {
+                    toggleEditWorkingHours("Sunday",true);
+                    openSunday.setChecked(true);
+                    startTimeSunday.setText(workingHours.get("Sunday").getStartTime());
+                    endTimeSunday.setText(workingHours.get("Sunday").getEndTime());
+                }
+                if(workingHours.get("Monday").getClosed()) {
+                    toggleEditWorkingHours("Monday", false);
+                    openMonday.setChecked(false);
+                }
+                else {
+                    toggleEditWorkingHours("Monday", true);
+                    openMonday.setChecked(true);
+                    startTimeMonday.setText(workingHours.get("Monday").getStartTime());
+                    endTimeMonday.setText(workingHours.get("Monday").getEndTime());
+                }
+
+                if(workingHours.get("Tuesday").getClosed()) {
+                    toggleEditWorkingHours("Tuesday", false);
+                    openTuesday.setChecked(false);
+                }
+                else {
+                    toggleEditWorkingHours("Tuesday",true);
+                    openTuesday.setChecked(true);
+                    startTimeTuesday.setText(workingHours.get("Tuesday").getStartTime());
+                    endTimeTuesday.setText(workingHours.get("Tuesday").getEndTime());
+                }
+                if(workingHours.get("Wednesday").getClosed()) {
+                    toggleEditWorkingHours("Wednesday", false);
+                    openWednesday.setChecked(false);
+                }
+                else {
+                    toggleEditWorkingHours("Wednesday", true);
+                    openWednesday.setChecked(true);
+                    startTimeWednesday.setText(workingHours.get("Wednesday").getStartTime());
+                    endTimeWednesday.setText(workingHours.get("Wednesday").getEndTime());
+                }
+                if(workingHours.get("Thursday").getClosed()) {
+                    toggleEditWorkingHours("Thursday", false);
+                    openThursday.setChecked(false);
+                }
+                else {
+                    toggleEditWorkingHours("Thursday", true);
+                    openThursday.setChecked(true);
+                    startTimeThursday.setText(workingHours.get("Thursday").getStartTime());
+                    endTimeThursday.setText(workingHours.get("Thursday").getEndTime());
+                }
+                if(workingHours.get("Friday").getClosed()) {
+                    toggleEditWorkingHours("Friday", false);
+                    openFriday.setChecked(false);
+                }
+                else {
+                    toggleEditWorkingHours("Friday",true);
+                    openFriday.setChecked(true);
+                    startTimeFriday.setText(workingHours.get("Friday").getStartTime());
+                    endTimeFriday.setText(workingHours.get("Friday").getEndTime());
+                }
+                if(workingHours.get("Saturday").getClosed()) {
+                    toggleEditWorkingHours("Saturday", false);
+                    openSaturday.setChecked(false);
+                }
+                else{
+                    toggleEditWorkingHours("Saturday",true);
+                    openSaturday.setChecked(true);
+                    startTimeSaturday.setText(workingHours.get("Saturday").getStartTime());
+                    endTimeSaturday.setText(workingHours.get("Saturday").getEndTime());
+                }
+
+
             }
+
 
             @Override
             public void onCancelled(DatabaseError databaseError) {
@@ -221,30 +240,86 @@ public class EditWorkingHours extends AppCompatActivity {
         if(day.equals("Monday")){
             startTimeMonday.setEnabled(open);
             endTimeMonday.setEnabled(open);
+            if(open){
+                startTimeMonday.setHint("Enter opening time");
+                endTimeMonday.setHint("Enter closing time");
+            }
+            else{
+                startTimeMonday.setHint("Closed");
+                endTimeMonday.setHint("Closed");
+            }
         }
         else if(day.equals("Tuesday")){
             startTimeTuesday.setEnabled(open);
             endTimeTuesday.setEnabled(open);
+            if(open){
+                startTimeTuesday.setHint("Enter opening time");
+                endTimeTuesday.setHint("Enter closing time");
+            }
+            else{
+                startTimeTuesday.setHint("Closed");
+                endTimeTuesday.setHint("Closed");
+            }
         }
         else if(day.equals("Wednesday")){
             startTimeWednesday.setEnabled(open);
             endTimeWednesday.setEnabled(open);
+            if(open){
+                startTimeWednesday.setHint("Enter opening time");
+                endTimeWednesday.setHint("Enter closing time");
+            }
+            else{
+                startTimeWednesday.setHint("Closed");
+                endTimeWednesday.setHint("Closed");
+            }
         }
         else if(day.equals("Thursday")){
             startTimeThursday.setEnabled(open);
             endTimeThursday.setEnabled(open);
+            if(open){
+                startTimeThursday.setHint("Enter opening time");
+                endTimeThursday.setHint("Enter closing time");
+            }
+            else{
+                startTimeThursday.setHint("Closed");
+                endTimeThursday.setHint("Closed");
+            }
         }
         else if(day.equals("Friday")){
             startTimeFriday.setEnabled(open);
             endTimeFriday.setEnabled(open);
+            if(open){
+                startTimeFriday.setHint("Enter opening time");
+                endTimeFriday.setHint("Enter closing time");
+            }
+            else{
+                startTimeFriday.setHint("Closed");
+                endTimeFriday.setHint("Closed");
+            }
         }
         else if(day.equals("Saturday")){
             startTimeSaturday.setEnabled(open);
             endTimeSaturday.setEnabled(open);
+            if(open){
+                startTimeSaturday.setHint("Enter opening time");
+                endTimeSaturday.setHint("Enter closing time");
+            }
+            else{
+                startTimeSaturday.setHint("Closed");
+                endTimeSaturday.setHint("Closed");
+            }
         }
         else if(day.equals("Sunday")){
             startTimeSunday.setEnabled(open);
             endTimeSunday.setEnabled(open);
+            if(open){
+                startTimeSunday.setHint("Enter opening time");
+                endTimeSunday.setHint("Enter closing time");
+            }
+            else{
+                startTimeSunday.setHint("Closed");
+                endTimeSunday.setHint("Closed");
+            }
         }
     }
 
@@ -272,7 +347,7 @@ public class EditWorkingHours extends AppCompatActivity {
                         if (!sundayStart.isEmpty()&& !sundayEnd.isEmpty() && isCorrectTimeInput(sundayStart,sundayEnd)) {
                             workingHours.put("Sunday", new WorkingHours(sundayStart, sundayEnd, false));
                         } else{
-                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Sunday in format 00:00", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Sunday in format 00:00 & ensure that these values form a valid range!!!", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -288,7 +363,7 @@ public class EditWorkingHours extends AppCompatActivity {
                         if (!mondayStart.isEmpty()&& !mondayEnd.isEmpty() && isCorrectTimeInput(mondayStart,mondayEnd)) {
                             workingHours.put("Monday", new WorkingHours(mondayStart, mondayEnd, false));
                         } else{
-                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Monday in format 00:00", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Monday in format 00:00 & ensure that these values form a valid range!!!", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -302,7 +377,7 @@ public class EditWorkingHours extends AppCompatActivity {
                         if (!tuesdayStart.isEmpty()&& !tuesdayEnd.isEmpty() && isCorrectTimeInput(tuesdayStart,tuesdayEnd)) {
                             workingHours.put("Tuesday", new WorkingHours(tuesdayStart, tuesdayEnd, false));
                         } else{
-                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Tuesday in format 00:00", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Tuesday in format 00:00 & ensure that these values form a valid range!!!", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -316,7 +391,7 @@ public class EditWorkingHours extends AppCompatActivity {
                         if (!wednesdayStart.isEmpty()&& !wednesdayEnd.isEmpty() && isCorrectTimeInput(wednesdayStart,wednesdayEnd)) {
                             workingHours.put("Wednesday", new WorkingHours(wednesdayStart, wednesdayEnd, false));
                         } else{
-                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Wednesday in format 00:00", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Wednesday in format 00:00 & ensure that these values form a valid range!!!", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -330,7 +405,7 @@ public class EditWorkingHours extends AppCompatActivity {
                         if (!thursdayStart.isEmpty()&& !thursdayEnd.isEmpty() && isCorrectTimeInput(thursdayStart,thursdayEnd)) {
                             workingHours.put("Thursday", new WorkingHours(thursdayStart, thursdayEnd, false));
                         } else{
-                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Thursday in format 00:00", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Thursday in format 00:00 & ensure that these values form a valid range!!!", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -344,7 +419,7 @@ public class EditWorkingHours extends AppCompatActivity {
                         if (!fridayStart.isEmpty()&& !fridayEnd.isEmpty() && isCorrectTimeInput(fridayStart,fridayEnd)) {
                             workingHours.put("Friday", new WorkingHours(fridayStart, fridayEnd, false));
                         } else{
-                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Friday in format 00:00", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Friday in format 00:00 & ensure that these values form a valid range!!!", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
@@ -358,7 +433,7 @@ public class EditWorkingHours extends AppCompatActivity {
                         if (!saturdayStart.isEmpty()&& !saturdayEnd.isEmpty() && isCorrectTimeInput(saturdayStart,saturdayEnd)) {
                             workingHours.put("Saturday", new WorkingHours(saturdayStart, saturdayEnd, false));
                         } else{
-                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Saturday in format 00:00", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EditWorkingHours.this, "Input Valid Time for Saturday in format 00:00 & ensure that these values form a valid range!!!", Toast.LENGTH_SHORT).show();
                             return;
                         }
                     }
