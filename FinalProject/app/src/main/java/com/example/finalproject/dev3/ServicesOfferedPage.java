@@ -33,7 +33,7 @@ public class ServicesOfferedPage extends AppCompatActivity {
     private Button edit ;
     private ImageButton back ;
     private ListView serviceList;
-    private ArrayList<HashMap<String,String>> serviceData;
+    private ArrayList<HashMap<String,String>> offeredServices;
     private Map<String,Role> services;
     private FirebaseAuth mFirebaseAuth;
 
@@ -57,35 +57,31 @@ public class ServicesOfferedPage extends AppCompatActivity {
             }
         });
         serviceList = (ListView) findViewById(R.id.servicesOfferedList);
-        serviceData = new ArrayList<HashMap<String, String>>();
+        offeredServices = new ArrayList<HashMap<String, String>>();
 
         String userID = mFirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("users/" + userID);
 
-        db.addValueEventListener(new ValueEventListener() {
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                for (DataSnapshot snapShot : dataSnapshot.getChildren()) {
-                    Employee user = dataSnapshot.getValue(Employee.class);
-                    services = user.getClinic().getServices();
 
-                    if (!services.containsKey("None")) {
-                        for (Map.Entry<String, Role> entry : services.entrySet()) {
-                            HashMap<String, String> datum = new HashMap<String, String>();
-                            datum.put("Name", entry.getKey());
-                            datum.put("Role", entry.getValue().toString());
-                            serviceData.add(datum);
-                        }
+                Employee user = dataSnapshot.getValue(Employee.class);
+                services = user.getClinic().getServices();
 
-                        SimpleAdapter adapter = new SimpleAdapter(ServicesOfferedPage.this, serviceData,
-                                android.R.layout.simple_list_item_2,
-                                new String[]{"Name", "Role"}, new int[]{android.R.id.text1, android.R.id.text2});
-                        serviceList.setAdapter(adapter);
+                if (!services.containsKey("None")) {
+                    for (Map.Entry<String, Role> entry : services.entrySet()) {
+                        HashMap<String, String> datum = new HashMap<String, String>();
+                        datum.put("Name", entry.getKey());
+                        datum.put("Role", entry.getValue().toString());
+                        offeredServices.add(datum);
                     }
+                    SimpleAdapter adapter = new SimpleAdapter(ServicesOfferedPage.this, offeredServices,
+                            android.R.layout.simple_list_item_2,
+                            new String[]{"Name", "Role"}, new int[]{android.R.id.text1, android.R.id.text2});
+                    serviceList.setAdapter(adapter);
                 }
-
             }
-
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 System.out.println("The read failed: " + databaseError.getCode());
