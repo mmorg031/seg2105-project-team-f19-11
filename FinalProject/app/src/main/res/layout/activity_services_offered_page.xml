@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".dev3.ServicesOfferedPage"
-    android:background="@drawable/gradient">
+    tools:context=".dev3.ServicesOfferedPage">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#add5e0">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -35,17 +35,16 @@
             android:layout_weight="1"
             android:fontFamily="@font/muli_semibold_italic"
             android:gravity="center"
-            android:text="SERVICES             "
+            android:text="SERVICES"
             android:textSize="20sp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/editServicesBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Edit"
-            android:textSize="20dp"
             android:background="#ffffff"
-            android:fontFamily="@font/muli_semibold_italic" />
+            android:paddingRight="20dp"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
 
     </LinearLayout>
 
@@ -55,7 +54,7 @@
         android:layout_height="wrap_content"
         android:text="Services offered:"
         android:textSize="20dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="30dp"
         android:layout_marginLeft="25dp" />
 
     <ListView

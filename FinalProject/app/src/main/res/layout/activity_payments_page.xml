@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".dev3.PaymentsPage"
-    android:background="@drawable/gradient">
+    android:background="#add5e0">
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -30,17 +30,16 @@
             android:layout_weight="1"
             android:fontFamily="@font/muli_semibold_italic"
             android:gravity="center"
-            android:text="PAYMENTS             "
+            android:text="PAYMENTS"
             android:textSize="20sp"/>
 
-        <Button
+        <ImageButton
             android:id="@+id/editPaymentsBtn"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Edit"
-            android:textSize="20dp"
             android:background="#ffffff"
-            android:fontFamily="@font/muli_semibold_italic" />
+            android:paddingRight="20dp"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
 
     </LinearLayout>
 

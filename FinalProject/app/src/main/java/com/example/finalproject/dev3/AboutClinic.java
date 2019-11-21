@@ -24,7 +24,7 @@ public class AboutClinic extends AppCompatActivity {
     private TextView nameOfClinic; //shows the saved name of clinic
     private TextView addressOfClinic; //shows the saved address associated with clinic
     private TextView phoneOfClinic; //shows the saved phone number associated with clinic
-    private Button editAbout; //goes to new page to edit information
+    private ImageButton editAbout; //goes to new page to edit information
     private FirebaseAuth mFirebaseAuth;
 
     @Override
@@ -40,7 +40,7 @@ public class AboutClinic extends AppCompatActivity {
             }
         });
 
-        editAbout = findViewById(R.id.button);
+        editAbout = (ImageButton) findViewById(R.id.editAboutBtn);
         editAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

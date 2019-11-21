@@ -8,7 +8,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#c3e6ce">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -34,8 +35,8 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/muli_semibold_italic"
                 android:gravity="center"
+                android:layout_marginLeft="25dp"
                 android:text="About Your Clinic"
-                android:paddingLeft="-30dp"
                 android:textSize="25dp" />
 
             <ImageButton
@@ -58,6 +59,7 @@
             android:textSize="30dp"
             android:layout_marginLeft="30dp"
             android:layout_marginTop="5dp"
+            android:layout_marginRight="30dp"
             />
 
         <EditText
@@ -75,20 +77,21 @@
 
         <EditText
             android:id="@+id/phoneText"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Enter phone number"
             android:textSize="30dp"
             android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
             />
 
         <TextView
             android:id="@+id/paymentForms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select payment methods:"
-            android:textSize="20dp"
-            android:layout_marginTop="1dp"
+            android:text="Select payment method(s):"
+            android:textSize="22dp"
+            android:layout_marginTop="15dp"
             android:layout_marginLeft="25dp" />
 
         <CheckBox
@@ -123,8 +126,8 @@
             android:id="@+id/insuranceForms"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Select insurance plan:"
-            android:textSize="20dp"
+            android:text="Select insurance plan(s):"
+            android:textSize="22dp"
             android:layout_marginLeft="25dp"
             android:layout_marginTop="5dp"/>
 
@@ -166,21 +169,9 @@
             android:text="No Insurance"
             android:textSize="20dp"
             android:layout_marginLeft="50dp"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="1dp" />
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Save Info"
-            android:textSize="20dp"
-            android:paddingHorizontal="40dp"
-            android:paddingVertical="10dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginLeft="40dp"
-            android:background="#f0f0f0"
-            android:fontFamily="@font/muli_semibold_italic"
-            />
+
 
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

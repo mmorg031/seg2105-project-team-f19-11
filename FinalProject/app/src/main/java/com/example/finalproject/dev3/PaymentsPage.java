@@ -30,7 +30,7 @@ import java.util.Map;
 
 public class PaymentsPage extends AppCompatActivity {
 
-    private Button edit ;
+    private ImageButton edit ;
     private ImageButton back ;
     private ListView methodList;
     private ListView insuranceList;
@@ -43,7 +43,7 @@ public class PaymentsPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_payments_page);
 
-        edit = (Button) findViewById(R.id.editPaymentsBtn) ;
+        edit = (ImageButton) findViewById(R.id.editPaymentsBtn) ;
         edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
