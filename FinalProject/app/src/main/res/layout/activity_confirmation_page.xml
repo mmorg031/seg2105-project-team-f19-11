@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ConfirmationPage"
+    android:background="#add5e0">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+        <TextView
+            android:id="@+id/appointmentText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_light"
+            android:textColor="#424445"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_marginTop="120dp"
+            android:layout_centerHorizontal="true"
+            android:text="Appointment" />
+
+        <TextView
+            android:id="@+id/bookedForText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_light"
+            android:layout_below="@+id/appointmentText"
+            android:textColor="#424445"
+            android:textSize="35sp"
+            android:textStyle="bold"
+            android:layout_centerHorizontal="true"
+            android:text="Booked For:" />
+
+        <TextView
+            android:id="@+id/dateTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_light"
+            android:layout_below="@+id/bookedForText"
+            android:layout_centerHorizontal="true"
+            android:textSize="35sp"
+            android:layout_marginTop="80dp"
+            android:text="Wednesday @ 11:30" />
+
+        <TextView
+            android:id="@+id/waitTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_light"
+            android:layout_below="@+id/dateTimeText"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textSize="18dp"
+            android:text="Expected wait: 00:45" />
+
+        <Button
+            android:id="@+id/findAClinic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/waitTimeText"
+            android:layout_marginTop="180dp"
+            android:textSize="15dp"
+            android:background="@android:color/transparent"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_centerHorizontal="true"
+            android:fontFamily="@font/muli_light"
+            android:text="Find a Clinic Again  >" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

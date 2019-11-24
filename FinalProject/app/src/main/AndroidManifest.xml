@@ -9,7 +9,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dev3.RateClinic"></activity>
+        <activity android:name=".FindClinic"></activity>
+        <activity android:name=".searchResults" />
+        <activity android:name=".ConfirmationPage" />
+        <activity android:name=".BookAppointmentDay" />
+        <activity android:name=".dev3.RateClinic" />
         <activity android:name=".dev3.BookingAppmnt" />
         <activity android:name=".dev3.ServiceListResults" />
         <activity android:name=".dev3.DayTimeResults" />

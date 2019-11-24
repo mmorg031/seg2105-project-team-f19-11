@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".FindClinic"
+    android:background="#add5e0">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
+
+            <TextView
+                android:id="@+id/titleText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:textColor="#424445"
+                android:textSize="38sp"
+                android:textStyle="bold"
+                android:layout_marginTop="120dp"
+                android:layout_centerHorizontal="true"
+                android:text="Find a Clinic." />
+
+            <TextView
+                android:id="@+id/searchByText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:layout_below="@+id/titleText"
+                android:layout_centerHorizontal="true"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:text="Search by name, service, or address." />
+
+            <SearchView
+                android:id="@+id/searchBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/searchByText"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="30dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginTop="80dp" />
+
+            <TextView
+                android:id="@+id/orText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/muli_light"
+                android:layout_below="@+id/searchBar"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="220dp"
+                android:text="OR" />
+
+            <Button
+                android:id="@+id/searchByHoursBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orText"
+                android:background="@android:color/transparent"
+                style="?android:attr/borderlessButtonStyle"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="@font/muli_light"
+                android:text="Search by working hours  >" />
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
