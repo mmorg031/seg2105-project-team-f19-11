@@ -9,7 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".dev3.completeClinicProfile"></activity>
+        <activity android:name=".dev3.RateClinic"></activity>
+        <activity android:name=".dev3.BookingAppmnt" />
+        <activity android:name=".dev3.ServiceListResults" />
+        <activity android:name=".dev3.DayTimeResults" />
+        <activity android:name=".dev3.SearchWorkingHours" />
+        <activity android:name=".dev3.completeClinicProfile" />
         <activity android:name=".dev3.EditWorkingHours" />
         <activity android:name=".dev3.ShowWorkingHours" />
         <activity android:name=".dev3.EditAboutClinic" />

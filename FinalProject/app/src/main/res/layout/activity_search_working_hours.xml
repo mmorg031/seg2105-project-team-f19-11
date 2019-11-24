@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dev3.SearchWorkingHours"
+    android:background="#add5e0">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#ffffff"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/backBtn"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:paddingLeft="20dp"
+            android:src="@drawable/arrow_back" />
+
+        <TextView
+            android:id="@+id/header"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="1"
+            android:fontFamily="@font/muli_semibold_italic"
+            android:gravity="center"
+            android:text="SEARCH WORKING HOURS"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/dayTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="80dp"
+        android:text="Choose day:"
+        android:textSize="20dp"
+        android:layout_marginLeft="20dp" />
+
+    <Spinner
+        android:id="@+id/chooseDay"
+        android:layout_below="@+id/dayTextView"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginTop="20dp"
+        android:textSize="25dp" />
+
+    <TextView
+        android:id="@+id/selectTimeText"
+        android:layout_below="@+id/chooseDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Select time:"
+        android:textSize="20dp"
+        android:layout_margin="20dp"
+        android:layout_marginTop="20dp"/>
+
+    <EditText
+        android:id="@+id/timeEntered"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:hint="Enter time (00:00)"
+        android:layout_below="@+id/chooseDay"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="130dp" />
+
+    <Button
+        android:id="@+id/searchBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SEARCH      >"
+        android:textSize="20dp"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
+        android:layout_marginTop="375dp"
+        android:layout_marginLeft="40dp"
+        android:background="#f0f0f0"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/selectTimeText"
+        android:fontFamily="@font/muli_semibold_italic"/>
+
+</RelativeLayout>

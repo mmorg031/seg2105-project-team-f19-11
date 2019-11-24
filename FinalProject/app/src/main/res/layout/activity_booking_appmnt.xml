@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".dev3.BookingAppmnt"
+    android:background="#add5e0">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/mainLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:background="#add5e0">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:background="#ffffff"
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:background="#ffffff"
+                    android:paddingLeft="20dp"
+                    android:src="@drawable/arrow_back" />
+
+                <TextView
+                    android:id="@+id/header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="0dp"
+                    android:layout_weight="1"
+                    android:fontFamily="@font/muli_semibold_italic"
+                    android:gravity="center"
+                    android:text="CLINIC INFO.       "
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bookClinicName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="<CLINIC NAME>"
+                android:layout_marginTop="20dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/bookClinicAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="<CLINIC ADDRESS>"
+                android:layout_below="@+id/bookClinicName"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp"/>
+
+            <TextView
+                android:id="@+id/bookServicesOffered"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Services offered:"
+                android:layout_below="@+id/bookClinicAddress"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp"/>
+
+            <ListView
+                android:id="@+id/bookServicesOfferedList"
+                android:layout_width="wrap_content"
+                android:layout_height="510dp"
+                android:layout_below="@id/bookServicesOffered"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="45dp" />
+
+            <TextView
+                android:id="@+id/currentClinicRatingText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Current rating:"
+                android:layout_below="@+id/bookClinicAddress"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="20dp"
+                android:textSize="20dp"/>
+
+            <RatingBar
+                android:id="@+id/currentClinicRating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/currentClinicRatingText"
+                android:layout_marginLeft="45dp"
+                android:layout_marginTop="30dp"/>
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BOOK AN APPOINTMENT"
+                android:textSize="20dp"
+                android:paddingHorizontal="40dp"
+                android:paddingVertical="10dp"
+                android:layout_below="@+id/currentClinicRating"
+                android:layout_marginTop="70dp"
+                android:layout_marginLeft="40dp"
+                android:background="#f0f0f0"
+                android:fontFamily="@font/muli_semibold_italic"
+                />
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>
