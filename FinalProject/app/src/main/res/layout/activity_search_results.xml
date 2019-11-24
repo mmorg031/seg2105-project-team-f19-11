@@ -75,7 +75,7 @@
         android:layout_below="@+id/clinicNamesText"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="120dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"/>
 
@@ -97,7 +97,7 @@
         android:layout_below="@+id/addressesText"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="120dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp">
 
@@ -121,7 +121,7 @@
         android:layout_below="@+id/servicesText"
         android:layout_marginTop="5dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="120dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"/>
 
