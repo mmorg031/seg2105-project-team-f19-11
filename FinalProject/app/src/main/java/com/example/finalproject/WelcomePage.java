@@ -91,6 +91,10 @@ public class WelcomePage extends AppCompatActivity {
             Intent intent = new Intent(this, ClinicAbout.class);
             startActivity(intent);
         }
+        else if(login.equals("Patient")){
+            Intent intent = new Intent(this, FindClinic.class);
+            startActivity(intent);
+        }
     }
 
 }

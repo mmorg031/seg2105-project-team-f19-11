@@ -18,6 +18,8 @@ public class WalkInClinic {
     private Map<String,Boolean> insurances;
     private Map<String,Role> services;
     private Map<String,WorkingHours> workingHours;
+    private int numRated;
+    private int sumRated;
 
     //public WalkInClinic(){}
 
@@ -58,6 +60,9 @@ public class WalkInClinic {
         workingHours.put("Friday", new WorkingHours("8","16",true));
         workingHours.put("Saturday", new WorkingHours("8","16",true));
 
+        numRated = 0;
+        sumRated = 0;
+
     }
 
     public String getName(){
@@ -78,6 +83,10 @@ public class WalkInClinic {
     public void setServices(Map<String,Role> services){this.services=services;}
     public Map<String,WorkingHours> getWorkingHours(){return workingHours;}
     public void setWorkingHours(Map<String,WorkingHours> workingHours){this.workingHours=workingHours;}
+    public int getNumRated(){return numRated;}
+    public void setNumRated(int numRated){this.numRated= numRated;}
+    public int getSumRated(){return sumRated;}
+    public void setSumRated(int sumRated){this.sumRated= sumRated;}
 
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
@@ -91,9 +100,16 @@ public class WalkInClinic {
        result.put("insurances", insurances);
        result.put("services", services);
        result.put("workingHours", workingHours);
+       result.put("numRated",numRated);
+       result.put("sumRated",sumRated);
        return result;
     }
 
-
+    public boolean isWithinWorkingHours(String day, String time){
+        WorkingHours times = workingHours.get(day);
+        if(times.getClosed())
+            return false;
+        return times.inRange(time);
+    }
 
 }

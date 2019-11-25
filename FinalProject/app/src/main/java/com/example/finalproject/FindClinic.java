@@ -27,10 +27,23 @@ public class FindClinic extends AppCompatActivity {
                 openactivity_searchWorkingHours();
             }
         });
+
+        searchBar = findViewById(R.id.searchBar);
+        searchBar.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openactivity_search();
+            }
+        });
     }
 
     public void openactivity_searchWorkingHours(){
         Intent intent = new Intent(this, SearchWorkingHours.class);
+        startActivity(intent);
+    }
+
+    public void openactivity_search(){
+        Intent intent = new Intent(this, searchResults.class );
         startActivity(intent);
     }
 }

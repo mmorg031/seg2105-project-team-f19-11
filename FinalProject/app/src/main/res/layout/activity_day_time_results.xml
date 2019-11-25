@@ -41,7 +41,7 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:layout_marginTop="80dp"
-        android:text="For <DAY> and <TIME>:"
+        android:text="For day and time:"
         android:textSize="20dp" />
 
     <ListView

@@ -41,6 +41,33 @@ public class WorkingHours {
         this.closed=closed;
     }
 
+    public boolean inRange(String time){
+        try {
+            LocalTime timeP = LocalTime.parse(time);
+            LocalTime from = LocalTime.parse(startTime);
+            LocalTime to = LocalTime.parse(endTime);
+
+            if(from.isBefore(timeP) && timeP.isBefore(to)) {
+                return true;
+            }
+            else
+                return false;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+
+    public static boolean isCorrectTime(String time){
+        try {
+            LocalTime timeP = LocalTime.parse(time);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
+    }
+
     public static boolean isCorrectTimeInput(String start, String end){
         boolean startCorrect=false;
         boolean endCorrect=false;

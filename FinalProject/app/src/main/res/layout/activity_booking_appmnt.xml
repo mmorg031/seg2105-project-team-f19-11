@@ -51,7 +51,7 @@
                 android:id="@+id/bookClinicName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="<CLINIC NAME>"
+                android:text="ClinicName"
                 android:layout_marginTop="20dp"
                 android:layout_marginLeft="20dp"
                 android:textSize="20dp"/>
@@ -60,7 +60,7 @@
                 android:id="@+id/bookClinicAddress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="<CLINIC ADDRESS>"
+                android:text="clinic address"
                 android:layout_below="@+id/bookClinicName"
                 android:layout_marginTop="10dp"
                 android:layout_marginLeft="20dp"
@@ -98,6 +98,8 @@
                 android:id="@+id/currentClinicRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:numStars="5"
+                android:stepSize="0.5"
                 android:layout_below="@+id/currentClinicRatingText"
                 android:layout_marginLeft="45dp"
                 android:layout_marginTop="30dp"/>
