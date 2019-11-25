@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.dev4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,10 +6,10 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.SearchView;
+import android.widget.Toast;
 
-import com.example.finalproject.dev3.SearchWorkingHours;
+import com.example.finalproject.R;
 
 public class FindClinic extends AppCompatActivity {
     private SearchView searchBar; //the search bar where user searches clinic/address/service
@@ -43,7 +43,15 @@ public class FindClinic extends AppCompatActivity {
     }
 
     public void openactivity_search(){
-        Intent intent = new Intent(this, searchResults.class );
-        startActivity(intent);
+        String partialKeyword = searchBar.toString();
+
+        if(!partialKeyword.isEmpty()){
+            Intent intent = new Intent(this, searchResults.class );
+            intent.putExtra("keyword", partialKeyword);
+            startActivity(intent);
+        }
+        else{
+            Toast.makeText(FindClinic.this, "Please enter a partial keyword to search for clinic by name, address, or service offered", Toast.LENGTH_SHORT).show();
+        }
     }
 }

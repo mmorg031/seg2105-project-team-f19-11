@@ -1,4 +1,4 @@
-package com.example.finalproject;
+package com.example.finalproject.dev4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,7 +10,7 @@ import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.TimePicker;
 
-import com.example.finalproject.dev3.BookingAppmnt;
+import com.example.finalproject.R;
 
 public class BookAppointmentDay extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.finalproject.dev3;
+package com.example.finalproject.dev4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -12,9 +12,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.example.finalproject.FindClinic;
 import com.example.finalproject.R;
-import com.example.finalproject.activity_sign_in;
 
 import static com.example.model.WorkingHours.isCorrectTime;
 

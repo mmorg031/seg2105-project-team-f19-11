@@ -1,4 +1,4 @@
-package com.example.finalproject.dev3;
+package com.example.finalproject.dev4;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,11 +8,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.finalproject.EmployeeList;
 import com.example.finalproject.R;
 import com.example.model.Employee;
 import com.example.model.WalkInClinic;
@@ -22,38 +21,34 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class DayTimeResults extends AppCompatActivity {
-    private ImageButton backButton;
-    private ListView results;
-    private ArrayList<HashMap<String,String>> clinicResult= new ArrayList<HashMap<String, String>>();
-    private TextView forWhat;
-    private String time;
-    private String day;
+public class searchResults extends AppCompatActivity {
+
+    private ImageButton backButton; //goes back to Find Clinic page
+    private SearchView searchBar; //search by clinic, address, or services again
+    private TextView header; // top of page says "Search Results For <INPUT>:"
+    private ListView clinicNames; //list of clinic name results
+    private ListView addresses; //list of addresses results
+    private ListView services; //list of services results
+    private String keyword;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_day_time_results);
+        setContentView(R.layout.activity_search_results);
 
+        Intent intent = getIntent();
+        keyword = intent.getStringExtra("keyword");
         backButton = (ImageButton) findViewById(R.id.backBtn) ;
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openactivity_searchWorkingHours();
+                openactivity_goToFindClinicPage();
             }
         });
 
-        results = findViewById(R.id.clinicListTimes);
-
-        Intent intent = getIntent();
-        day = intent.getStringExtra("day");
-        time = intent.getStringExtra("time");
-        forWhat = findViewById(R.id.serviceListText);
-        forWhat.setText("For "+day+" at "+time);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
         ref.addValueEventListener(
@@ -102,24 +97,11 @@ public class DayTimeResults extends AppCompatActivity {
 
             }
         });
-
     }
 
-    public void openactivity_searchWorkingHours(){
-        Intent intent = new Intent(this, SearchWorkingHours.class);
+
+    public void openactivity_goToFindClinicPage(){
+        Intent intent = new Intent(this, FindClinic.class);
         startActivity(intent);
     }
-
-    public void openactivity_rating(String name, String address){
-        if(!name.isEmpty() && !address.isEmpty()){
-            Intent intent = new Intent(this, BookingAppmnt.class);
-            intent.putExtra("name",name);
-            intent.putExtra("address",address);
-            startActivity(intent);
-        }
-        else{
-            Toast.makeText(DayTimeResults.this, "Please select a valid clinic name and address", Toast.LENGTH_SHORT).show();
-        }
-    }
-
 }
