@@ -113,7 +113,7 @@
                 android:paddingHorizontal="40dp"
                 android:paddingVertical="10dp"
                 android:layout_below="@+id/currentClinicRating"
-                android:layout_marginTop="70dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginLeft="40dp"
                 android:background="#f0f0f0"
                 android:fontFamily="@font/muli_semibold_italic"
