@@ -43,25 +43,26 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Choose your preferred date and time:" />
+            android:text="Choose a date within the next month:"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="15dp"
+            android:textSize="17sp"/>
 
         <CalendarView
             android:id="@+id/calendarView"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TimePicker
-            android:id="@+id/timePicker"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:timePickerMode="spinner"/>
+            android:layout_marginTop="50dp"/>
 
         <Button
             android:id="@+id/bookBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Book Appointment   >"
-            android:layout_marginLeft="100dp"/>
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="30dp"
+            android:background="#add5e0"
+            android:padding="14dp"/>
 
     </LinearLayout>
 

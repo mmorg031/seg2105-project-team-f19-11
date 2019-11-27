@@ -43,9 +43,9 @@
             android:fontFamily="@font/muli_light"
             android:layout_below="@+id/bookedForText"
             android:layout_centerHorizontal="true"
-            android:textSize="35sp"
+            android:textSize="40sp"
             android:layout_marginTop="80dp"
-            android:text="Wednesday @ 11:30" />
+            android:text="Wednesday" />
 
         <TextView
             android:id="@+id/waitTimeText"
@@ -55,7 +55,7 @@
             android:layout_below="@+id/dateTimeText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:textSize="18dp"
+            android:textSize="30dp"
             android:text="Expected wait: 00:45" />
 
         <Button

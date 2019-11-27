@@ -17,7 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="#add5e0">
+            android:background="#add5e0"
+            >
 
             <LinearLayout
                 android:id="@+id/linearLayout"
@@ -113,10 +114,11 @@
                 android:paddingHorizontal="40dp"
                 android:paddingVertical="10dp"
                 android:layout_below="@+id/currentClinicRating"
-                android:layout_marginTop="50dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginLeft="40dp"
                 android:background="#f0f0f0"
                 android:fontFamily="@font/muli_semibold_italic"
+                android:layout_marginBottom="40dp"
                 />
 
         </LinearLayout>
