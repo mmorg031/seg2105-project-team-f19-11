@@ -37,25 +37,25 @@
             android:text="Booked For:" />
 
         <TextView
-            android:id="@+id/dateTimeText"
+            android:id="@+id/dateText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/muli_light"
             android:layout_below="@+id/bookedForText"
             android:layout_centerHorizontal="true"
-            android:textSize="40sp"
             android:layout_marginTop="80dp"
-            android:text="Wednesday" />
+            android:fontFamily="@font/muli_light"
+            android:hint="DATE"
+            android:textSize="40sp" />
 
         <TextView
             android:id="@+id/waitTimeText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/muli_light"
-            android:layout_below="@+id/dateTimeText"
+            android:layout_below="@+id/dateText"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
-            android:textSize="30dp"
+            android:textSize="30sp"
             android:text="Expected wait: 00:45" />
 
         <Button
@@ -64,7 +64,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/waitTimeText"
             android:layout_marginTop="180dp"
-            android:textSize="15dp"
+            android:textSize="15sp"
             android:background="@android:color/transparent"
             style="?android:attr/borderlessButtonStyle"
             android:layout_centerHorizontal="true"

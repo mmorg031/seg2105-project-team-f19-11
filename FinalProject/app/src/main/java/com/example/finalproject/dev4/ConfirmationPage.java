@@ -10,20 +10,23 @@ import android.widget.TextView;
 
 import com.example.finalproject.R;
 
+import org.w3c.dom.Text;
+
 public class ConfirmationPage extends AppCompatActivity {
 
     private Button goToRateClinicButton;
     private TextView dayOfAppointment; //shows day of the booked appointment
-    private TextView timeOfAppointment; //shows time of the booked appointment
     private TextView waitingTime; //shows waiting time of the booked appointment
-    //best way to implement wait time is to just see how many people have an appointment booked
-    //BEFORE this user on that day, then just multiply it by 15min and show result
-    //(assuming each client has a 15min session based on the description on rubric)
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_confirmation_page);
+
+        dayOfAppointment = (TextView) findViewById(R.id.dateText);
+        Intent incomingIntent = getIntent();
+        String date = incomingIntent.getStringExtra("date");
+        dayOfAppointment.setText(date);
 
         goToRateClinicButton = findViewById(R.id.rateTheClinicBtn);
         goToRateClinicButton.setOnClickListener(new View.OnClickListener() {
