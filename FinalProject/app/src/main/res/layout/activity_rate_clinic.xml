@@ -52,6 +52,26 @@
         android:layout_marginLeft="45dp"
         android:layout_marginTop="30dp"/>
 
+    <TextView
+        android:id="@+id/prompt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Any Comments?"
+        android:layout_below="@+id/newRatingEntry"
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"/>
+
+    <EditText
+        android:id="@+id/comments"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint = "Leave your comments here"
+        android:layout_below="@+id/prompt"
+        android:layout_marginTop="25dp"
+        android:layout_marginLeft="20dp"
+        android:textSize="20dp"/>
+
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"

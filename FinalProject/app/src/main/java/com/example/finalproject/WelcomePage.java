@@ -109,6 +109,7 @@ public class WelcomePage extends AppCompatActivity {
 
     public void openactivity_goToSignIn(){
         Intent intent = new Intent(WelcomePage.this, activity_sign_in.class);
+        mFirebaseAuth.getInstance().signOut();
         startActivity(intent);
     }
 

@@ -6,7 +6,9 @@ import com.example.finalproject.activity_sign_in;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -20,6 +22,7 @@ public class WalkInClinic {
     private Map<String,WorkingHours> workingHours;
     private int numRated;
     private int sumRated;
+    private Map<String, Integer> reviews;
 
     //public WalkInClinic(){}
 
@@ -60,8 +63,10 @@ public class WalkInClinic {
         workingHours.put("Friday", new WorkingHours("8","16",true));
         workingHours.put("Saturday", new WorkingHours("8","16",true));
 
-        numRated = 0;
-        sumRated = 0;
+        numRated = 5;
+        sumRated = 25;
+        this.reviews = new HashMap<String,Integer>();
+        reviews.put("None",0);
 
     }
 
@@ -87,6 +92,10 @@ public class WalkInClinic {
     public void setNumRated(int numRated){this.numRated= numRated;}
     public int getSumRated(){return sumRated;}
     public void setSumRated(int sumRated){this.sumRated= sumRated;}
+    public Map<String,Integer> getReviews(){return reviews; }
+    public void setReviews(Map<String, Integer> reviews) {
+        this.reviews = reviews;
+    }
 
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
@@ -102,6 +111,7 @@ public class WalkInClinic {
        result.put("workingHours", workingHours);
        result.put("numRated",numRated);
        result.put("sumRated",sumRated);
+       result.put("reviews",reviews);
        return result;
     }
 
@@ -112,4 +122,14 @@ public class WalkInClinic {
         return times.inRange(time);
     }
 
+    public List<String> hasService(String keyword) {
+        ArrayList<String> matchingNames = new ArrayList<String>();
+        for(Map.Entry<String, Role> entry : services.entrySet()){
+            String name = entry.getKey();
+            if(name.contains(keyword)){
+                matchingNames.add(name);
+            }
+        }
+        return matchingNames;
+    }
 }

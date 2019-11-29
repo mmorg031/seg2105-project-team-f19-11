@@ -32,6 +32,7 @@ public class DayTimeResults extends AppCompatActivity {
     private TextView forWhat;
     private String time;
     private String day;
+    private boolean hasClinics=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,13 +66,14 @@ public class DayTimeResults extends AppCompatActivity {
                                 Employee user = ds.getValue(Employee.class);
                                 WalkInClinic clinic = user.getClinic();
 
-                                if(clinic.isWithinWorkingHours(day,time)){
+                                if(clinic.isWithinWorkingHours(day,time) & !clinic.getWorkingHours().get(day).getClosed()){
                                     String name = clinic.getName();
                                     String address = clinic.getLocation();
                                     HashMap<String, String> datum = new HashMap<String, String>();
                                     datum.put("Name", name);
                                     datum.put("Address", address);
                                     clinicResult.add(datum);
+                                    hasClinics=true;
                                 }
                             }
                         }
@@ -101,6 +103,8 @@ public class DayTimeResults extends AppCompatActivity {
 
             }
         });
+
+        forWhat.setText("For "+day+" at "+time+", No Results :(");
 
     }
 

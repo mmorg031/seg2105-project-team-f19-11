@@ -28,11 +28,19 @@ public class FindClinic extends AppCompatActivity {
             }
         });
 
-        searchBar = findViewById(R.id.searchBar);
-        searchBar.setOnSearchClickListener(new View.OnClickListener() {
+        searchBar = (SearchView) findViewById(R.id.searchBar);
+        searchBar.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
             @Override
-            public void onClick(View v) {
-                openactivity_search();
+            public boolean onQueryTextChange(String newText) {
+                // your text view here
+                //searchBar.setT;
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                openactivity_search(query);
+                return true;
             }
         });
     }
@@ -42,8 +50,8 @@ public class FindClinic extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openactivity_search(){
-        String partialKeyword = searchBar.toString();
+    public void openactivity_search(String partialKeyword){
+//        String partialKeyword = searchBar.toString();
 
         if(!partialKeyword.isEmpty()){
             Intent intent = new Intent(this, searchResults.class );

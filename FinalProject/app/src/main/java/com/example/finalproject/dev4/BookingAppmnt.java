@@ -11,6 +11,7 @@ import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.finalproject.R;
 import com.example.model.Employee;
@@ -25,6 +26,8 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+
+import static android.widget.Toast.makeText;
 
 public class BookingAppmnt extends AppCompatActivity {
     private ImageButton backButton;
@@ -86,6 +89,7 @@ public class BookingAppmnt extends AppCompatActivity {
                                         datum.put("Role", entry.getValue().toString());
                                         serviceOffered.add(datum);
                                     }
+                                    clinicRating.setIsIndicator(true);
                                     clinicRating.setRating((float)clinic.getSumRated()/clinic.getNumRated());
                                     break;
                                     //return;
