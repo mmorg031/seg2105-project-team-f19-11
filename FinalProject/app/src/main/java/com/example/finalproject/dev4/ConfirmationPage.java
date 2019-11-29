@@ -28,7 +28,7 @@ public class ConfirmationPage extends AppCompatActivity {
         String date = incomingIntent.getStringExtra("date");
         dayOfAppointment.setText(date);
 
-        goToRateClinicButton = findViewById(R.id.rateTheClinicBtn);
+        goToRateClinicButton = (Button) findViewById(R.id.rateTheClinicBtn);
         goToRateClinicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -23,6 +23,7 @@ public class WelcomePage extends AppCompatActivity {
     private TextView logInAs;
     private Button buttonContinue;
     private String login="Admin";
+    private Button logOutButton;
     private FirebaseAuth mFirebaseAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +79,15 @@ public class WelcomePage extends AppCompatActivity {
 
         }
 
+        //user can log out, which will bring them to sign in page
+        logOutButton = (Button) findViewById(R.id.logOutBtn);
+        logOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openactivity_goToSignIn();
+            }
+        });
+
 
     }
 
@@ -96,5 +106,11 @@ public class WelcomePage extends AppCompatActivity {
             startActivity(intent);
         }
     }
+
+    public void openactivity_goToSignIn(){
+        Intent intent = new Intent(WelcomePage.this, activity_sign_in.class);
+        startActivity(intent);
+    }
+
 
 }

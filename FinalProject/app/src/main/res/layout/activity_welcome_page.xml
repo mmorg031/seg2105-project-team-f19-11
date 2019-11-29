@@ -21,7 +21,7 @@
             android:fontFamily="@font/muli_light"
             android:fontWeight="400"
             android:gravity="center"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="0dp"
             android:lineSpacingExtra="8sp"
             android:text="Welcome, Olivia!"
             android:layout_marginStart="8dp"
@@ -48,8 +48,25 @@
             android:fontFamily="@font/muli_light"
             android:background="@android:color/transparent"
             style="?android:attr/borderlessButtonStyle"
-            android:layout_marginTop="150dp"
+            android:textSize="25sp"
+            android:layout_marginTop="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginLeft="20dp"/>
+
+        <Button
+            android:id="@+id/logOutBtn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:background="#add5e0"
+            android:fontFamily="@font/muli_light"
+            android:text="Log Out"
+            android:textAllCaps="false"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:padding="5dp"/>
+
+
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

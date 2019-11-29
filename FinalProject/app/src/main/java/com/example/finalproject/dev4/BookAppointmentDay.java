@@ -18,7 +18,6 @@ import java.util.Calendar;
 public class BookAppointmentDay extends AppCompatActivity {
 
     private ImageButton backButton; //opens the clinic info page (bookingappmnt)
-    private Button bookAppointmentButton;//SAVES APPOINTMENT INFO, & goes to confirmed booking page
     private CalendarView chooseDay; //chooses day on a calendar widget
     final static private String TAG = "CalendarActivity";
 
@@ -46,13 +45,6 @@ public class BookAppointmentDay extends AppCompatActivity {
             }
         });
 
-        bookAppointmentButton = (Button) findViewById(R.id.bookBtn);
-        bookAppointmentButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                openactivity_bookTheAppointment();
-            }
-        });
 
         backButton = (ImageButton) findViewById(R.id.backBtn) ;
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +61,4 @@ public class BookAppointmentDay extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openactivity_bookTheAppointment(){
-
-    }
 }
