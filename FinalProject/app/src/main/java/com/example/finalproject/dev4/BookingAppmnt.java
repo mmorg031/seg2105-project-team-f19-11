@@ -120,6 +120,8 @@ public class BookingAppmnt extends AppCompatActivity {
 
     public void openactivity_bookApointment(){
         Intent intent = new Intent(this, BookAppointmentDay.class);
+        intent.putExtra("name",name);
+        intent.putExtra("address",address);
         startActivity(intent);
     }
 }

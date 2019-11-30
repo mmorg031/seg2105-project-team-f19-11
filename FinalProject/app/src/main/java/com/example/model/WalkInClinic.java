@@ -6,7 +6,11 @@ import com.example.finalproject.activity_sign_in;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.time.Duration;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +27,7 @@ public class WalkInClinic {
     private int numRated;
     private int sumRated;
     private Map<String, Integer> reviews;
+    private Map<String, String> appointments;  //string is time appt booked, Patiet = email of Patient or maybe patient obj idk yet
 
     //public WalkInClinic(){}
 
@@ -68,6 +73,9 @@ public class WalkInClinic {
         this.reviews = new HashMap<String,Integer>();
         reviews.put("None",0);
 
+        //this.appointments = new HashMap<String,String>();
+        //appointments.put("None", "None");
+
     }
 
     public String getName(){
@@ -96,6 +104,8 @@ public class WalkInClinic {
     public void setReviews(Map<String, Integer> reviews) {
         this.reviews = reviews;
     }
+    public Map<String,String> getAppointments(){return appointments;}
+    public void setAppointments(Map<String,String> appointments){this.appointments=appointments;}
 
     public Map<String, Object> toMap(){
         HashMap<String, Object> result = new HashMap<>();
@@ -112,6 +122,7 @@ public class WalkInClinic {
        result.put("numRated",numRated);
        result.put("sumRated",sumRated);
        result.put("reviews",reviews);
+       result.put("appointments", appointments);
        return result;
     }
 
@@ -131,5 +142,55 @@ public class WalkInClinic {
             }
         }
         return matchingNames;
+    }
+
+
+    public Map<String,String> updateAppointments(String apptDate, String day, String uid){
+        //so we get the date: dd/mm/yyyy and we want to return the wait time
+        // in the form 00:00
+        // but we also want to store the date with the time that they would do their appointment next
+        //and each would be 15 + min interval but have to make sure appt is on day & time correctly like
+        // within the time its open / closed
+        Map<String,String> results = new HashMap<String,String>();
+
+        try{
+            LocalTime nowTime = LocalTime.now();
+            LocalDate nowDate = LocalDate.now();
+            LocalDate theAppt = LocalDate.parse(apptDate);
+
+            int NumApptOnDaySelected = 0;
+            //remove all apointments that already happened
+            for (Map.Entry<String, String> entry : appointments.entrySet()) {
+                String anAppt = entry.getKey();
+                //String uid = entry.getValue();
+                String[] anApptParts = anAppt.split("#");
+                LocalDate anApptDate = LocalDate.parse(anApptParts[0]);
+                LocalTime anApptTime = LocalTime.parse(anApptParts[1]);
+
+                if(nowDate.isAfter(anApptDate)){
+                    appointments.remove(anAppt);
+                }
+                else if(theAppt.isEqual(anApptDate)){
+                    NumApptOnDaySelected+=1;
+                }
+            }
+
+
+            LocalTime apptTime = LocalTime.parse(workingHours.get(day).getStartTime()).plusMinutes( 15* NumApptOnDaySelected);
+            String appt = apptDate+ "#" + apptTime.toString();
+            results.put("appt",appt);
+            //Technically we should put some check to make sure were not making appts
+            // after close time, but how tf you gonna make like 60 appts u feel
+            appointments.put(appt, uid);
+            if(nowDate.isEqual(theAppt))
+                results.put("waitTime", Duration.between(nowTime, apptTime).toString());
+            else
+                results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15*NumApptOnDaySelected).toString());
+            //return Duration.between(opening + appttime)
+        }
+        catch (Exception e){
+            System.err.println("Error");
+        }
+        return results;
     }
 }

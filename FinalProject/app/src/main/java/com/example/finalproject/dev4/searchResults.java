@@ -92,7 +92,7 @@ public class searchResults extends AppCompatActivity {
 
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-        ref.addValueEventListener(
+        ref.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {

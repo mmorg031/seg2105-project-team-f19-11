@@ -29,18 +29,30 @@ public class ConfirmationPage extends AppCompatActivity {
         dayOfAppointment.setText(date);
 
         goToRateClinicButton = (Button) findViewById(R.id.rateTheClinicBtn);
+        //goToRateClinicButton.setVisibility(View.INVISIBLE);
         goToRateClinicButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                openactivity_rateTheClinic();
+                //openactivity_rateTheClinic();
+                openactivity_FindClinic();
             }
         });
+
+        waitingTime = findViewById(R.id.waitTimeText);
+        String waitTime = incomingIntent.getStringExtra("waitTime");
+        waitingTime.setText("Expected Wait: "+waitTime);
+
 
     }
 
 
     public void openactivity_rateTheClinic(){
         Intent intent = new Intent(this, RateClinic.class);
+        startActivity(intent);
+    }
+
+    public void openactivity_FindClinic(){
+        Intent intent = new Intent(this, FindClinic.class);
         startActivity(intent);
     }
 }

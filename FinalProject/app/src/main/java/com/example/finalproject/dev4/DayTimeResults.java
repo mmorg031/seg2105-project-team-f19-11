@@ -84,6 +84,10 @@ public class DayTimeResults extends AppCompatActivity {
                                 new String[]{"Name", "Address"}, new int[]{android.R.id.text1, android.R.id.text2});
                         results.setAdapter(adapter);
 
+                        if(!hasClinics)
+                            forWhat.setText("For "+day+" at "+time+", No Results :(");
+                        else
+                            forWhat.setText("For "+day+" at "+time+": ");
                     }
 
                     @Override
@@ -104,7 +108,7 @@ public class DayTimeResults extends AppCompatActivity {
             }
         });
 
-        forWhat.setText("For "+day+" at "+time+", No Results :(");
+
 
     }
 
