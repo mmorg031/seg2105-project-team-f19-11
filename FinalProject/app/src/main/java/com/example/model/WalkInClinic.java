@@ -9,6 +9,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -73,7 +74,7 @@ public class WalkInClinic {
         this.reviews = new HashMap<String,Integer>();
         reviews.put("None",0);
 
-        //this.appointments = new HashMap<String,String>();
+        this.appointments = new HashMap<String,String>();
         //appointments.put("None", "None");
 
     }
@@ -152,45 +153,84 @@ public class WalkInClinic {
         //and each would be 15 + min interval but have to make sure appt is on day & time correctly like
         // within the time its open / closed
         Map<String,String> results = new HashMap<String,String>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
         try{
             LocalTime nowTime = LocalTime.now();
+            System.err.println("now");
             LocalDate nowDate = LocalDate.now();
-            LocalDate theAppt = LocalDate.parse(apptDate);
+            System.err.println("datenow");
+            LocalDate theAppt = LocalDate.parse(apptDate,formatter);
+            System.err.println("appt");
+            System.err.println(nowTime.toString());
+            System.err.println(nowDate.toString());
+            System.err.println(theAppt.toString());
 
             int NumApptOnDaySelected = 0;
             //remove all apointments that already happened
-            for (Map.Entry<String, String> entry : appointments.entrySet()) {
-                String anAppt = entry.getKey();
-                //String uid = entry.getValue();
-                String[] anApptParts = anAppt.split("#");
-                LocalDate anApptDate = LocalDate.parse(anApptParts[0]);
-                LocalTime anApptTime = LocalTime.parse(anApptParts[1]);
+            LocalTime lastApptToday= null;
 
-                if(nowDate.isAfter(anApptDate)){
-                    appointments.remove(anAppt);
-                }
-                else if(theAppt.isEqual(anApptDate)){
-                    NumApptOnDaySelected+=1;
+            if(appointments.size()>0) {
+                for (Map.Entry<String, String> entry : appointments.entrySet()) {
+                    String anAppt = entry.getValue();
+                    if(!anAppt.equals("None")) {
+                        String[] anApptParts = anAppt.split("#");
+                        LocalDate anApptDate = LocalDate.parse(anApptParts[0],formatter);
+                        LocalTime anApptTime = LocalTime.parse(anApptParts[1]);
+
+                        if (nowDate.isAfter(anApptDate)) {
+                            appointments.remove(anAppt);
+                        } else if (theAppt.isEqual(anApptDate)) {
+                            if(nowTime.isAfter(anApptTime)){
+                                appointments.remove(entry.getKey());
+                            }
+                            else if(lastApptToday==null){
+                                lastApptToday= anApptTime;
+                                NumApptOnDaySelected += 1;
+                            }
+                            else if(lastApptToday.isBefore(anApptTime)){
+                                lastApptToday = anApptTime;
+                                NumApptOnDaySelected += 1;
+                            }
+
+                        }
+                    }
                 }
             }
 
 
-            LocalTime apptTime = LocalTime.parse(workingHours.get(day).getStartTime()).plusMinutes( 15* NumApptOnDaySelected);
-            String appt = apptDate+ "#" + apptTime.toString();
-            results.put("appt",appt);
+
             //Technically we should put some check to make sure were not making appts
             // after close time, but how tf you gonna make like 60 appts u feel
-            appointments.put(appt, uid);
-            if(nowDate.isEqual(theAppt))
-                results.put("waitTime", Duration.between(nowTime, apptTime).toString());
-            else
-                results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15*NumApptOnDaySelected).toString());
+            LocalTime apptTime;
+            if(nowDate.isEqual(theAppt)) {
+                if(lastApptToday==null) {
+                    apptTime = nowTime.plusMinutes(15 * NumApptOnDaySelected);
+                    results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15 * NumApptOnDaySelected).toString());
+                }
+                else{
+                    apptTime = lastApptToday.plusMinutes(15);
+                    results.put("waitTime", Long.toString(Duration.between(nowTime, apptTime).toMinutes()) );
+                    //results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15 * NumApptOnDaySelected).toString());
+                }
+                //results.put("waitTime", Duration.between(nowTime, apptTime).toString());
+            }
+            else {
+                apptTime = LocalTime.parse(workingHours.get(day).getStartTime()).plusMinutes( 15* NumApptOnDaySelected);
+                results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15 * NumApptOnDaySelected).toString());
+            }
+
+            String appt = apptDate+ "#" + apptTime.toString();
+            System.err.println("apptTime");
+            results.put("appt",appt);
+            appointments.put(uid, appt);
+            System.err.println(appt);
             //return Duration.between(opening + appttime)
         }
         catch (Exception e){
-            System.err.println("Error");
+            System.err.println("Error+ "+e.getMessage());
         }
+        System.err.println("returning");
         return results;
     }
 }

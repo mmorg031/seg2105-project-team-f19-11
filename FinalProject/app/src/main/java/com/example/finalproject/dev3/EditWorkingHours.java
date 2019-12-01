@@ -144,7 +144,7 @@ public class EditWorkingHours extends AppCompatActivity {
         String userID = mFirebaseAuth.getInstance().getCurrentUser().getUid();
         DatabaseReference db = FirebaseDatabase.getInstance().getReference("users/"+userID);
 
-        db.addValueEventListener(new ValueEventListener() {
+        db.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Employee user = dataSnapshot.getValue(Employee.class);

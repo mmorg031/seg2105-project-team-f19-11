@@ -77,7 +77,7 @@ public class RateClinic extends AppCompatActivity {
 
             //update Clinic appt info and Patients
             final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-            ref.addValueEventListener(
+            ref.addListenerForSingleValueEvent(
                     new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
@@ -94,7 +94,7 @@ public class RateClinic extends AppCompatActivity {
                                         clinic.setNumRated(clinic.getNumRated()+1);
                                         clinic.setSumRated(clinic.getSumRated()+Math.round(newRating));
                                         user.setClinic(clinic);
-                                        ref.setValue(user);
+                                        ref.child(ds.getKey()).setValue(user);
                                     }
                                 }
                             }

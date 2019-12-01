@@ -4,6 +4,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
@@ -56,13 +57,15 @@ public class Patient extends Person {
         //appointment time should have date and time!
         //get current time
         try{
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
             String[] anApptParts = appointmentTime.split("#");
-            LocalDate date = LocalDate.parse(anApptParts[0]);
+            LocalDate date = LocalDate.parse(anApptParts[0],formatter);
             LocalTime time = LocalTime.parse(anApptParts[1]);
 
             LocalTime nowTime = LocalTime.now();
             LocalDate nowDate = LocalDate.now();
-
+            System.err.println(lastRate);
+            System.err.println((nowDate.isEqual(date)&&( nowTime.isAfter(time)|| nowTime.equals(time)) ));
             if( ( (nowDate.isEqual(date)&&( nowTime.isAfter(time)|| nowTime.equals(time)) )  ||   nowDate.isAfter(date)     ) && lastRate){
                 lastRate =false;
                 return true;
@@ -73,6 +76,7 @@ public class Patient extends Person {
         }
         catch(Exception e){
             System.err.println("Patient IsitTimeToRate Error");
+            System.err.println(e.getMessage());
             return false;
         }
 

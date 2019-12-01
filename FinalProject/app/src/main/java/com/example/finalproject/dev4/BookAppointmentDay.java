@@ -53,67 +53,6 @@ public class BookAppointmentDay extends AppCompatActivity {
         clinicName = intent.getStringExtra("name");
         clinicAddress = intent.getStringExtra("address");
 
-        chooseDay = (CalendarView) findViewById(R.id.calendarView);
-        //chooseDay.setDate(Calendar.getInstance().getTimeInMillis(),false,true);
-        final Calendar calendar = Calendar.getInstance();
-        chooseDay.setMinDate(calendar.getTimeInMillis());
-
-        chooseDay.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
-            @Override
-            public void onSelectedDayChange(CalendarView calendarView, int i, int i2, int i3){
-                final String date = i3 + "/" + (i2+1) + "/" + i;
-                Apptdate=date;
-                Log.d(TAG, "onSelectedDayChange: dd/mm/yyyy: " + date);
-                final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                calendar.set(i,i2,i3);
-                final String dayOfWeek = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
-
-
-                //update Clinic appt info and Patients
-                final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-                ref.addValueEventListener(
-                        new ValueEventListener() {
-                            @Override
-                            public void onDataChange(DataSnapshot dataSnapshot) {
-                                for(DataSnapshot ds: dataSnapshot.getChildren()) {
-                                    String role = ds.child("role").getValue(String.class);
-                                    if(role.equals("Employee")) {
-                                        Employee user = ds.getValue(Employee.class);
-                                        WalkInClinic clinic = user.getClinic();
-
-                                        if(clinic.getName().equals(clinicName) && clinic.getLocation().equals(clinicAddress)){
-                                            if(!clinic.getWorkingHours().get(dayOfWeek).getClosed()) {
-                                                Map<String,String> apptResults = clinic.updateAppointments(date, dayOfWeek, uid);
-                                                waitTime = apptResults.get("waitTime");
-                                                ApptForPatient = apptResults.get("appt");
-                                                user.setClinic(clinic);
-                                                ref.setValue(user);
-                                                appointmentMade=true;
-                                            }
-                                            else{
-                                                return;
-                                            }
-                                        }
-                                    }
-                                }
-
-                            }
-
-                            @Override
-                            public void onCancelled(DatabaseError databaseError) {
-                                //handle databaseError
-
-                            }});
-                if(appointmentMade){
-                    openactivity_goToConfirmationPage();
-                }
-                else{
-                    Toast.makeText(BookAppointmentDay.this, "Cant schedule you for this day the clinic is closed!", Toast.LENGTH_SHORT).show();
-                }
-
-            }
-        });
-
         backButton = (ImageButton) findViewById(R.id.backBtn) ;
         backButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -122,6 +61,22 @@ public class BookAppointmentDay extends AppCompatActivity {
             }
         });
 
+
+        chooseDay = (CalendarView) findViewById(R.id.calendarView);
+        //chooseDay.setDate(Calendar.getInstance().getTimeInMillis(),false,true);
+        final Calendar calendar = Calendar.getInstance();
+        chooseDay.setMinDate(calendar.getTimeInMillis());
+
+        chooseDay.setOnDateChangeListener(new CalendarView.OnDateChangeListener(){
+            @Override
+            public void onSelectedDayChange(CalendarView calendarView, int i, int i2, int i3) {
+                final String date = i3 + "/" + (i2 + 1) + "/" + i;
+                Apptdate = date;
+                Log.d(TAG, "onSelectedDayChange: dd/mm/yyyy: " + date);
+                calendar.set(i, i2, i3);
+                String dayOfWeek = calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.getDefault());
+                openactivity_saveApptToClinic(dayOfWeek,date);
+            }});
 
     }
 
@@ -162,5 +117,65 @@ public class BookAppointmentDay extends AppCompatActivity {
         intent.putExtra("waitTime", waitTime);
         startActivity(intent);
     }
+
+
+
+    public void openactivity_saveApptToClinic(final String dayOfWeek, final String date){
+        //update Clinic appt info and Patients
+        final String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+        final DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        System.err.println("DAYBOOOK");
+                        System.err.println(dataSnapshot.getChildrenCount());
+                        for(DataSnapshot ds: dataSnapshot.getChildren()) {
+                            String role = ds.child("role").getValue(String.class);
+                            if(role.equals("Employee")) {
+                                Employee user = ds.getValue(Employee.class);
+                                WalkInClinic clinic = user.getClinic();
+
+                                if(clinic.getName().equals(clinicName) && clinic.getLocation().equals(clinicAddress)){
+                                    System.err.println(dayOfWeek);
+                                    System.err.println(clinic.getWorkingHours().get(dayOfWeek).getClosed());
+                                    System.err.println(clinic.getWorkingHours().get(dayOfWeek).getStartTime());
+                                    if(!clinic.getWorkingHours().get(dayOfWeek).getClosed()) {
+                                        System.err.println("Insideyo");
+                                        Map<String,String> apptResults = clinic.updateAppointments(date, dayOfWeek, uid);
+                                        waitTime = apptResults.get("waitTime");
+                                        ApptForPatient = apptResults.get("appt");
+                                        user.setClinic(clinic);
+                                        ref.child(ds.getKey()).setValue(user);
+                                        appointmentMade=true;
+                                    }
+                                    else{
+                                        return;
+                                    }
+                                }
+                            }
+                        }
+                        System.err.println("Done");
+                        System.err.println(dataSnapshot.getChildrenCount());
+
+                        if(appointmentMade){
+                            openactivity_goToConfirmationPage();
+                        }
+                        else{
+                            Toast.makeText(BookAppointmentDay.this, "Cant schedule you for this day the clinic is closed!", Toast.LENGTH_SHORT).show();
+                        }
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+
+                    }});
+    }
+
+
+
+
 
 }

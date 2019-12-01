@@ -54,13 +54,13 @@ public class WelcomePage extends AppCompatActivity {
                 });
 
         final String userID = mFirebaseAuth.getInstance().getCurrentUser().getUid();
-        DatabaseReference db = FirebaseDatabase.getInstance().getReference("users/"+userID);
+        final DatabaseReference db = FirebaseDatabase.getInstance().getReference("users/"+userID);
 
         Bundle extras = getIntent().getExtras();
         if (extras == null) {
             //The key argument here must match that used in the other activity
 
-            db.addValueEventListener(new ValueEventListener() {
+            db.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override
                 public void onDataChange(DataSnapshot dataSnapshot) {
                     for(DataSnapshot snapShot : dataSnapshot.getChildren()) {
@@ -80,6 +80,7 @@ public class WelcomePage extends AppCompatActivity {
                                 hasToRateClinic=true;
                                 clinicName = patient.getLastClinicName();
                                 clinicAddress= patient.getLastClinicAddress();
+                                db.setValue(user);
 
                             }
                         }
@@ -124,6 +125,8 @@ public class WelcomePage extends AppCompatActivity {
             startActivity(intent);
         }
         else if(login.equals("Patient")){
+            System.err.println("Has to Rate");
+            System.err.println(hasToRateClinic);
             if(hasToRateClinic){
                 Intent intent = new Intent(this, RateClinic.class);
                 intent.putExtra("clinicName",clinicName);

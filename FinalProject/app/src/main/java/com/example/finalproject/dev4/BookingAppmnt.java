@@ -15,14 +15,18 @@ import android.widget.Toast;
 
 import com.example.finalproject.R;
 import com.example.model.Employee;
+import com.example.model.Patient;
 import com.example.model.Role;
 import com.example.model.WalkInClinic;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -72,10 +76,11 @@ public class BookingAppmnt extends AppCompatActivity {
         clinicAddress.setText(address);
 
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users");
-        ref.addValueEventListener(
+        ref.addListenerForSingleValueEvent(
                 new ValueEventListener() {
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
+                        System.err.println(dataSnapshot.getChildrenCount());
                         for(DataSnapshot ds: dataSnapshot.getChildren()) {
                             String role = ds.child("role").getValue(String.class);
                             if(role.equals("Employee")) {
@@ -118,10 +123,49 @@ public class BookingAppmnt extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void openactivity_bookApointment(){
+    public void openactivity_goToBookingDay(){
         Intent intent = new Intent(this, BookAppointmentDay.class);
-        intent.putExtra("name",name);
-        intent.putExtra("address",address);
+        intent.putExtra("name", name);
+        intent.putExtra("address", address);
         startActivity(intent);
+    }
+
+    public void openactivity_goToRate(){
+        Intent intent = new Intent(this, RateClinic.class);
+        intent.putExtra("clinicName", name);
+        intent.putExtra("clinicAddress",address);
+        startActivity(intent);
+    }
+
+    public void openactivity_bookApointment(){
+
+        String uid = FirebaseAuth.getInstance().getUid().toString();
+        DatabaseReference ref = FirebaseDatabase.getInstance().getReference().child("users").child(uid);
+        ref.addListenerForSingleValueEvent(
+                new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        Patient user = dataSnapshot.getValue(Patient.class);
+
+                        if(!user.getLastRate()){
+                            openactivity_goToBookingDay();
+                        }
+                        else{
+                            String[] anApptParts = user.getAppointmentTime().split("#");
+                            String date = anApptParts[0];
+                            String time =anApptParts[1];
+                            Toast.makeText(BookingAppmnt.this, "You already have an appointment on "+date+" at "+time+" , at Clinic: "+user.getLastClinicName()+"!", Toast.LENGTH_SHORT).show();
+                            if(user.isItTimeToRate()){
+                                openactivity_goToRate();
+                            }
+                        }
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+                        //handle databaseError
+
+                    }});
+
     }
 }
