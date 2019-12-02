@@ -36,7 +36,7 @@ tools:context=".ClinicList">
             android:layout_weight="1"
             android:fontFamily="@font/muli_semibold_italic"
             android:gravity="center"
-            android:paddingLeft="-200dp"
+            android:paddingLeft="-45dp"
             android:text="List of Clinics:"
             android:textSize="20sp" />
 

@@ -42,7 +42,7 @@
         android:layout_marginTop="140dp"
         android:text="Choose day:"
         android:textSize="20dp"
-        android:layout_marginLeft="20dp" />
+        android:layout_marginLeft="30dp" />
 
     <Spinner
         android:id="@+id/chooseDay"
@@ -60,8 +60,8 @@
         android:layout_height="wrap_content"
         android:text="Select time:"
         android:textSize="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="40dp"/>
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="70dp"/>
 
     <EditText
         android:id="@+id/timeEntered"
@@ -69,8 +69,8 @@
         android:layout_height="wrap_content"
         android:hint="Enter time (00:00)"
         android:layout_below="@+id/chooseDay"
-        android:layout_marginTop="30dp"
-        android:layout_marginLeft="130dp" />
+        android:layout_marginTop="60dp"
+        android:layout_marginLeft="145dp" />
 
     <Button
         android:id="@+id/searchBtn"
@@ -80,7 +80,7 @@
         android:textSize="20dp"
         android:paddingHorizontal="40dp"
         android:paddingVertical="10dp"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="150dp"
         android:layout_marginLeft="40dp"
         android:background="#f0f0f0"
         android:layout_centerHorizontal="true"

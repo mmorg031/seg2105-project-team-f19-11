@@ -65,7 +65,7 @@
             android:textAllCaps="false"
             android:minHeight="0dp"
             android:minWidth="0dp"
-            android:padding="5dp"/>
+            android:padding="8dp"/>
 
 
     </LinearLayout>

@@ -31,7 +31,7 @@
             android:layout_weight="1"
             android:fontFamily="@font/muli_semibold_italic"
             android:gravity="center"
-            android:paddingLeft="-150dp"
+            android:paddingLeft="-30dp"
             android:text="List of Employees"
             android:textSize="20sp" />
 
