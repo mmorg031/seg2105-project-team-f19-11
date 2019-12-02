@@ -39,7 +39,7 @@
         android:id="@+id/newRatingEntryText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter your rating of this clinic:"
+        android:text="Enter your rating of this clinic from your last appointment:"
         android:layout_marginTop="100dp"
         android:layout_marginLeft="20dp"
         android:textSize="20dp"/>

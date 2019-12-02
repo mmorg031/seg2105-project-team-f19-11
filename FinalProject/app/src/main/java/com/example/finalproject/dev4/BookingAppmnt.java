@@ -154,7 +154,7 @@ public class BookingAppmnt extends AppCompatActivity {
                             String[] anApptParts = user.getAppointmentTime().split("#");
                             String date = anApptParts[0];
                             String time =anApptParts[1];
-                            Toast.makeText(BookingAppmnt.this, "You already have an appointment on "+date+" at "+time+" , at Clinic: "+user.getLastClinicName()+"!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(BookingAppmnt.this, "You already have an appointment on "+date+" at "+time+" , at Clinic: "+user.getLastClinicName()+", You can book an appointment after this date!", Toast.LENGTH_SHORT).show();
                             if(user.isItTimeToRate()){
                                 openactivity_goToRate();
                             }

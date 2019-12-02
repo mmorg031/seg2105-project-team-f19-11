@@ -13,6 +13,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -155,7 +156,7 @@ public class WalkInClinic {
         Map<String,String> results = new HashMap<String,String>();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
 
-        try{
+        //try{
             LocalTime nowTime = LocalTime.now();
             System.err.println("now");
             LocalDate nowDate = LocalDate.now();
@@ -166,71 +167,108 @@ public class WalkInClinic {
             System.err.println(nowDate.toString());
             System.err.println(theAppt.toString());
 
+            if(nowDate.isEqual(theAppt) && workingHours.get(day).getClosed()){
+                return null;
+            }
             int NumApptOnDaySelected = 0;
             //remove all apointments that already happened
             LocalTime lastApptToday= null;
+            List<String> keysToRemove = new ArrayList<String>();
 
             if(appointments.size()>0) {
-                for (Map.Entry<String, String> entry : appointments.entrySet()) {
+                for(Iterator<Map.Entry<String, String>> it = appointments.entrySet().iterator(); it.hasNext(); ) {
+                    Map.Entry<String, String> entry = it.next();
                     String anAppt = entry.getValue();
+                    System.err.println(anAppt);
+                    System.err.println(appointments.size());
                     if(!anAppt.equals("None")) {
                         String[] anApptParts = anAppt.split("#");
                         LocalDate anApptDate = LocalDate.parse(anApptParts[0],formatter);
                         LocalTime anApptTime = LocalTime.parse(anApptParts[1]);
-
+                        System.err.println("hererere");
                         if (nowDate.isAfter(anApptDate)) {
-                            appointments.remove(anAppt);
-                        } else if (theAppt.isEqual(anApptDate)) {
-                            if(nowTime.isAfter(anApptTime)){
-                                appointments.remove(entry.getKey());
-                            }
-                            else if(lastApptToday==null){
-                                lastApptToday= anApptTime;
-                                NumApptOnDaySelected += 1;
+                            keysToRemove.add(entry.getKey());
+                        }
+                        else if(nowDate.isEqual(anApptDate) && nowTime.isAfter(anApptTime)){
+                            keysToRemove.add(entry.getKey());
+                        }
+                        else if(theAppt.isEqual(anApptDate)) {
+                            System.err.print("ok here to record last poss date on that day to get&scheule what time");
+                            if(lastApptToday==null){
+                                lastApptToday = anApptTime;
                             }
                             else if(lastApptToday.isBefore(anApptTime)){
                                 lastApptToday = anApptTime;
-                                NumApptOnDaySelected += 1;
                             }
-
+                            NumApptOnDaySelected += 1;
                         }
+
+
                     }
                 }
             }
 
+            for(int i=0; i<keysToRemove.size(); i++){
+                appointments.remove(keysToRemove.get(i));
+            }
 
 
+            System.err.println("Got this far haha");
             //Technically we should put some check to make sure were not making appts
             // after close time, but how tf you gonna make like 60 appts u feel
             LocalTime apptTime;
+            LocalTime openingTime= LocalTime.parse(workingHours.get(day).getStartTime());
+            LocalTime closingTime = LocalTime.parse(workingHours.get(day).getEndTime());
             if(nowDate.isEqual(theAppt)) {
                 if(lastApptToday==null) {
-                    apptTime = nowTime.plusMinutes(15 * NumApptOnDaySelected);
-                    results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15 * NumApptOnDaySelected).toString());
+                    if(nowTime.isBefore(openingTime)) {
+                        apptTime = openingTime.plusMinutes(15*NumApptOnDaySelected);
+                        results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15 * NumApptOnDaySelected).toString());
+
+                    }
+                    //else if(nowTime.isAfter(closingTime)){
+                      //  return null;
+                    //}
+                    else {
+                        apptTime = nowTime.plusMinutes(15 * NumApptOnDaySelected);
+                        results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15 * NumApptOnDaySelected).toString());
+                    }
                 }
                 else{
                     apptTime = lastApptToday.plusMinutes(15);
-                    results.put("waitTime", Long.toString(Duration.between(nowTime, apptTime).toMinutes()) );
-                    //results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15 * NumApptOnDaySelected).toString());
+                    if(nowTime.isBefore(openingTime)){
+                        results.put("waitTime", Long.toString(Duration.between(openingTime, apptTime).toMinutes()) );
+                    }
+                    else{
+                        results.put("waitTime", Long.toString(Duration.between(nowTime, apptTime).toMinutes()) );
+                    }
+
+
                 }
-                //results.put("waitTime", Duration.between(nowTime, apptTime).toString());
+
             }
             else {
-                apptTime = LocalTime.parse(workingHours.get(day).getStartTime()).plusMinutes( 15* NumApptOnDaySelected);
+                apptTime = openingTime.plusMinutes( 15* NumApptOnDaySelected);
                 results.put("waitTime", LocalTime.parse("00:00").plusMinutes(15 * NumApptOnDaySelected).toString());
             }
 
             String appt = apptDate+ "#" + apptTime.toString();
             System.err.println("apptTime");
             results.put("appt",appt);
-            appointments.put(uid, appt);
             System.err.println(appt);
-            //return Duration.between(opening + appttime)
-        }
-        catch (Exception e){
+
+
+            if(apptTime.isAfter(closingTime))
+                return null;
+            else {
+                appointments.put(uid, appt);
+                return results;
+            }
+
+      //  }
+      /*  catch (Exception e){
             System.err.println("Error+ "+e.getMessage());
-        }
-        System.err.println("returning");
-        return results;
+        }*/
+
     }
 }

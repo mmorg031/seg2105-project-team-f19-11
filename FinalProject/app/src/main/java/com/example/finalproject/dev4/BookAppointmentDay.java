@@ -143,13 +143,21 @@ public class BookAppointmentDay extends AppCompatActivity {
                                     if(!clinic.getWorkingHours().get(dayOfWeek).getClosed()) {
                                         System.err.println("Insideyo");
                                         Map<String,String> apptResults = clinic.updateAppointments(date, dayOfWeek, uid);
-                                        waitTime = apptResults.get("waitTime");
-                                        ApptForPatient = apptResults.get("appt");
-                                        user.setClinic(clinic);
-                                        ref.child(ds.getKey()).setValue(user);
-                                        appointmentMade=true;
+                                        if(apptResults==null){
+                                            System.err.println("appt resluts were null");
+                                            Toast.makeText(BookAppointmentDay.this, "Cannot make an appoint clinic will be closed", Toast.LENGTH_SHORT).show();
+                                            break;
+                                        }
+                                        else {
+                                            waitTime = apptResults.get("waitTime");
+                                            ApptForPatient = apptResults.get("appt");
+                                            user.setClinic(clinic);
+                                            ref.child(ds.getKey()).setValue(user);
+                                            appointmentMade = true;
+                                        }
                                     }
                                     else{
+                                        Toast.makeText(BookAppointmentDay.this, "Cannot make an appoint clinic will be closed", Toast.LENGTH_SHORT).show();
                                         return;
                                     }
                                 }

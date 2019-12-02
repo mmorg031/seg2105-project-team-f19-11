@@ -60,7 +60,7 @@ public class Patient extends Person {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
             String[] anApptParts = appointmentTime.split("#");
             LocalDate date = LocalDate.parse(anApptParts[0],formatter);
-            LocalTime time = LocalTime.parse(anApptParts[1]);
+            LocalTime time = LocalTime.parse(anApptParts[1]).plusMinutes(15);
 
             LocalTime nowTime = LocalTime.now();
             LocalDate nowDate = LocalDate.now();
