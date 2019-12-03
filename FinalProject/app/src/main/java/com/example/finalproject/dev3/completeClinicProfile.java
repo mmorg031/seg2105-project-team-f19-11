@@ -25,6 +25,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.Map;
+import java.util.regex.Pattern;
 
 public class completeClinicProfile extends AppCompatActivity {
     private EditText nameText;
@@ -137,8 +138,8 @@ public class completeClinicProfile extends AppCompatActivity {
             addressText.setError("Please Provide an Address");
             addressText.requestFocus();
         }
-        else if(phone.isEmpty()){
-            phoneText.setError("Please provide a Phone Number");
+        else if(phone.isEmpty() || !Pattern.compile("\\d{10}|(?:\\d{3}-){2}\\d{4}|\\(\\d{3}\\)\\d{3}-?\\d{4}").matcher(phone).matches()){
+            phoneText.setError("Please provide a Phone Number in form: 1234567890, 123-456-7890, or (123)456-7890");
             phoneText.requestFocus();
         }
         else {

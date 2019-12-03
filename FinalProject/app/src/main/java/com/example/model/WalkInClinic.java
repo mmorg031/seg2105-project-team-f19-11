@@ -138,8 +138,8 @@ public class WalkInClinic {
     public List<String> hasService(String keyword) {
         ArrayList<String> matchingNames = new ArrayList<String>();
         for(Map.Entry<String, Role> entry : services.entrySet()){
-            String name = entry.getKey();
-            if(name.contains(keyword)){
+            String name = entry.getKey().toLowerCase();
+            if(name.contains(keyword.toLowerCase())){
                 matchingNames.add(name);
             }
         }

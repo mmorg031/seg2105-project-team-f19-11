@@ -104,14 +104,14 @@ public class searchResults extends AppCompatActivity {
                                 String name = clinic.getName();
                                 String address = clinic.getLocation();
 
-                                if(name.contains(keyword)){
+                                if(name.toLowerCase().contains(keyword.toLowerCase())){
                                     HashMap<String, String> datum = new HashMap<String, String>();
                                     datum.put("Name", name);
                                     datum.put("Address", address);
                                     nameResult.add(datum);
                                     hasResultsNames[0] =true;
                                 }
-                                if(address.contains(keyword)){
+                                if(address.toLowerCase().contains(keyword.toLowerCase())){
                                     HashMap<String, String> datum = new HashMap<String, String>();
                                     datum.put("Name", name);
                                     datum.put("Address", address);
