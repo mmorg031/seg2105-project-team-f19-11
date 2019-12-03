@@ -55,7 +55,7 @@
     <ListView
         android:id="@+id/methodList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_below="@+id/paymentForms"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
@@ -74,7 +74,7 @@
     <ListView
         android:id="@+id/insuranceList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="250dp"
         android:layout_below="@+id/insuranceForms"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
