@@ -7,49 +7,64 @@
     tools:context=".dev4.DayTimeResults"
     android:background="#add5e0">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:background="#ffffff"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
             android:background="#ffffff"
-            android:paddingLeft="20dp"
-            android:src="@drawable/arrow_back" />
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:paddingLeft="20dp"
+                android:src="@drawable/arrow_back" />
+
+            <TextView
+                android:id="@+id/header"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="-30dp"
+                android:layout_weight="1"
+                android:fontFamily="@font/muli_semibold_italic"
+                android:gravity="center"
+                android:text="RESULTS"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/header"
+            android:id="@+id/serviceListText"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="-30dp"
-            android:layout_weight="1"
-            android:fontFamily="@font/muli_semibold_italic"
-            android:gravity="center"
-            android:text="RESULTS"
-            android:textSize="20sp"/>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:text="For day and time:"
+            android:textSize="20dp" />
+
+        <ListView
+            android:id="@+id/clinicListTimes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/serviceListText"
+            android:layout_marginLeft="45dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="20dp"/>
 
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/serviceListText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="80dp"
-        android:text="For day and time:"
-        android:textSize="20dp" />
-
-    <ListView
-        android:id="@+id/clinicListTimes"
-        android:layout_width="wrap_content"
-        android:layout_height="600dp"
-        android:layout_below="@+id/serviceListText"
-        android:layout_marginLeft="45dp"
-        android:layout_marginTop="20dp"/>
+    </ScrollView>
 
 </RelativeLayout>

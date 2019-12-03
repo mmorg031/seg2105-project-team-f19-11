@@ -20,7 +20,7 @@
             android:textColor="#424445"
             android:textSize="35sp"
             android:textStyle="bold"
-            android:layout_marginTop="120dp"
+            android:layout_marginTop="80dp"
             android:layout_centerHorizontal="true"
             android:text="Appointment" />
 
@@ -48,7 +48,7 @@
             android:textSize="40sp" />
 
         <TextView
-            android:id="@+id/waitTimeText"
+            android:id="@+id/wait"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/muli_light"
@@ -56,7 +56,18 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="10dp"
             android:textSize="30sp"
-            android:text="Expected wait: 00:45" />
+            android:text="Expected wait time:" />
+
+        <TextView
+            android:id="@+id/waitTimeText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_light"
+            android:layout_below="@+id/wait"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="10dp"
+            android:textSize="30sp"
+            android:text="00:00" />
 
         <Button
             android:id="@+id/rateTheClinicBtn"
@@ -65,7 +76,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/waitTimeText"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="130dp"
+            android:layout_marginTop="100dp"
             android:background="@android:color/transparent"
             android:fontFamily="@font/muli_light"
             android:text="Continue >"

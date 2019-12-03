@@ -55,9 +55,10 @@
     <ListView
         android:id="@+id/methodList"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/paymentForms"
         android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="20dp"/>
 
     <TextView
@@ -68,14 +69,15 @@
         android:text="Insurance:"
         android:textSize="20dp"
         android:layout_marginLeft="25dp"
-        android:layout_marginTop="25dp"/>
+        android:layout_marginTop="15dp"/>
 
     <ListView
         android:id="@+id/insuranceList"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_below="@+id/insuranceForms"
         android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
         android:layout_marginTop="10dp"/>
 
 

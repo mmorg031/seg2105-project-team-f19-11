@@ -7,6 +7,18 @@
     tools:context=".dev4.ServiceListResults"
     android:background="#add5e0">
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -40,7 +52,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="20dp"
         android:text="Clinics with servicename:"
         android:textSize="20dp" />
 
@@ -51,6 +63,9 @@
         android:layout_below="@+id/serviceListText"
         android:layout_marginLeft="45dp"
         android:layout_marginTop="20dp"/>
+
+    </LinearLayout>
+    </ScrollView>
 
 
 </RelativeLayout>

@@ -40,7 +40,7 @@ public class ConfirmationPage extends AppCompatActivity {
 
         waitingTime = findViewById(R.id.waitTimeText);
         String waitTime = incomingIntent.getStringExtra("waitTime");
-        waitingTime.setText("Expected Wait Time: "+waitTime+" Minutes");
+        waitingTime.setText(waitTime+" minutes");
 
 
     }

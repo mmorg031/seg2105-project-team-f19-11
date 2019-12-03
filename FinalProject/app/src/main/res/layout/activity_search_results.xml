@@ -7,122 +7,135 @@
     android:background="#c3e6ce"
     tools:context=".dev4.searchResults">
 
-    <LinearLayout
-        android:id="@+id/head"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="#ffffff"
-        android:orientation="horizontal">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+    <LinearLayout
+        android:id="@+id/mainLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-        <ImageButton
-            android:id="@+id/backBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+        <LinearLayout
+            android:id="@+id/head"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
             android:background="#ffffff"
-            android:paddingLeft="20dp"
-            android:src="@drawable/arrow_back" />
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/backBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:background="#ffffff"
+                android:paddingLeft="20dp"
+                android:src="@drawable/arrow_back" />
+
+            <TextView
+                android:id="@+id/searchResultsTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:fontFamily="@font/muli_semibold_italic"
+                android:gravity="center"
+                android:paddingLeft="-40dp"
+                android:text="Search Results"
+                android:textSize="20sp" />
+
+        </LinearLayout>
+
+        <SearchView
+            android:id="@+id/searchBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_below="@+id/head"
+            android:layout_marginTop="5dp">
+
+        </SearchView>
 
         <TextView
-            android:id="@+id/searchResultsTitle"
+            android:id="@+id/titleText"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:fontFamily="@font/muli_semibold_italic"
-            android:gravity="center"
-            android:paddingLeft="-40dp"
-            android:text="Search Results"
-            android:textSize="20sp" />
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_light"
+            android:textColor="#424445"
+            android:textSize="13sp"
+            android:layout_marginLeft="50dp"
+            android:layout_below="@+id/searchBar"
+            android:text="Search Results for SEARCH:" />
 
-    </LinearLayout>
+        <TextView
+            android:id="@+id/clinicNamesText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/muli_light"
+            android:textColor="#424445"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginLeft="25dp"
+            android:layout_below="@+id/titleText"
+            android:layout_marginTop="30dp"
+            android:text="Clinic Names" />
 
-    <SearchView
-        android:id="@+id/searchBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_below="@+id/head"
-        android:layout_marginTop="5dp">
+        <ListView
+            android:id="@+id/clinicNamesList"
+            android:layout_below="@+id/clinicNamesText"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="25dp"/>
 
-    </SearchView>
+        <TextView
+            android:id="@+id/addressesText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/clinicNamesList"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/muli_light"
+            android:textColor="#424445"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginLeft="25dp"
+            android:text="Addresses" />
 
-    <TextView
-        android:id="@+id/titleText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/muli_light"
-        android:textColor="#424445"
-        android:textSize="13sp"
-        android:layout_marginLeft="50dp"
-        android:layout_below="@+id/searchBar"
-        android:text="Search Results for SEARCH:" />
+        <ListView
+            android:id="@+id/clinicAddressesList"
+            android:layout_below="@+id/addressesText"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="25dp">
 
-    <TextView
-        android:id="@+id/clinicNamesText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/muli_light"
-        android:textColor="#424445"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_marginLeft="25dp"
-        android:layout_below="@+id/titleText"
-        android:layout_marginTop="30dp"
-        android:text="Clinic Names" />
+        </ListView>
 
-    <ListView
-        android:id="@+id/clinicNamesList"
-        android:layout_below="@+id/clinicNamesText"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"/>
+        <TextView
+            android:id="@+id/servicesText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/clinicAddressesList"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/muli_light"
+            android:textColor="#424445"
+            android:textStyle="bold"
+            android:textSize="18dp"
+            android:layout_marginLeft="25dp"
+            android:text="Services" />
 
-    <TextView
-        android:id="@+id/addressesText"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/clinicNamesList"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/muli_light"
-        android:textColor="#424445"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_marginLeft="25dp"
-        android:text="Addresses" />
+        <ListView
+            android:id="@+id/servicesList"
+            android:layout_below="@+id/servicesText"
+            android:layout_marginTop="5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginBottom="30dp"/>
 
-    <ListView
-        android:id="@+id/clinicAddressesList"
-        android:layout_below="@+id/addressesText"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp">
-
-    </ListView>
-
-    <TextView
-        android:id="@+id/servicesText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/clinicAddressesList"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/muli_light"
-        android:textColor="#424445"
-        android:textStyle="bold"
-        android:textSize="18dp"
-        android:layout_marginLeft="25dp"
-        android:text="Services" />
-
-    <ListView
-        android:id="@+id/servicesList"
-        android:layout_below="@+id/servicesText"
-        android:layout_marginTop="5dp"
-        android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:layout_marginLeft="25dp"
-        android:layout_marginRight="25dp"/>
-
+        </LinearLayout>
+    </ScrollView>
 </RelativeLayout>

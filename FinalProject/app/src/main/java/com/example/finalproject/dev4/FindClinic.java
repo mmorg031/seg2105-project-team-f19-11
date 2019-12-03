@@ -6,19 +6,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.finalproject.R;
+import com.example.finalproject.WelcomePage;
 
 public class FindClinic extends AppCompatActivity {
     private SearchView searchBar; //the search bar where user searches clinic/address/service
     private Button searchByHours; //IMPLEMENTED; goes to new page to search by working hours
+    private ImageButton backButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_find_clinic);
+
+        backButton = (ImageButton) findViewById(R.id.backBtn) ;
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openactivity_goToWelcomePage();
+            }
+        });
 
         searchByHours = findViewById(R.id.searchByHoursBtn);
         searchByHours.setOnClickListener(new View.OnClickListener() {
@@ -43,6 +54,11 @@ public class FindClinic extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    public void openactivity_goToWelcomePage(){
+        Intent intent = new Intent(this, WelcomePage.class);
+        startActivity(intent);
     }
 
     public void openactivity_searchWorkingHours(){
