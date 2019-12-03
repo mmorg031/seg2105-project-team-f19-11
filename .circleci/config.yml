@@ -1,10 +1,8 @@
- version: 2
- jobs:
+version: 2
+jobs:
    build:
      docker:
        - image: circleci/android:api-28-alpha
      steps:
        - checkout
-       - run:
-          name: Run UnitTest
-          command: ./gradlew TestClass
+       - run: echo "A first hello"
