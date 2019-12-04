@@ -129,7 +129,7 @@ public class RateClinic extends AppCompatActivity {
 
             });
 
-
+            Toast.makeText(RateClinic.this, "Thanks for Rating!", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(this, FindClinic.class);
             startActivity(intent);
         }

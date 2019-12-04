@@ -76,7 +76,7 @@ public class WalkInClinic {
         reviews.put("None",0);
 
         this.appointments = new HashMap<String,String>();
-        //appointments.put("None", "None");
+        appointments.put("None", "None");
 
     }
 
@@ -126,6 +126,13 @@ public class WalkInClinic {
        result.put("reviews",reviews);
        result.put("appointments", appointments);
        return result;
+    }
+
+    public String returnWorkingHoursString(String day){
+        if (workingHours.get(day).getClosed())
+            return "Closed";
+        else
+            return workingHours.get(day).getStartTime()+" - "+workingHours.get(day).getEndTime();
     }
 
     public boolean isWithinWorkingHours(String day, String time){
@@ -189,7 +196,7 @@ public class WalkInClinic {
                         if (nowDate.isAfter(anApptDate)) {
                             keysToRemove.add(entry.getKey());
                         }
-                        else if(nowDate.isEqual(anApptDate) && nowTime.isAfter(anApptTime)){
+                        else if(nowDate.isEqual(anApptDate) && nowTime.isAfter(anApptTime.plusMinutes(15))){
                             keysToRemove.add(entry.getKey());
                         }
                         else if(theAppt.isEqual(anApptDate)) {

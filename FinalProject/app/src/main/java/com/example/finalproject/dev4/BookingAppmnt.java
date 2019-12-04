@@ -43,6 +43,14 @@ public class BookingAppmnt extends AppCompatActivity {
     private RatingBar clinicRating;
     private Button bookApt;
     private ArrayList<HashMap<String,String>> serviceOffered= new ArrayList<HashMap<String, String>>();
+    private String mondayHours;
+    private String tuesdayHours;
+    private String wednesdayHours;
+    private String thursdayHours;
+    private String fridayHours;
+    private String saturdayHours;
+    private String sundayHours;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -96,6 +104,15 @@ public class BookingAppmnt extends AppCompatActivity {
                                     }
                                     clinicRating.setIsIndicator(true);
                                     clinicRating.setRating((float)clinic.getSumRated()/clinic.getNumRated());
+
+                                    mondayHours= clinic.returnWorkingHoursString("Monday");
+                                    tuesdayHours = clinic.returnWorkingHoursString("Tuesday");
+                                    wednesdayHours = clinic.returnWorkingHoursString("Wednesday");
+                                    thursdayHours = clinic.returnWorkingHoursString("Thursday");
+                                    fridayHours = clinic.returnWorkingHoursString("Friday");
+                                    saturdayHours =clinic.returnWorkingHoursString("Saturday");
+                                    sundayHours = clinic.returnWorkingHoursString("Sunday");
+
                                     break;
                                     //return;
                                 }
@@ -127,6 +144,13 @@ public class BookingAppmnt extends AppCompatActivity {
         Intent intent = new Intent(this, BookAppointmentDay.class);
         intent.putExtra("name", name);
         intent.putExtra("address", address);
+        intent.putExtra("mondayHours", mondayHours);
+        intent.putExtra("tuesdayHours", tuesdayHours);
+        intent.putExtra("wednesdayHours", wednesdayHours);
+        intent.putExtra("thursdayHours", thursdayHours);
+        intent.putExtra("fridayHours", fridayHours);
+        intent.putExtra("saturdayHours", saturdayHours);
+        intent.putExtra("sundayHours", sundayHours);
         startActivity(intent);
     }
 

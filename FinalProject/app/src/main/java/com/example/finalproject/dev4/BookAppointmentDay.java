@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ImageButton;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -43,7 +44,13 @@ public class BookAppointmentDay extends AppCompatActivity {
     private String Apptdate; //date of appointment selected
     private String ApptForPatient;
     private boolean appointmentMade=false;
-
+    private TextView mondayHours;
+    private TextView tuesdayHours;
+    private TextView wednesdayHours;
+    private TextView thursdayHours;
+    private TextView fridayHours;
+    private TextView saturdayHours;
+    private TextView sundayHours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +68,20 @@ public class BookAppointmentDay extends AppCompatActivity {
             }
         });
 
+        mondayHours= findViewById(R.id.mondayHours);
+        mondayHours.setText("Mo: "+intent.getStringExtra("mondayHours"));
+        tuesdayHours= findViewById(R.id.tuesdayHours);
+        tuesdayHours.setText("Tu: "+intent.getStringExtra("tuesdayHours"));
+        wednesdayHours= findViewById(R.id.wednesdayHours);
+        wednesdayHours.setText("We: "+intent.getStringExtra("wednesdayHours"));
+        thursdayHours= findViewById(R.id.thursdayHours);
+        thursdayHours.setText("Th: "+intent.getStringExtra("thursdayHours"));
+        fridayHours= findViewById(R.id.fridayHours);
+        fridayHours.setText("Fr: "+intent.getStringExtra("fridayHours"));
+        saturdayHours= findViewById(R.id.saturdayHours);
+        saturdayHours.setText("Sa: "+intent.getStringExtra("saturdayHours"));
+        sundayHours= findViewById(R.id.sundayHours);
+        sundayHours.setText("Su: "+intent.getStringExtra("sundayHours"));
 
         chooseDay = (CalendarView) findViewById(R.id.calendarView);
         //chooseDay.setDate(Calendar.getInstance().getTimeInMillis(),false,true);

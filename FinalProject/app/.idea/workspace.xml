@@ -7,10 +7,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d5368d5-46bb-4f59-9e98-09eef6cb5942" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/finalproject/activity_sign_in.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/finalproject/activity_sign_in.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev3/completeClinicProfile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev3/completeClinicProfile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/searchResults.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/searchResults.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookAppointmentDay.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookAppointmentDay.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookingAppmnt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookingAppmnt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/RateClinic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/RateClinic.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/model/WalkInClinic.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/model/WalkInClinic.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,8 +34,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookAppointmentDay.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2567">
-              <caret line="159" column="155" selection-start-line="159" selection-start-column="155" selection-end-line="159" selection-end-column="155" />
+            <state relative-caret-position="116">
+              <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#openactivity_goToFindClinicPage#0;class#BookAppointmentDay#0" />
@@ -46,6 +45,15 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/WalkInClinic.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="489">
+              <caret line="198" column="104" selection-start-line="198" selection-start-column="104" selection-end-line="198" selection-end-column="104" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_book_appointment_day.xml">
           <provider editor-type-id="text-editor" />
           <provider selected="true" editor-type-id="android-designer2" />
@@ -70,18 +78,18 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/DayTimeResults.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_confirmation_page.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/RateClinic.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev3/EditWorkingHours.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/WelcomePage.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/model/Patient.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookingAppmnt.java" />
         <option value="$PROJECT_DIR$/src/main/res/layout/activity_rate_clinic.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/ConfirmationPage.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookAppointmentDay.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev3/completeClinicProfile.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/example/model/WalkInClinic.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/searchResults.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/activity_sign_in.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/RateClinic.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookingAppmnt.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookAppointmentDay.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/example/model/WalkInClinic.java" />
       </list>
     </option>
   </component>
@@ -316,10 +324,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
-      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16845638" />
+      <window_info content_ui="combo" id="Project" order="1" visible="true" weight="0.16845638" />
       <window_info id="Structure" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info id="Build Variants" order="4" side_tool="true" />
@@ -332,8 +339,8 @@
       <window_info anchor="bottom" id="TODO" order="2" />
       <window_info anchor="bottom" id="Terminal" order="3" />
       <window_info anchor="bottom" id="Event Log" order="4" sideWeight="0.50067115" side_tool="true" weight="0.305949" />
-      <window_info anchor="bottom" id="Build" order="5" visible="true" weight="0.04249292" />
-      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49932885" weight="0.28470254" />
+      <window_info anchor="bottom" id="Build" order="5" weight="0.04249292" />
+      <window_info anchor="bottom" id="Run" order="6" sideWeight="0.49932885" weight="0.04249292" />
       <window_info anchor="bottom" id="Android Profiler" order="7" />
       <window_info anchor="bottom" id="Debug" order="8" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
@@ -403,13 +410,6 @@
         </state>
       </provider>
       <provider editor-type-id="android-designer2" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/RateClinic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="867">
-          <caret line="84" column="86" lean-forward="true" selection-start-line="84" selection-start-column="86" selection-end-line="84" selection-end-column="86" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_confirmation_page.xml">
       <provider selected="true" editor-type-id="text-editor">
@@ -485,13 +485,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/WalkInClinic.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="349">
-          <caret line="141" column="50" selection-start-line="141" selection-start-column="50" selection-end-line="141" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/finalproject/activity_sign_in.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -510,17 +503,28 @@
       <provider editor-type-id="text-editor" />
       <provider selected="true" editor-type-id="android-designer2" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookingAppmnt.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/RateClinic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1904">
-          <caret line="151" column="25" lean-forward="true" selection-start-line="151" selection-start-column="25" selection-end-line="151" selection-end-column="25" />
+        <state relative-caret-position="421">
+          <caret line="131" column="93" selection-start-line="131" selection-start-column="93" selection-end-line="131" selection-end-column="93" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookingAppmnt.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="509">
+          <caret line="152" column="50" selection-start-line="152" selection-start-column="50" selection-end-line="152" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_book_appointment_day.xml">
+      <provider editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="android-designer2" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/example/finalproject/dev4/BookAppointmentDay.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2567">
-          <caret line="159" column="155" selection-start-line="159" selection-start-column="155" selection-end-line="159" selection-end-column="155" />
+        <state relative-caret-position="116">
+          <caret line="83" column="31" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#openactivity_goToFindClinicPage#0;class#BookAppointmentDay#0" />
@@ -528,9 +532,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/res/layout/activity_book_appointment_day.xml">
-      <provider editor-type-id="text-editor" />
-      <provider selected="true" editor-type-id="android-designer2" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/example/model/WalkInClinic.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="198" column="104" selection-start-line="198" selection-start-column="104" selection-end-line="198" selection-end-column="104" />
+        </state>
+      </provider>
     </entry>
   </component>
 </project>
